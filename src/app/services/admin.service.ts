@@ -17,6 +17,19 @@ export class AdminService {
   statistique() : Observable<any> {
     return this.http.get(`${environment.urlBackend}` + 'api/v1/statistique/');
   }
+
+
+  statistiqueTop5() : Observable<any> {
+    return this.http.get(`${environment.urlBackend}` + 'api/v1/top_consultation_gouvernement/');
+  }
+
+  statistiquebyGender() : Observable<any> {
+    return this.http.get(`${environment.urlBackend}` + 'api/v1/gender_stats/');
+  }
+  statistiquebyPlatforme() : Observable<any> {
+    return this.http.get(`${environment.urlBackend}` + 'api/v1/plateform_stats/');
+  }
+  
   getDoctors() {
     return this.http.get(`${environment.urlBackend}` + 'api/v1/doctors/');
   }

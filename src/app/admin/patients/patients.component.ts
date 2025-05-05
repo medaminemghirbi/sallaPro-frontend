@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
@@ -82,8 +81,8 @@ export class PatientsComponent implements OnInit {
               // Find the index of the user and update the corresponding row
               const userIndex = this.filterdPatients.findIndex((user: { id: any; }) => user.id === id);
               if (userIndex !== -1) {
-                this.filterdPatients[userIndex].email_confirmed = true;
-                this.filterdPatients[userIndex].confirm_token = null;
+                this.filterdPatients[userIndex].confirmed_at = new Date();
+                this.filterdPatients[userIndex].confirmation_token = null;
                 // Optionally, update any other UI elements related to this user
               }
             });

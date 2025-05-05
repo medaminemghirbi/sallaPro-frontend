@@ -84,18 +84,7 @@
                     <li>Treatment: {{ blogDetail?.maladie?.treatments }}</li>
                   </ul>
                   <li>Read More: <a style="color: blue;" href="{{ blogDetail?.maladie?.references }}">{{ blogDetail?.maladie?.references }}</a></li>
-                  
-                  <!-- Reaction Buttons -->
-                  <div class="reaction-buttons">
-                    <button class="btn btn-success me-2" (click)="onReact(blogDetail, 'like')">
-                      <i class="fas fa-thumbs-up"></i> &nbsp; Like 
-                      <span class="badge bg-primary">{{ blogDetail?.likes_count }}</span>
-                    </button>
-                    <button class="btn btn-danger" (click)="onReact(blogDetail, 'dislike')">
-                      <i class="fas fa-thumbs-down"></i> &nbsp; Dislike 
-                      <span class="badge bg-secondary">{{ blogDetail?.dislikes_count }}</span>
-                    </button>
-                  </div>
+
                 </div>
               </article>
             </div>

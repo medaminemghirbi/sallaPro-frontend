@@ -71,7 +71,7 @@ export class BookNowComponent implements OnInit {
         });
       },
       (error) => {
-        Swal.fire('Error!', 'Appointment Already created. Check your board or Change Date.', 'error');
+        Swal.fire('Error!', error.error.error, 'error');
         registerButton.disabled = false;
         registerButton.innerHTML = 'Confirm Appointment';
         this.isLoading = false;

@@ -59,7 +59,7 @@
         "appointment_request": "Appointment Request",
         "planning": "Planning",
         "forum": "Forum",
-        "email_box": "Email Box",
+        "email_box": "Link Box",
         "documents": "Documents",
         "blogs": "Blogs",
         "analyze_with_ai": "Analyze With IA",
@@ -119,15 +119,10 @@
         "nbr": "Time ",
         "appointment": "Total Appointments",
         "appointment_comments": "Scheduled patient appointments today.",
-        "diseas": "Disease Count for IA Plan",
-        "diseas_comment": "Procced Image by AI.",
         "appointment_today": "Today Appointments",
         "Next_appointment": "Next Appointment in",
         "display": "Show All",
         "no_appointmnet": "No upcoming appointments",
-        "no_plan": "You dont have  IA Plan",
-        "plan_comment": "Images processed with AI system.",
-        "plan_is": "Your IA Plan is",
         "today": "Today at"
     },
     "Doctor_appointments": {
@@ -150,9 +145,9 @@
         "status": "Online Paiement Status",
         "update": "Update",
         "no_appointmnet": "No upcoming appointments",
-        "tip": "PS: Online payment status for online appointments only"
+        "tip": "PS: Online payment status for online appointments only",
+        "note_calendar":"Note: You can fill the consultation report until 1 day after the consultation."
 
-        
     },
     "real_time_chat": "Real-time Chat",
     "enter_your_message": "Enter your message",
@@ -219,7 +214,7 @@
         "dashboard": "Dashboard",
         "appointment_request": "Appointment Request",
         "forum_with_doctors": "Forum with Doctors",
-        "email_box": "Email Box",
+        "email_box": "Link Box",
         "blogs": "Blogs",
         "logout": "Logout"
     },

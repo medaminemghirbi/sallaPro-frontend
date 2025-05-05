@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./planning.component.css']
 })
 export class PlanningComponent implements OnInit {
+  itemsPerPage:number = 100;
   locations: any = [];
   doctors: any = [];
   filteredAppointments: any[] = [];

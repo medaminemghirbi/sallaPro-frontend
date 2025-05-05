@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-doctors',
@@ -230,45 +229,5 @@ export class DoctorsComponent implements OnInit {
       }
     });
   }
-   // Method to bind doctor data to the modal
-   bind_data(doctor: any) {
-    this.updateForm.patchValue({
-      id: doctor.id,
-      firstname: doctor.firstname,
-      lastname: doctor.lastname,
-      plan: doctor.plan,
-      customLimit: doctor.custom_limit || null
-    });
 
-    // Check if the plan is 'custom' to show the custom input field
-    this.iscustomLimit = doctor.plan === 'custom';
-  }
-
-  // Method to handle plan change
-  onPlanChange(event: any) {
-    const selectedPlan = event.target.value;
-    this.iscustomLimit = selectedPlan === 'custom';
-    
-    // Reset custom plan if not custom
-    if (!this.iscustomLimit) {
-      this.updateForm.patchValue({ customLimit: null });
-    }
-  }
-
-  // Method to handle form submission
-  async update_plan() {
-    const formData = this.updateForm.value;
-    // Logic to update the doctor's plan based on formData
-    
-    try {
-      debugger
-      await this.http.patch(environment.urlBackend + `api/v1/doctors/${formData.id}/upgrade_plan`, formData).toPromise();
-      
-      window.location.reload()
-      // Option 2: Refresh the relevant part of the view
-      // For example, if you are using Angular, you might call a method to refresh the data:
-    } catch (error) {
-    }
-  }
-  
 }

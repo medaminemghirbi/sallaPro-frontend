@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-maladie',
@@ -16,7 +15,9 @@ export class MaladieComponent implements OnInit {
   update!: FormGroup;
   messageErr = '';
   dataMaladie: any = {};
-
+  p: number = 1;
+  itemsPerPage: number = 5;
+  searchText: string = '';
   constructor(
     private usersService: AdminService,
     private router: Router,

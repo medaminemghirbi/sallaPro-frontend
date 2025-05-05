@@ -7,8 +7,13 @@
   <div class="page-wrapper">
     <div class="content">
       <div class="demo-app-main">
-        <!-- Full Calendar with click event to navigate to a route with the selected date -->
+      <h6 class="tip">
+        <i class="fa fa-info-circle" style="margin-right: 8px;"></i>
+        {{'Doctor_appointments.note_calendar' | translate}}
+      </h6>
+      
         <full-calendar *ngIf="calendarVisible" [options]="calendarOptions">
+
           <ng-template #eventContent let-arg>
             <b>{{ arg.timeText }}</b>
             <i>{{ arg.event.title }}</i>

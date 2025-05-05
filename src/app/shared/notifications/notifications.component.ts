@@ -20,10 +20,10 @@ export class NotificationsComponent implements OnInit {
   }
 
   fetchNotifications(): void {
-    this.notificationService.getNotifications(this.currentuser.id).subscribe((data) => {
-      this.notifications = data;
-      this.loading = false;
-    });
+    // this.notificationService.getNotifications(this.currentuser.id).subscribe((data) => {
+    //   this.notifications = data;
+    //   this.loading = false;
+    // });
   }
 
   // markAsRead(notificationId: number): void {

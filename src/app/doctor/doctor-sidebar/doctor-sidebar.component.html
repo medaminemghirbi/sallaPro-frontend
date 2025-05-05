@@ -32,9 +32,10 @@
 
                         </span></a>
                 </li>
-                <li routerLinkActive="active">
+                <li *ngIf="currentuser.working_on_line" routerLinkActive="active">
                     <a routerLink="/mail"><span class="menu-side"><img
-                                src="../../../assets/img/icons/email-inbox-mail-svgrepo-com.svg" alt></span> <span>
+                        
+                                src="../../../assets/img/icons/vivre.svg" alt></span> <span>
                             <span>{{ 'Doctor_sidebar.email_box' | translate }}</span>
 
                         </span></a>
@@ -55,7 +56,7 @@
                         </span></a>
                 </li>
                 <li routerLinkActive="active">
-                    <a (click)="verifier_plan(); $event.preventDefault();">
+                    <a routerLink="/doctor/analyze-image"> 
                         <span class="menu-side">
                             <img src="../../../assets/img/icons/microscope-svgrepo-com.svg" alt="">
                         </span>

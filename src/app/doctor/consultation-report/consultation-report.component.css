@@ -1,0 +1,112 @@
+.page-wrapper {
+    padding: 30px;
+    background-color: #f4f6fa;
+    min-height: 100vh;
+  }
+  
+  .report-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .report-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2d3748;
+  }
+  
+  .alert-note {
+    background-color: #fff8e1;
+    border-left: 6px solid #fbbf24;
+    padding: 15px;
+    font-size: 14px;
+    color: #8a6d3b;
+    margin-bottom: 25px;
+    border-radius: 5px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+    color: #2a2e35;
+  }
+  
+  textarea,
+  input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9fafb;
+    resize: vertical;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+  }
+  
+  .btn-submit {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .btn-generate {
+    background-color: #10b981;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-generate:hover {
+    background-color: #059669;
+  }
+  
+  .btn-visualise {
+    background-color: #0e4d94;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .btn-visualise:hover {
+    background-color: #052141;
+  }
+
+  
+  .btn-danger {
+    background-color: #e4400e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .btn-danger:hover {
+    background-color: #0350a8;
+  }

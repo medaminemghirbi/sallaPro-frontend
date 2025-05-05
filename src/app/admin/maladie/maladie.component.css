@@ -1,0 +1,20 @@
+.tip {
+    color: #D84315; /* Strong but professional red */
+    background-color: #FFF3E0; /* Very soft orange background */
+    padding: 12px 16px; /* More comfortable padding */
+    border-left: 5px solid #FF7043; /* Softer but noticeable border */
+    border-radius: 6px; /* Slightly more rounded corners */
+    font-size: 15px; /* Slightly larger for easier reading */
+    font-weight: 600; /* More confident weight */
+    margin-bottom: 15px; /* Space below */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Light subtle shadow */
+    line-height: 1.5; /* Better line spacing */
+}
+
+.search-bar .input-group {
+    max-width: 100%;
+}
+
+.form-select {
+    min-width: 160px;
+}

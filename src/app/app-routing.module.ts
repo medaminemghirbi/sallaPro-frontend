@@ -44,6 +44,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { DoctorsListComponent } from './doctors-list/doctors-list.component';
 import { TestdragComponent } from './testdrag/testdrag.component';
 import { DoctorServicesComponent } from './doctor/doctor-services/doctor-services.component';
+import { ConsultationReportComponent } from './doctor/consultation-report/consultation-report.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -55,6 +56,7 @@ const routes: Routes = [
   { path: 'admin/doctors', canActivate: [AdminGuard], component: DoctorsComponent },
   { path: 'admin/patients', canActivate: [AdminGuard], component: PatientsComponent },
   { path: 'admin/planning', canActivate: [AdminGuard], component: PlanningComponent },
+  
   { path: 'admin/blogs', canActivate: [AdminGuard], component: BlogsComponent },
   { path: 'admin/maladies', canActivate: [AdminGuard], component: MaladieComponent },
   // Doctor routes with guards
@@ -64,6 +66,7 @@ const routes: Routes = [
 
   { path: 'doctor/blogs', canActivate: [DoctorGuard], component: DoctorBlogsComponent },
   { path: 'doctor/planning', canActivate: [DoctorGuard], component: PlanningDoctorComponent },
+
   { path: 'doctor/appointment-request', canActivate: [DoctorGuard], component: AppointmentRequestsComponent },
 
   { path: 'doctor/dokuments', canActivate: [DoctorGuard], component: DokumentsComponent },
@@ -87,7 +90,7 @@ const routes: Routes = [
 
 
   { path: 'patient/appointment-request', component: MyRequestsComponent },
-
+  {path: 'consultations/:consultationId/report',component:ConsultationReportComponent},
 
   // Shared components
   { path: 'forums', component: ForumsComponent },
