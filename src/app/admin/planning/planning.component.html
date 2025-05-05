@@ -8,7 +8,7 @@
 
             <div class="staff-search-table">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-xl-4">
+                    <div class="col-12 col-md-6 col-xl-3">
                         <div class="input-block local-forms cal-icon">
                             <select class="form-control" [(ngModel)]="selectedLocation" id="department"
                                 (ngModelChange)="getDoctorsByLocation($event)">
@@ -17,7 +17,7 @@
                             </select>
                         </div>
                     </div>
-                    <div *ngIf="doctors.length" class="col-12 col-md-6 col-xl-4">
+                    <div *ngIf="doctors.length" class="col-12 col-md-6 col-xl-3">
                         <div class="input-block local-forms cal-icon">
                             <select class="form-control" [(ngModel)]="selectedDoctorId" id="doctor"
                                 (ngModelChange)="onDoctorChange($event)">
@@ -28,7 +28,7 @@
                             </select>
                         </div>
                     </div>
-                    <div *ngIf="doctors.length" class="col-12 col-md-6 col-xl-4">
+                    <div *ngIf="doctors.length" class="col-12 col-md-6 col-xl-3">
                         <div class="input-block local-forms cal-icon">
                             <select class="form-control" [(ngModel)]="selectedDate"
                                 (ngModelChange)="filterByDate($event)">
@@ -40,6 +40,25 @@
                             </select>
                         </div>
                     </div>
+                    <div *ngIf="doctors.length" class="col-12 col-md-6 col-xl-3">
+                        <div class="input-block local-forms cal-icon">
+                            <select class="form-control" [(ngModel)]="itemsPerPage" >
+                                <option hidden value="" selected>Per Page</option>
+                                <option [value]="5">5</option>
+                                <option [value]="25">25</option>
+                                <option [value]="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div *ngIf="doctors.length" class="col-12 col-md-6 col-xl-3">
+                        <div class="input-block local-forms cal-icon">
+                            <select class="form-select" [(ngModel)]="itemsPerPage">
+                                <option [value]="5">5</option>
+                                <option [value]="25">25</option>
+                                <option [value]="100">100</option>
+                            </select>
+                        </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -60,7 +79,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of filteredAppointments; index as i">
+                        <tr *ngFor="let item of filteredAppointments
+                        | paginate: { itemsPerPage: itemsPerPage, currentPage: p } 
+                        index as i">
                             <td class="description-content">
                                 <a>
                                     {{ item.appointment | date: 'EEEE'}}<br>
@@ -119,6 +140,10 @@
                         </tr>
                     </tbody>
                 </table>
+                <br>
+                <div style="text-align:right;">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
             </div>
         </div>
     </div>

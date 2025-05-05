@@ -37,7 +37,13 @@ export class DoctorService {
       imageFormData
     );
   }
-
+  analyzeImageConsultation(imageFormData: FormData, id: any, consultationId: any) {
+    return this.http.post(
+      `${environment.urlBackend}predict/${id}/${consultationId}`,
+      imageFormData
+    );
+  }
+  
 
   getAllMaladie(){
     return this.http.get(environment.urlBackend + 'api/v1/maladies' );
@@ -164,5 +170,9 @@ export class DoctorService {
 
   ArchiveService(id: any) {
     return this.http.delete(environment.urlBackend + 'api/v1/doctor_services/' + id);
+  }
+
+  getConsultationDetails(id: any){
+    return this.http.get(environment.urlBackend + 'api/v1/consultations/' +id);
   }
 }

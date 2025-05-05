@@ -1,18 +1,13 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import {
-  CalendarOptions,
-  DateSelectArg,
-  EventClickArg,
-  EventApi,
-} from '@fullcalendar/core';
-import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { CalendarOptions, EventApi } from '@fullcalendar/core';
+import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { AuthService } from 'src/app/services/auth.service';
 import { DoctorService } from 'src/app/services/doctor.service';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -33,7 +28,7 @@ export class PlanningDoctorComponent implements OnInit {
   selectedTime: Date | null = null; // To hold the selected time for the appointment
   selectedDate: Date | null = null; // To hold the selected date for the appointment
   bookedSlots: string[] = []; // Store booked time slots in a string array
-
+  consultationDetails:any 
   constructor(
     private doctorSerivce: DoctorService,
     private auth: AuthService,
@@ -65,6 +60,8 @@ export class PlanningDoctorComponent implements OnInit {
       allDaySlot: false,
       selectable: true,
       events: [],// To be populated after fetching consultations
+      eventClick: this.handleEventClick.bind(this),
+
       locale: this.currentUser.language
     };
 
@@ -110,6 +107,19 @@ export class PlanningDoctorComponent implements OnInit {
   addMinutesToDate(date: Date, minutes: number): Date {
     return new Date(date.getTime() + minutes * 60000);
   }
-
+  handleEventClick(arg: any): void {
+    const consultationId = arg.event.id;
+  
+    this.doctorSerivce.getConsultationDetails(consultationId).subscribe(
+      (data) => {
+          this.router.navigate(['/consultations', consultationId, 'report']);
+        },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+        this.messageErr = "We don't found this consultation  in our database";
+      }
+    );
+  }
+  
 
 }

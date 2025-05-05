@@ -79,6 +79,11 @@ import { LandingFooterComponent } from './landing-footer/landing-footer.componen
 import { TestdragComponent } from './testdrag/testdrag.component';
 import { DoctorServicesComponent } from './doctor/doctor-services/doctor-services.component';
 import { ChartsModule } from 'angular-bootstrap-md';
+import { ConsultationReportComponent } from './doctor/consultation-report/consultation-report.component';
+import { AnyalzePerConsultationComponent } from './doctor/anyalze-per-consultation/anyalze-per-consultation.component';
+import { ReportsPerConsultationComponent } from './doctor/reports-per-consultation/reports-per-consultation.component';
+import { FilterByVerificationPipe } from './filter-by-verification.pipe';
+import { MedicalCertificationComponent } from './doctor/medical-certification/medical-certification.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -146,6 +151,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     LandingFooterComponent,
     TestdragComponent,
     DoctorServicesComponent,
+    ConsultationReportComponent,
+    AnyalzePerConsultationComponent,
+    ReportsPerConsultationComponent,
+    FilterByVerificationPipe,
+    MedicalCertificationComponent
 
     
   ],

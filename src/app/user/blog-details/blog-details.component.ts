@@ -45,27 +45,5 @@ export class BlogDetailsComponent implements OnInit {
     );
   }
 
-  onReact(blogDetail: any, reaction: string) {
-    const apiUrl = `http://localhost:3000/api/v1/blogs/${blogDetail.id}/blog_reactions`;
-    const payload = {
-      user_id: this.currentUser.id, // Replace with the actual user ID
-      reaction: reaction
-    };
-  
-    // Call the API
-    this.http.post(apiUrl, payload).subscribe(
-      (response: any) => {
-        // Update counts based on the response
-        this.blogDetail.likes_count = response.likes;
-        this.blogDetail.dislikes_count = response.dislikes;
-  
-        console.log(response.message); // Reaction saved or error message
-      },
-      (error) => {
-        this.toastr.error(error.error.message , 'Oops...');
-
-      }
-    );
-  }
   
 }

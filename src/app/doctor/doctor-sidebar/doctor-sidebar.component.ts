@@ -24,18 +24,4 @@ export class DoctorSidebarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-
-  verifier_plan() {
-    if (this.currentuser.plan !== 'no_plan') {
-      // Navigate to the analyze image page
-      this.router.navigate(['/doctor/analyze-image']);
-    } else {
-      // Show an error message
-      this.toastr.error('You Can\'t Access It!', 'Fonctionality not Allowed Please Contact DermaPro!');
-    }
-  }
-  alert(){
-    this.toastr.info('coming soon', 'Fonctionality will be added stay tuned!');
-
-  }
 }

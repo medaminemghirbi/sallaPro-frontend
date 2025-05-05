@@ -77,7 +77,6 @@
                                             <th>Fix Number</th>
                                             <th>Email</th>
                                             <th>Email Confirmed</th>
-                                            <th>IA Plan</th>
 
                                             <th (click)="sortByCreatedAt()">
                                                 <img src="assets/img/icons/sort-icon-01.svg" alt>
@@ -125,32 +124,17 @@
                                             </td>
                                             <td>{{item.email}}
                                             </td>
-                                            <td *ngIf="item.email_confirmed == true">
-                                                <i style="color: green;" class="fa fa-check" data-bs-toggle="tooltip"
+                                            <td >
+                                                <div *ngIf="item.confirmed_at">
+                                                    <i style="color: green;" class="fa fa-check" data-bs-toggle="tooltip"
                                                     title="fa fa-check"></i>
-                                            </td>
-                                            <td *ngIf="item.email_confirmed == false">
-
-                                                <i style="color: red;" class="fa fa-close" data-bs-toggle="tooltip"
+                                                </div>
+                                                <div *ngIf="!item.confirmed_at">
+                                                    <i style="color: red;" class="fa fa-close" data-bs-toggle="tooltip"
                                                     title="fa fa-window-close"></i>
+                                                </div>
                                             </td>
-                                            <td>
-                                                <button *ngIf="item.plan == 'no_plan'" type="button"
-                                                    class="btn btn-rounded btn-warning">{{item.plan}}</button>
-                                                <button *ngIf="item.plan == 'basic'" type="button"
-                                                    class="btn btn-rounded btn-info">{{item.plan}}</button>
-                                                <p *ngIf="item.plan == 'basic'">
-                                                    30 times </p>
-                                                <button *ngIf="item.plan == 'premium'" type="button"
-                                                    class="btn btn-rounded btn-primary">{{item.plan}}</button>
-                                                <p *ngIf="item.plan == 'premium'">
-                                                    unlimited </p>
-                                                <button *ngIf="item.plan == 'custom'" type="button"
-                                                    class="btn btn-rounded btn-success">{{item.plan}}
-                                                </button>
-                                                <p *ngIf="item.plan == 'custom'">
-                                                    {{item.custom_limit}} times </p>
-                                            </td>
+
                                             <td>{{item.created_at | date: 'yyyy-MM-dd'}}</td>
                                             <td class="text-end">
                                                 <div class="dropdown dropdown-action">
@@ -160,16 +144,10 @@
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <a class="dropdown-item" (click)="delete(item.id, i)"><i
                                                                 class="fa fa-trash-alt m-r-5"></i> Archiver</a>
-                                                        <a *ngIf="item.email_confirmed == false" class="dropdown-item"
+                                                        <a *ngIf="!item.confirmed_at" class="dropdown-item"
                                                             (click)="activateCompte(item.id)">
                                                             <i class="fa fa-toggle-on m-r-5"></i>
                                                             Activate Now</a>
-                                                        <a class="dropdown-item" data-bs-toggle="modal"
-                                                            data-bs-target="#con-close-modal" (click)="bind_data(item)">
-                                                            <img src="assets/img/icons/menu-icon-04.svg" alt> Upgrade
-                                                            Plan
-                                                        </a>
-
                                                     </div>
                                                 </div>
                                             </td>
@@ -203,63 +181,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Update Doctor Plan</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="form-horizontal" [formGroup]="updateForm" (ngSubmit)="update_plan()">
-                <div class="modal-body p-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="firstname" class="form-label">First Name</label>
-                                <input readonly style="cursor: not-allowed; background-color: #f0f0f0; color: #6c757d;"
-                                    type="text" class="form-control" id="firstname" formControlName="firstname"
-                                    placeholder="John">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="lastname" class="form-label">Last Name</label>
-                                <input readonly style="cursor: not-allowed; background-color: #f0f0f0; color: #6c757d;"
-                                    type="text" class="form-control" id="lastname" formControlName="lastname"
-                                    placeholder="Doe">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="plan" class="form-label">Plan</label>
-                                <select class="form-control" id="plan" formControlName="plan"
-                                    (change)="onPlanChange($event)">
-                                    <option value="basic">Basic</option>
-                                    <option value="premium">Premium</option>
-                                    <option value="custom">Custom</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6" *ngIf="iscustomLimit">
-                            <div class="mb-3">
-                                <label for="customLimit" class="form-label">Custom Plan Number</label>
-                                <input type="number" class="form-control" id="customLimit" formControlName="customLimit"
-                                    placeholder="Enter number" min="5">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info">Save changes</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>

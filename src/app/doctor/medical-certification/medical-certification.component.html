@@ -1,0 +1,98 @@
+<!-- medical-certification.component.html -->
+<div class="certificate-container" *ngIf="!isLoading && certificateData">
+  <!-- Header with Logo -->
+  <div class="certificate-header">
+    <div class="header-content">
+      <div class="platform-logo">
+        <img src="../../assets/images1/logo_with_beta.png" alt="Platform Logo">
+        <h1>Medical Certification</h1>
+      </div>
+      <div class="watermark">
+        <div class="copyright">© DermaPro Medical App</div>
+        <div class="doc-type">Medical Certification</div>
+        <div class="generated-date" *ngIf="certificateData?.consultation?.generated_on">
+          Generated: {{certificateData.consultation.generated_on | date:'mediumDate'}}
+        </div>
+      </div>
+    </div>
+    <div class="header-border"></div>
+  </div>
+  <!-- Doctor Information -->
+  <div class="doctor-info">
+    <h2>Dr. {{certificateData.doctor.firstname}} {{certificateData.doctor.lastname}}</h2>
+    <div class="qualification">{{certificateData.doctor.qualification}}</div>
+    <div class="certification-number">Certification No: {{certificateData.consultation.document_id}}</div>
+  </div>
+
+  <!-- Medical Absence Certificate Section -->
+  <div class="absence-certificate-section">
+    <h3 class="certificate-title">CERTIFICAT MEDICAL</h3>
+
+    <div class="certificate-text">
+      <p>
+        Je, soussigné Dr <strong>{{certificateData.doctor.firstname}} {{certificateData.doctor.lastname}}</strong>,
+        Docteur en médecine dermatlogie,
+      </p>
+      <p>
+        certifie que l'examen de M/Mme <strong>{{certificateData.patient.firstname}}
+          {{certificateData.patient.lastname}}</strong>
+      </p>
+      <p>
+        nécessite un traitement avec arrêt de travail de
+        <br>
+        <span class="detail-value">
+          <input type="number" [(ngModel)]="durationDays" min="1" max="30" class="duration-input">
+          jour(s) - du {{certificateData.consultation.date | date:'dd/MM/yyyy'}} 
+          au {{getEndDate() | date:'dd/MM/yyyy'}}
+        </span>
+      </p>
+
+
+      <div class="certificate-details">
+        <div class="detail-row">
+          <span>Date Consultation :</span>
+          <span class="detail-value">
+            {{ certificateData.consultation.date | date:'dd MMM yyyy' }}
+            à {{ certificateData.consultation.date | date:'HH:mm' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="certificate-footer">
+    <div class="signature-section">
+      <div class="signature-line"></div>
+      <div class="signature-label">Signature du Médecin</div>
+      <div class="card-body pt-0">
+        <form >
+            <div class="upload-images">
+                <img [src]="image || 'assets/img/logo-dark.png'"
+                    alt="Image" />
+                <a href="javascript:void(0);" class="btn-icon logo-hide-btn">
+                    <i class="feather-x-circle"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+      <div class="doctor-name">Dr. {{certificateData.doctor.firstname}} {{certificateData.doctor.lastname}}</div>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="loading-spinner">
+  <p>Loading certificate...</p>
+</div>
+
+<div *ngIf="!isLoading && !certificateData" class="error-message">
+  <p>Could not load certificate data.</p>
+</div>
+
+<div class="action-buttons" *ngIf="!isLoading && certificateData">
+  <input type="file" accept="image/*" formControlName="avatar" id="file"
+  (change)="fileChange($event)" class="hide-input" />
+  <button mat-raised-button color="primary" (click)="downloadCertificate()"> Download Now
+  </button>
+</div>

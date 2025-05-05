@@ -1,19 +1,31 @@
-.icon-box .icon-image {
-    width: 80px; /* Decrease the width */
-    height: auto; /* Maintain the aspect ratio */
-    display: block;
-    margin: 10px auto 0; /* Add 20px space at the top */
-}
-/* Parent container styling for centering */
-.canvas-container {
-    display: flex;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
-    height: 60vh;             /* Takes 60% of viewport height */
-    margin: 0 auto;           /* Center content */
+.card {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  border: none;
 }
 
-canvas {
-    max-width: 100%;          /* Responsive canvas width */
-    max-height: 100%;         /* Responsive canvas height */
+.canvas-container {
+  width: 100%;
+  max-height: 350px;
+  overflow: hidden;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+select.form-select-sm {
+  min-width: 80px;
+}
+
+.row.g-4 {
+  row-gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .canvas-container {
+    max-height: 300px;
+  }
 }

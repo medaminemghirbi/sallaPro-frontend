@@ -51,7 +51,8 @@ export class ReportsComponent implements OnInit {
   previewUrl: SafeResourceUrl | null = null;
   fileType: string = '';
   selectedDocument: any = null; // Store the selected document for preview
-
+  searchedKeyword :any
+  
   constructor(
     private http: HttpClient,
     private userService: AdminService,
@@ -105,42 +106,38 @@ export class ReportsComponent implements OnInit {
       );
   }
 
-  sent_report(patientId: any) {
-    console.log("Prediction ID:", this.selectedPrediction.id);
-    console.log("Patient ID:", patientId);
+  sent_report() {
+    if (!this.selectedPatient || !this.selectedPrediction) {
+      this.toastr.error("Veuillez sélectionner un patient et un rapport.");
+      return;
+    }
+  
+    const patientId = this.selectedPatient.id;
+    const predictionId = this.selectedPrediction.id;
   
     this.http
-      .post<any>(
-        `${environment.urlBackend}sent_report/${patientId}/${this.selectedPrediction.id}`,
-        {}
-      )
+      .post<any>(`${environment.urlBackend}sent_report/${patientId}/${predictionId}`, {})
       .subscribe(
         (response) => {
           this.predictions = response;
-          console.log(this.predictions);
   
-          // Show success message
           Swal.fire({
             icon: 'success',
-            title: 'Report Sent Successfully',
-            text: 'The report has been sent to the patient.',
-            timer: 1500, // Message duration before it disappears
+            title: 'Rapport envoyé',
+            text: 'Le rapport a été envoyé au patient avec succès.',
+            timer: 1500,
             showConfirmButton: false,
           });
   
-          // Refresh page after 1 second (1000ms)
-          setTimeout(() => {
-            location.reload(); // Refresh the page
-          }, 1000);
+          // Reload predictions
+          this.fetchPredictionsReports();
         },
         (error) => {
-          console.error("Error sending report:", error);
-  
-          // Show error message
+          console.error("Erreur d'envoi du rapport:", error);
           Swal.fire({
             icon: 'error',
-            title: 'Error',
-            text: 'There was an issue sending the report. Please try again.',
+            title: 'Erreur',
+            text: 'Impossible d\'envoyer le rapport. Veuillez réessayer.',
           });
         }
       );

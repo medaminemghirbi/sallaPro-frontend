@@ -10,9 +10,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./blogs.component.css']
 })
 export class BlogsComponent implements OnInit {
+  p:number = 1 ;
+  itemsPerPage:number = 5 ;
   allBlogs: any = [];
   messageErr = '';
-
+  filterVerified: string = '';
+  searchText:any
   constructor(
     private usersService: AdminService,
     private router: Router,

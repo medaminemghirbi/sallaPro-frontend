@@ -58,7 +58,7 @@
     "appointment_request": "Rendez-vous",
     "planning": "Planification",
     "forum": "Forum",
-    "email_box": "Boîte Mail",
+    "email_box": "Boîte des Liens",
     "documents": "Documents",
     "blogs": "Blogs",
     "analyze_with_ai": "Analyser avec IA",
@@ -116,14 +116,10 @@
     "greeting": "Passez une bonne journée de travail",
     "appointment": "Total des Rendez-vous",
     "appointment_comments": "Rendez-vous programmés aujourd'hui le",
-    "diseas": "Nombre de Maladies pour le Plan IA",
-    "diseas_comment": "Image traitée par IA.",
     "appointment_today": "Rendez-vous du jour",
     "Next_appointment": "Prochain Rendez-vous dans",
     "display": "Afficher Tout",
     "no_appointmnet": "Aucun rendez-vous à venir",
-    "no_plan": "Vous n'avez pas de Plan IA",
-    "plan_comment": "Images traitées avec un système d'IA.",
     "plan_is": "Votre Plan IA est",
     "today": "Aujourd'hui à"
   },
@@ -147,7 +143,8 @@
     "status": "statut de paiement en ligne",
     "update": "Mettre à jour",
     "no_appointmnet": "Aucun rendez-vous à venir",
-    "tip": "PS: statut de paiement en ligne pour les rendez-vous en ligne seulements"
+    "tip": "PS: statut de paiement en ligne pour les rendez-vous en ligne seulements",
+    "note_calendar":"Remarque : Vous pouvez remplir le rapport de consultation jusqu'à un jour après la consultation."
   },
   "real_time_chat": "Chat en temps réel",
   "enter_your_message": "Saisissez votre message",
@@ -209,14 +206,14 @@
     "recommended_image_size": "La taille d'image recommandée est",
     "update_button": "Ajouter/mettre à jour une image"
   },
-  "Patient_sidebar": {
-    "dashboard": "Dashboard",
-    "appointment_request": "Appointment Request",
-    "forum_with_doctors": "Forum with Doctors",
-    "email_box": "Email Box",
-    "blogs": "Blogs",
-    "logout": "Logout"
-  },
+"Patient_sidebar": {
+  "dashboard": "Tableau de bord",
+  "appointment_request": "Demande rendez-vous",
+  "forum_with_doctors": "Forum avec  médecins",
+  "email_box": "Boîte de réception",
+  "blogs": "Blogs",
+  "logout": "Déconnexion"
+},
   "header_patient": {
     "welcome_message": "Bienvenue",
     "mr": "M.",
