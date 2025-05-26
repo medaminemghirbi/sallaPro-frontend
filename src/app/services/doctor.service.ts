@@ -110,7 +110,7 @@ export class DoctorService {
     return this.http.patch(environment.urlBackend+'api/v1/updatedoctor/' + id , newprofile )
   }
   updatedoctorinformations(id:string,newprofile:any){
-    return this.http.patch(environment.urlBackend+'api/v1/update_uesr_informations/' + id , newprofile )
+    return this.http.patch(environment.urlBackend+'api/v1/update_user_informations/' + id , newprofile )
   }
   getLocationDetails(latitude: number, longitude: number): Observable<any> {
     const url = `${environment.urlBackend}api/v1/location_details?latitude=${latitude}&longitude=${longitude}`;

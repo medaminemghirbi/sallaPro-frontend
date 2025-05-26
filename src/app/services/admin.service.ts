@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 export class AdminService {
   private apiUrl = environment.urlBackend + 'api/v1/blogs/';
+  private apiUrlall = environment.urlBackend + 'api/v1/all_all_verification/';
 
+  
   constructor(private http: HttpClient, public router: Router) {}
 
   /////////////////////// Dcotors  */////////////////
@@ -125,6 +127,10 @@ export class AdminService {
     const url = `${this.apiUrl}${id}`;
     const body = { is_verified: true };
     return this.http.patch(url, body);
+  }
+  addVerificationAll(): Observable<any> {
+    // PATCH with an empty object as the body
+    return this.http.patch(this.apiUrlall, {});
   }
 
   get_user_data(id: any) {

@@ -74,6 +74,42 @@ export class BlogsComponent implements OnInit {
       }
     });
   }
-  
+  VerifyAll(){
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Add Verify to it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.usersService.addVerificationAll().subscribe(
+                response => {
+                  Swal.fire({
+                    title: 'Success!',
+                    text: 'The verification has been added successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    width: '400px',
+                  }).then(() => {
+                    // Reload the page after a successful update
+                    window.location.reload();
+                  });
+                },
+                error => {
+                  Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an error adding the verification.',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    width: '400px',
+                  });
+                }
+              );
+            }
+          });
+  }
 
 }
