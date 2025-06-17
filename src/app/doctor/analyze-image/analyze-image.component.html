@@ -34,10 +34,15 @@
                 {{dataPlan.display_remaining_tries}}
               </div>
               <!-- Input de fichier -->
-              <div class="form-group mb-3 text-center">
-                <input type="file" class="form-control form-control-lg" (change)="fileChange($event)" accept="image/*"
-                  formControlName="file" required />
-              </div>
+            <input 
+              type="file" 
+              class="form-control form-control-lg" 
+              style="padding: 1.5rem; font-size: 1.25rem; height: 80px;" 
+              (change)="fileChange($event)" 
+              accept="image/*"
+              formControlName="file" 
+              required />
+
 
               <!-- Aperçu de l'image téléchargée -->
               <div *ngIf="imageUrl" class="text-center mb-3">

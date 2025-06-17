@@ -84,6 +84,8 @@ import { AnyalzePerConsultationComponent } from './doctor/anyalze-per-consultati
 import { ReportsPerConsultationComponent } from './doctor/reports-per-consultation/reports-per-consultation.component';
 import { FilterByVerificationPipe } from './filter-by-verification.pipe';
 import { MedicalCertificationComponent } from './doctor/medical-certification/medical-certification.component';
+import { DoctorDetailsComponent } from './patient/doctor-details/doctor-details.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -155,7 +157,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AnyalzePerConsultationComponent,
     ReportsPerConsultationComponent,
     FilterByVerificationPipe,
-    MedicalCertificationComponent
+    MedicalCertificationComponent,
+    DoctorDetailsComponent
 
     
   ],
@@ -185,6 +188,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgProgressHttpModule,
     ReactiveFormsModule,
     FullCalendarModule,
+    QRCodeModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
