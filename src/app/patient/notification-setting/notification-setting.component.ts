@@ -72,10 +72,10 @@ toggleSmsNotifications(event: Event) {
     this.auth.updatetoggleSmsNotifications(this.currentUser.id, isChecked).subscribe({
         next: (response) => {
             sessionStorage.setItem('doctordata', JSON.stringify(response));
-            console.log('Workin in saturday updated successfully!', response);
+            console.log('Working in saturday updated successfully!', response);
         },
         error: (error) => {
-            console.error('Failed to update Workin in saturday', error);
+            console.error('Failed to update Working in saturday', error);
         }
     });
 }
