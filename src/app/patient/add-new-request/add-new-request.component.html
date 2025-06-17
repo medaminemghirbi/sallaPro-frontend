@@ -42,7 +42,7 @@
                                                                             style="background-image: url(../../../assets/images1/shape/shape-25.png);">
                                                                         </div>
                                                                     </div>
-                                                                    <figure class="image-box"><img
+                                                                    <figure class="image-box"><img [routerLink]="['/patient/doctor-details', item.id]"
                                                                             src="{{item.user_image_url}}" alt="">
                                                                     </figure>
                                                                     <div class="content-box">
@@ -50,7 +50,7 @@
                                                                                     class="far fa-heart"></i></a></div>
                                                                         <ul class="name-box clearfix">
                                                                             <li class="name">
-                                                                                <h3><a>Dr. {{item.firstname}}
+                                                                                <h3><a [routerLink]="['/patient/doctor-details', item.id]">Dr. {{item.firstname}}
                                                                                         {{item.lastname}}</a></h3>
                                                                             </li>
                                                                             <li *ngIf="item.email_confirmed == true"><i

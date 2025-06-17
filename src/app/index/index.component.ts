@@ -92,7 +92,7 @@ export class IndexComponent implements OnInit {
 
   // Handle successful login
   private handleLoginSuccess(response: any): void {
-    const { logged_in, type, user, token } = response;
+    const { logged_in, type, user, token, qr_url } = response;
     const userTypes: { [key: string]: string } = {
       'Admin': 'admin/dashboard',
       'Doctor': 'doctor/dashboard',
@@ -103,6 +103,8 @@ export class IndexComponent implements OnInit {
       sessionStorage.setItem(`${type.toLowerCase()}data`, JSON.stringify(user));
       sessionStorage.setItem('access_token', token);
       sessionStorage.setItem('user_type', type);
+      sessionStorage.setItem('qr_url', qr_url);
+
       this.toastr.success('Vous êtes maintenant connecté.');
       this.translate.use(user.language);
       this.route.navigate([userTypes[type]]);

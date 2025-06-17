@@ -9,9 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PatientHeaderComponent implements OnInit {
   currentuser : any
   constructor(private auth : AuthService) { }
-
+  qr_url!:string;
   ngOnInit(): void {
     this.currentuser = this.auth.getcurrentuser();
+    this.qr_url = sessionStorage.getItem('qr_url')!;
+    console.log(this.qr_url)
   }
 
 }

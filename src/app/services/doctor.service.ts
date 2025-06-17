@@ -18,6 +18,13 @@ export class DoctorService {
       environment.urlBackend + 'api/v1/doctor_consultations_today/' + id
     );
   }
+
+  getDoctorDetails(id: any) {
+    return this.http.get(
+      environment.urlBackend + 'api/v1/get_doctor_details/' + id
+    );
+  }
+
   getDoctorStatistique(id: any) {
     return this.http.get(
       environment.urlBackend + 'api/v1/doctor_stats/' + id

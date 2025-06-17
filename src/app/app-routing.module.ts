@@ -45,6 +45,7 @@ import { DoctorsListComponent } from './doctors-list/doctors-list.component';
 import { TestdragComponent } from './testdrag/testdrag.component';
 import { DoctorServicesComponent } from './doctor/doctor-services/doctor-services.component';
 import { ConsultationReportComponent } from './doctor/consultation-report/consultation-report.component';
+import { DoctorDetailsComponent } from './patient/doctor-details/doctor-details.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -87,6 +88,7 @@ const routes: Routes = [
   { path: 'patient/:id/book-now/:appointment', component: BookNowComponent },
   { path: 'patient/settings/notifications', component: NotificationSettingComponent },
   { path: 'patient/settings/change-image', component: ChangeImageComponent },
+  {path:  'patient/doctor-details/:id',component:DoctorDetailsComponent},
 
 
   { path: 'patient/appointment-request', component: MyRequestsComponent },
