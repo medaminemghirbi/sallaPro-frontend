@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-    urlBackend:'https://doc-pro-tn.fly.dev/'
+    urlBackend:'https://derma-pro-backend.onrender.com/'
 };
