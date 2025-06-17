@@ -28,7 +28,7 @@
     "@fullcalendar/timegrid": "^6.1.15",
     "@ng-select/ng-select": "^9.1.0",
     "@ngx-translate/core": "^14.0.0",
-    "@ngx-translate/http-loader": "^8.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@types/googlemaps": "^3.43.3",
     "angular-bootstrap-md": "^14.0.0",
     "angularx-qrcode": "^14.0.0",
