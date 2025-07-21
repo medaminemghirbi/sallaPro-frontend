@@ -250,7 +250,7 @@ export class MyRequestsComponent implements OnInit {
         let notificationMessage = `${message}`; 
         let notificationColor: 'info' = 'info'; // Set notification color
   
-        notificationMessage = `Doc Pro Notification! ${notificationMessage}`;
+        notificationMessage = `DermaProPro Notification! ${notificationMessage}`;
   
         // Display the notification using toastr
         this.toastr[notificationColor](notificationMessage, subject, {

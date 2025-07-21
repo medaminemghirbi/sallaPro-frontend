@@ -56,15 +56,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <div class="status-toggle d-flex align-items-center me-3">
-                                        <span>{{ 'Doctor_phone_number.default' | translate }}</span>
-                                        <input type="checkbox" 
-                                               id="status_{{j}}" 
-                                               class="check ms-2" 
-                                               [checked]="phone.is_primary" 
-                                               (change)="togglePrimary(j, phone.is_primary)">
-                                        <label for="status_{{j}}" class="checktoggle ms-1">Checkbox</label>
-                                    </div>
+
                                     <button type="button" class="btn btn-warning btn-sm me-2" (click)="editPhone(j)">{{ 'Doctor_phone_number.update' | translate }}</button>
                                     <button type="button" class="btn btn-danger btn-sm" (click)="deletePhone(j)">{{ 'Doctor_phone_number.delete' | translate }}</button>
                                 </div>

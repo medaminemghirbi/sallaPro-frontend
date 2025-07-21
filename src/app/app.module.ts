@@ -86,6 +86,9 @@ import { FilterByVerificationPipe } from './filter-by-verification.pipe';
 import { MedicalCertificationComponent } from './doctor/medical-certification/medical-certification.component';
 import { DoctorDetailsComponent } from './patient/doctor-details/doctor-details.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { LoadingAnalyazeComponent } from './shared/loading-analyaze/loading-analyaze.component';
+import { VerifyDoctorProfilComponent } from './verify-doctor-profil/verify-doctor-profil.component';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -158,7 +161,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReportsPerConsultationComponent,
     FilterByVerificationPipe,
     MedicalCertificationComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    LoadingAnalyazeComponent,
+    VerifyDoctorProfilComponent,
+    SafeUrlPipe
 
     
   ],

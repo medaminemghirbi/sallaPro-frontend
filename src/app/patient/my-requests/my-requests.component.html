@@ -163,12 +163,12 @@
                                         <ul>
                                             <li *ngFor="let phone of item.doctor.phone_numbers"
                                                 class="phone-number-item">
-                                                <i *ngIf="phone.is_primary" class="fas" [ngClass]="{
+                                                <i class="fas" [ngClass]="{
                                                 'fa-mobile-alt': phone.phone_type === 'personal',
                                                 'fa-home': phone.phone_type === 'home',
                                                 'fa-briefcase': phone.phone_type === 'fax'
                                             }"></i>
-                                                <span *ngIf="phone.is_primary" class="ms-2">{{ phone.number }}</span>
+                                                <span class="ms-2">{{ phone.number }}</span>
                                             </li>
                                         </ul>
                                     </div>

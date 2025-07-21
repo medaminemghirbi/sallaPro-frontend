@@ -85,12 +85,11 @@ export class DoctorService {
 
     return this.http.delete<any>(`${environment.urlBackend}api/v1/phone_numbers/${phoneId}`);
   }
-  updatePhoneNumber(phoneId: number, phoneNumber: { number: string, phone_type: string , is_primary: boolean}): Observable<any> {
+  updatePhoneNumber(phoneId: number, phoneNumber: { number: string, phone_type: string}): Observable<any> {
     const body = {
       phone_number: {
         number: phoneNumber.number,
-        phone_type: phoneNumber.phone_type,
-        is_primary: phoneNumber.is_primary
+        phone_type: phoneNumber.phone_type
       }
     };
 

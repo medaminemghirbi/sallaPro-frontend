@@ -79,7 +79,7 @@ export class MailBoxComponent implements OnInit {
             this.emails.splice(i, 1);
             Swal.fire(
               'Deleted!',
-              'Contract type has been Archived.',
+              'Mail has been Archived.',
               'success'
             );
           },

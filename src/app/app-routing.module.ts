@@ -46,6 +46,7 @@ import { TestdragComponent } from './testdrag/testdrag.component';
 import { DoctorServicesComponent } from './doctor/doctor-services/doctor-services.component';
 import { ConsultationReportComponent } from './doctor/consultation-report/consultation-report.component';
 import { DoctorDetailsComponent } from './patient/doctor-details/doctor-details.component';
+import { VerifyDoctorProfilComponent } from './verify-doctor-profil/verify-doctor-profil.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -104,6 +105,8 @@ const routes: Routes = [
   {path:':token/reset', component: ResetPasswordComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
   {path:'doctors-list',component:DoctorsListComponent},
+    {path:'verify-doctor-profil',component:VerifyDoctorProfilComponent},
+
   {path:'drag',component:TestdragComponent},
 
   // Wildcard route

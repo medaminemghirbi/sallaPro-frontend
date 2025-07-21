@@ -58,32 +58,36 @@ export class ConsultationReportComponent implements OnInit {
   // Submit the consultation report
   submitReport() {
     console.log('Submitting report:', this.report);
-  
+
     this.isLoading = true;
-  
+
     if (this.consultationId) {
       const formData = new FormData();
-  
+
       // Append text fields
-      formData.append('consultation_report[diagnosis]', this.report.diagnosis);
-      formData.append('consultation_report[procedures]', this.report.procedures);
-      formData.append('consultation_report[prescription]', this.report.prescription);
-      formData.append('consultation_report[doctor_notes]', this.report.doctor_notes);
-  
-      // Append each image (assuming this.report.images is a File[] array)
-      if (this.report.images && this.report.images.length > 0) {
-        for (let i = 0; i < this.report.images.length; i++) {
-          formData.append('consultation_report[images][]', this.report.images[i]);
+      formData.append('consultation_report[diagnosis]', this.report.diagnosis || '');
+      formData.append('consultation_report[procedures]', this.report.procedures || '');
+      formData.append('consultation_report[prescription]', this.report.prescription || '');
+      formData.append('consultation_report[doctor_notes]', this.report.doctor_notes || '');
+
+      // Append each image
+      if (this.report.images?.length) {
+        for (const image of this.report.images) {
+          formData.append('consultation_report[images][]', image);
         }
       }
-  
+
       // Send the request
-      this.apiService.createConsultationReport(this.consultationId, formData).subscribe(response => {
-        console.log('Report submitted successfully:', response);
-        this.isLoading = false;
-      }, error => {
-        console.error('Error submitting report:', error);
-        this.isLoading = false;
+      this.apiService.createConsultationReport(this.consultationId, formData).subscribe({
+        next: (response) => {
+          console.log('Report submitted successfully:', response);
+          this.isLoading = false;
+          // ✅ Refresh the page after short delay (optional)
+          setTimeout(() => window.location.reload(), 500); 
+        },
+        error: (error) => {
+          console.error('Error submitting report:', error);
+          this.isLoading = false;}
       });
     }
   }

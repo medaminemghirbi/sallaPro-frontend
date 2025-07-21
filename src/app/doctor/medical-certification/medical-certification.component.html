@@ -92,7 +92,6 @@
 
 <div class="action-buttons" *ngIf="!isLoading && certificateData">
   <input type="file" accept="image/*" formControlName="avatar" id="file"
-  (change)="fileChange($event)" class="hide-input" />
-  <button mat-raised-button color="primary" (click)="downloadCertificate()"> Download Now
-  </button>
+         (change)="fileChange($event)" class="hide-input" />
+  <button mat-raised-button color="accent" class="ms-2" (click)="generatePdf()">Generate PDF</button>
 </div>

@@ -19,7 +19,7 @@ export class PlanningComponent implements OnInit {
   p: number = 1;
   searchedKeyword!: string;
   messageErr: string = '';
-  selectedLocation: string = "";
+  selectedLocation : string = '';
   selectedDoctorId: string = '';
   selectedDate: string = '';
   doctorAppointements: any;
@@ -36,99 +36,109 @@ export class PlanningComponent implements OnInit {
   constructor(private usersService: AdminService, private route: Router, private pdfService: ReportsService) { }
 
   async ngOnInit(): Promise<void> {
+    
     try {
       this.locations = await this.usersService.getAllLocations().toPromise();
+      console.log(this.locations)
       this.locations.sort((a: any, b: any) => a.name.localeCompare(b.name));
 
       console.log(this.locations);
     } catch (error) {
       this.messageErr = "We couldn't find any locations in our database.";
     }
+    console.log(this.selectedLocation)
+    this.selectedLocation = this.locations[20];
+    this.getDoctorsByLocation(this.selectedLocation)
+    
   }
 
-  getDoctorsByLocation(location: string): void {
-    this.selectedLocation = location;
-    console.log("Selected Location:", this.selectedLocation);
-    
-    // Reset everything related to the doctor and appointments
+getDoctorsByLocation(location: any): void {
+  this.selectedLocation = location;
+  console.log("Selected Location:", this.selectedLocation);
+
+  // Reset before loading new data
+  this.doctorAppointements = null;
+  this.filteredAppointments = [];
+  this.selectedDoctorName = '';
+  this.availableDates = [];
+  this.selectedDoctorId = '';
+
+  if (this.selectedLocation) {
+    this.usersService.getDoctorsByLocation(this.selectedLocation).subscribe(
+      (data) => {
+        this.doctors = data || [];
+
+        this.doctors.sort((a: any, b: any) => {
+          const nameA = a.name || '';
+          const nameB = b.name || '';
+          return nameA.localeCompare(nameB);
+        });
+
+        if (this.doctors.length === 0) {
+          this.message = "No doctors available for the selected location.";
+          this.selectedDoctorId = '';
+        } else {
+          // Automatically select the first doctor
+          this.selectedDoctorId = this.doctors[0].id;
+          this.onDoctorChange(this.selectedDoctorId);
+        }
+        console.log("Doctors List:", this.doctors);
+      },
+      (err: HttpErrorResponse) => {
+        console.error("Error fetching doctors:", err);
+        this.doctors = [];
+        this.selectedDoctorId = '';
+      }
+    );
+  } else {
+    this.doctors = [];
     this.doctorAppointements = null;
-    this.filteredAppointments = [];  // Reset filtered appointments
     this.selectedDoctorName = '';
     this.availableDates = [];
-    this.selectedDoctorId = '';  // Reset selected doctor
-  
-    if (this.selectedLocation) {
-      this.usersService.getDoctorsByLocation(this.selectedLocation).subscribe(
-        (data) => {
-          this.selectedDoctorName = '';
-          this.doctorAppointements = null;
-          this.doctors = data;
-    
-          // Sort doctors safely
-          this.doctors.sort((a: any, b: any) => {
-            const nameA = a.name || ''; // Default to empty string if undefined
-            const nameB = b.name || ''; // Default to empty string if undefined
-            return nameA.localeCompare(nameB);
-          });
-    
-          if (this.doctors.length === 0) {
-            this.doctorAppointements = null;
-            this.message = "No doctors available for the selected location.";
-          }
-          console.log("Doctors List:", this.doctors);
-        },
-        (err: HttpErrorResponse) => {
-          console.error("Error fetching doctors:", err);
-          this.doctors = [];
-        }
-      );
-    }else {
-      this.doctors = [];
-      this.doctorAppointements = null;
-      this.selectedDoctorName = '';
-      this.availableDates = [];
-    }
   }
+}
+
   
-  onDoctorChange(doctor_id: string): void {
-    this.selectedDoctorId = doctor_id;
-    console.log("Selected Doctor ID:", this.selectedDoctorId);
+onDoctorChange(doctor_id: string): void {
+  this.selectedDoctorId = doctor_id;
+  console.log("Selected Doctor ID:", this.selectedDoctorId);
 
-    if (this.selectedDoctorId) {
-      this.loading = true;
+  if (this.selectedDoctorId) {
+    this.loading = true;
 
-      this.usersService.getDoctorDetails(this.selectedDoctorId).subscribe(
-        (data) => {
-          this.doctorAppointements = data.sort((a: any, b: any) => {
-            const dateA = new Date(a.appointment).getTime();
-            const dateB = new Date(b.appointment).getTime();
-            return dateA - dateB; // Sort in ascending order
-          });
-  
-          this.updateAvailableDates(); // Update available dates whenever doctor changes
-          this.filterAppointmentsByDate(); // Filter by date
-          if (data.length > 0) {
-            const doctor = data[0].doctor;
-            this.selectedDoctorName = `Dr. ${doctor.firstname} ${doctor.lastname}`;
-          } else {
-            this.selectedDoctorName = '';
-          }
-          console.log("Doctor Details:", this.doctorAppointements);
-          this.loading = false;
+    this.usersService.getDoctorDetails(this.selectedDoctorId).subscribe(
+      (data) => {
+        this.doctorAppointements = data.sort((a: any, b: any) => {
+          const dateA = new Date(a.appointment).getTime();
+          const dateB = new Date(b.appointment).getTime();
+          return dateA - dateB;
+        });
 
-        },
-        (err: HttpErrorResponse) => {
-          console.error("Error fetching doctor details:", err);
-          this.doctorAppointements = null;
+        this.updateAvailableDates();
+        this.filterAppointmentsByDate();
+
+        if (data.length > 0) {
+          const doctor = data[0].doctor;
+          this.selectedDoctorName = `Dr. ${doctor.firstname} ${doctor.lastname}`;
+        } else {
           this.selectedDoctorName = '';
         }
-      );
-    } else {
-      this.doctorAppointements = null;
-      this.selectedDoctorName = '';
-      this.availableDates = [];
-    }
+        console.log("Doctor Details:", this.doctorAppointements);
+        this.loading = false;
+      },
+      (err: HttpErrorResponse) => {
+        console.error("Error fetching doctor details:", err);
+        this.doctorAppointements = null;
+        this.selectedDoctorName = '';
+        this.loading = false;
+      }
+    );
+  } else {
+    this.doctorAppointements = null;
+    this.selectedDoctorName = '';
+    this.availableDates = [];
   }
+}
 
   updateAvailableDates(): void {
     if (this.doctorAppointements && Array.isArray(this.doctorAppointements)) {
@@ -181,7 +191,7 @@ export class PlanningComponent implements OnInit {
             this.doctorAppointements.splice(i, 1);
             Swal.fire(
               'Deleted!',
-              'Contract type has been Archived.',
+              'has been Archived.',
               'success'
             );
           },

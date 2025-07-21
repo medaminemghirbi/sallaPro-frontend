@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -36,6 +37,7 @@ export class DoctorsComponent implements OnInit {
   updateForm!: FormGroup;
   iscustomLimit: boolean = false; // To track if the selected plan is 'custom'
 
+selectedPdfUrl: string | null = null;
 
   ngOnInit(): void {
     this.loadDoctors(); // Load initial data
@@ -122,6 +124,8 @@ export class DoctorsComponent implements OnInit {
               const userIndex = this.filteredDoctors.findIndex((user: { id: any; }) => user.id === id);
               if (userIndex !== -1) {
                 this.filteredDoctors[userIndex].email_confirmed = true;
+                this.filteredDoctors[userIndex].is_verified = true;
+
                 this.filteredDoctors[userIndex].confirm_token = null;
                 // Optionally, update any other UI elements related to this user
               }
@@ -213,7 +217,7 @@ export class DoctorsComponent implements OnInit {
             this.doctors.splice(i, 1);
             Swal.fire(
               'Deleted!',
-              'Contract type has been Archived.',
+              'User has been Archived.',
               'success'
             );
           },
@@ -229,5 +233,22 @@ export class DoctorsComponent implements OnInit {
       }
     });
   }
+verifyDoctor(): void {
+  if (!this.selectedPdfUrl) return;
+
+  this.http.patch(environment.urlBackend + 'api/v1/verify_doctor/', {
+    pdf_url: this.selectedPdfUrl
+  }).subscribe({
+    next: () => {
+      // Reload the page to reflect the updated verification status
+      window.location.reload();
+    },
+    error: (error: HttpErrorResponse) => {
+      console.error(error);
+      this.messageErr = 'Failed to verify doctor.';
+    }
+  });
+}
+
 
 }

@@ -68,7 +68,6 @@ export class RegistrationComponent implements OnInit {
           password_confirmation: formData.password_confirmation,
           type: formData.type,
           gender: formData.gender,
-
           location: formData.location,
         },
       };
@@ -100,6 +99,7 @@ export class RegistrationComponent implements OnInit {
         }
       }
     } else {
+      this.registrationForm.markAllAsTouched();
       console.log('Form is invalid');
     }
   }

@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class BlogDetailsComponent implements OnInit {
   blogDetail: any = [];
   currentUser:any
-
+showPendingMessage: boolean = false;
   messageErr = '';
   role : any
   constructor(

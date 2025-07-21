@@ -116,7 +116,7 @@ export class PatientsComponent implements OnInit {
             this.patients.splice(i, 1);
             Swal.fire(
               'Deleted!',
-              'Contract type has been Archived.',
+              'User has been Archived.',
               'success'
             );
           },

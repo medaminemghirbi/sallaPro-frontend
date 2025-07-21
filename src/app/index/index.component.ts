@@ -107,11 +107,18 @@ export class IndexComponent implements OnInit {
 
       this.toastr.success('Vous êtes maintenant connecté.');
       this.translate.use(user.language);
-      this.route.navigate([userTypes[type]]);
+      // ✅ if user is Doctor & has no verification_pdf_url → navigate to verification page
+      if (type === 'Doctor' && user.is_verified == false) {
+        this.route.navigate(['verify-doctor-profil']);
+      } else {
+        this.route.navigate([userTypes[type]]);
+      }
+
     } else {
       this.showError('Email or Password is incorrect!');
     }
   }
+
 
   // Show error with SweetAlert
   private showError(message: string): void {

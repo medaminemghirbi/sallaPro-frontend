@@ -57,35 +57,39 @@ export class AnalyzeImageComponent implements OnInit {
   }
   
 
-  updateimage(f: any) {
-    let data = f.value;
-    const imageformadata = new FormData();
-    imageformadata.append('file', this.image);
+updateimage(f: any) {
+  let data = f.value;
+  const imageformadata = new FormData();
+  imageformadata.append('file', this.image);
 
-    Swal.fire({
-      title: 'Do you want to save the changes?',
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.loading = true; // Show loading indicator
-        this.doctorService.analyzeImage(imageformadata, this.currentuser.id ).subscribe(
+  Swal.fire({
+    title: 'Do you want to save the changes?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Save',
+    denyButtonText: `Don't save`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.loading = true; // Show loading indicator
+
+      setTimeout(() => {
+        this.doctorService.analyzeImage(imageformadata, this.currentuser.id).subscribe(
           (response) => {
             this.result = response; // Save API response
             this.loading = false; // Hide loading indicator
           },
           (err: HttpErrorResponse) => {
             this.loading = false; // Hide loading indicator
-            Swal.fire('Error!', err.error.error + '<br>'+'Contact: superadmin@example.com', 'error');
+            Swal.fire('Error!', err.error.error + '<br>' + 'Contact: superadmin@example.com', 'error');
           }
         );
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info');
-      }
-    });
-  }
+      }, 1000); // Delay of 1 second (1000 ms)
+
+    } else if (result.isDenied) {
+      Swal.fire('Changes are not saved', '', 'info');
+    }
+  });
+}
 
   loadDeepLearningNumber(){
     this.doctorService.loadPlan(this.currentuser.id ).subscribe(
