@@ -21,7 +21,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxLoadersCssModule } from 'ngx-loaders-css';
 import { NgxEditorModule } from 'ngx-editor';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { ChartsModule } from 'angular-bootstrap-md';
 import { FilterByVerificationPipe } from './filter-by-verification.pipe';
 import { QRCodeModule } from 'angularx-qrcode';
 import { SafeUrlPipe } from './safe-url.pipe';
@@ -56,7 +55,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxLoadersCssModule,
     NgxEditorModule,
     NgSelectModule,
-    ChartsModule,
     NgProgressModule.withConfig({
       color: "#003d99"
     }),
