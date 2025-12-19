@@ -25,6 +25,10 @@ import { FilterByVerificationPipe } from './filter-by-verification.pipe';
 import { QRCodeModule } from 'angularx-qrcode';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardSuperadminComponent } from './superadmin/dashboard-superadmin/dashboard-superadmin.component';
+import { HeaderSuperadminComponent } from './superadmin/header-superadmin/header-superadmin.component';
+import { SidebarSuperadminComponent } from './superadmin/sidebar-superadmin/sidebar-superadmin.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,7 +42,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterByStatusPipe,
     FilterByVerificationPipe,
     SafeUrlPipe,
-    AdminComponent
+    AdminComponent,
+    LoginComponent,
+    DashboardSuperadminComponent,
+    HeaderSuperadminComponent,
+    SidebarSuperadminComponent
 
     
   ],

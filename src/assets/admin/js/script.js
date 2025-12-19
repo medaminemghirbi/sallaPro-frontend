@@ -228,7 +228,7 @@ Version      : 1.3
 		}, 300);
 		return false;
 	});
-	$(document).on('mouseover', function(e) {
+	$(document).on('click', function(e) {
 		e.stopPropagation();
 		if($('body').hasClass('mini-sidebar') && $('#toggle_btn').is(':visible')) {
 			var targ = $(e.target).closest('.sidebar').length;

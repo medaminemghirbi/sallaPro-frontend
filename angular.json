@@ -34,10 +34,39 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/plugins/fontawesome/css/fontawesome.min.css",
+              "src/assets/plugins/fontawesome/css/all.min.css",
+              "src/assets/css/iconsax.css",
+              "src/assets/css/feather.css",
+              "src/assets/css/bootstrap-datetimepicker.min.css",
+              "src/assets/css/owl.carousel.min.css",
+              "src/assets/css/aos.css",
+              "src/assets/css/custom.css",
+              "src/assets/admin/css/bootstrap.min.css",
+              "src/assets/admin/plugins/fontawesome/css/fontawesome.min.css",
+              "src/assets/admin/plugins/fontawesome/css/all.min.css",
+              "src/assets/admin/css/feathericon.min.css",
+              "src/assets/admin/plugins/morris/morris.css",
+              "src/assets/admin/css/custom.css"
             ],
             "scripts": [
-              "node_modules/@apizee/apirtc/apiRTC.min.js"
+              "node_modules/@apizee/apirtc/apiRTC.min.js",
+              "src/assets/admin/js/jquery-3.7.1.min.js",
+              "src/assets/admin/js/bootstrap.bundle.min.js",
+              "src/assets/js/feather.min.js",
+              "src/assets/admin/js/moment.min.js",
+              "src/assets/admin/js/bootstrap-datetimepicker.min.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/slick.js",
+              "src/assets/js/aos.js",
+              "src/assets/js/counter.js",
+              "src/assets/js/backToTop.js",
+              "src/assets/admin/plugins/raphael/raphael.min.js",
+              "src/assets/admin/plugins/morris/morris.min.js",
+              "src/assets/admin/js/chart.morris.js",
+              "src/assets/admin/js/script.js"            
             ]
           },
           "configurations": {
