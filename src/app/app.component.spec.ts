@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'PFE2025-front'`, () => {
+  it(`should have as title 'farhatn'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('PFE2025-front');
+    expect(app.title).toEqual('farhatn');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('PFE2025-front app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('farhatn app is running!');
   });
 });

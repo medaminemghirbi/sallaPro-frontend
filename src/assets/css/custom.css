@@ -71,13 +71,13 @@
 }
 
 .how-it-work-fourteen .work-flow-chart, .lang-dropdown .dropdown-toggle, .browse-categorie .categorie-dropdown .dropdown-toggle, .flag-dropdown .dropdown-toggle {
-  justify-content: start;
-  -webkit-justify-content: start;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
 }
 
 .our-best-work-sec .best-work-video .slider-thumbnails-img .slick-track, .top-header-right .nav, .shopping-cart-list .nav {
-  justify-content: end;
-  -webkit-justify-content: end;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
 }
 
 .nurse-profile .nurse-pofile-info .nurse-details, .nurse-profile .nurse-pofile-info .nurse-book, .owl-nav-button, .our-blog-fourteen .blog-grid-fourteen .blog-grid-content .grid-head, .our-blog-fourteen .blog-grid-fourteen .blog-grid-content .grid-footer, .footer.footer-sec-fourteen .footer-middle .footer-mid-content, .footer.footer-sec-fourteen .footer-bottom, .best-package-slider .best-package-card .package-card-differ, .pricing-sec-twelve .section-head-twelve, .footer-twelve .footer-top-sec .footer-top, .footer-twelve .fooeter-bottom .copy-right-footer, .widget-setcount ul, .left-panel, .onboarding-content-box.content-wrap, .prefer-box, .relative-form, .products-card .product-content .product-cart, .coupon-card {
@@ -88,7 +88,7 @@
 .terms-section .terms-content .terms-text.terms-list p, .contact-section-fourteen .contact-schedule-main .scheduling-left-main ul {
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .cart-search form {
@@ -9542,7 +9542,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
 }
 @media (max-width: 1199.98px) {
   .header.header-fourteen.header-twelve .header-nav {
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 @media (max-width: 991.98px) {
@@ -10122,7 +10122,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
 }
 @media (max-width: 1399.98px) {
   .header.header-fourteen.header-sixteen .header-nav {
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 @media (max-width: 991.98px) {
@@ -11049,7 +11049,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
 .footer.inner-footer .footer-bottom .payment-method {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   margin-bottom: 10px;
 }
 .footer.inner-footer .footer-bottom .payment-method li {
@@ -12425,11 +12425,11 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
 .footer-fourteen.footer-twelve .footer-bottom .social-links {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 @media (max-width: 767.98px) {
   .footer-fourteen.footer-twelve .footer-bottom .social-links {
-    justify-content: start;
+    justify-content: flex-start;
     margin-top: 20px;
   }
 }
@@ -12803,7 +12803,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
 .footer.footer-fifteen .footer-top-fifteen .form-set form {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .footer.footer-fifteen .footer-top-fifteen .form-set form input {
   border: 1px solid #E6E8EE;
@@ -12919,7 +12919,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
 .footer.footer-fifteen .footer-bottom .bottom-items .terms-con ul {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 @media (max-width: 767.98px) {
   .footer.footer-fifteen .footer-bottom .bottom-items .terms-con ul {
@@ -13000,7 +13000,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
   margin: 0;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 @media (max-width: 767.98px) {
   .footer.footer-one.footer-sixteen .footer-bottom .copyright .copyright-menu ul {
@@ -14746,7 +14746,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
   display: flex;
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 35px;
 }
 @media (max-width: 991.98px) {
@@ -14896,7 +14896,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
   display: flex;
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 35px;
 }
 @media (max-width: 991.98px) {
@@ -15331,8 +15331,8 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
 }
 @media (max-width: 991.98px) {
   .faq-patients-count {
-    justify-content: start;
-    -webkit-justify-content: start;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     box-shadow: none;
     border: 1px solid #F3F3F3;
@@ -18127,7 +18127,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
 @media (max-width: 1199.98px) {
   .doctor-widget.doctor-profile-two {
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 }
 .doctor-widget.doctor-profile-two .doc-info-left {
@@ -18859,7 +18859,7 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
   margin-bottom: 0;
 }
 .hours-business ul li:first-child {
-  align-items: end;
+  align-items: flex-end;
 }
 .hours-business ul li:first-child h6 {
   margin-bottom: 30px;
@@ -24185,8 +24185,8 @@ header.inner-header .header-nav .header-navbar-rht li.noti-nav > a i {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-content: end;
-  -webkit-justify-content: end;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
 }
 .main-chat-blk .chat-pin .green-check {
@@ -29123,7 +29123,7 @@ a.mute-video.stop {
 @media (max-width: 991.98px) {
   .other-accounts-info > ul > li ul {
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 }
 .other-accounts-info > ul > li ul li {
@@ -31975,7 +31975,7 @@ span.refund {
 }
 @media (max-width: 575.96px) {
   .main-wrapper.home-ten .listing-card .listing-content .listing-details .listing-profile-details {
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
   }
 }
@@ -32625,8 +32625,8 @@ span.refund {
 }
 .main-wrapper.home-ten .our-doctor-section .module-border-wrap .listing-card .listing-content .listing-details .listing-profile-details {
   display: flex;
-  align-items: start;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
   position: relative;
 }
@@ -35966,7 +35966,7 @@ span.refund {
   display: inline-block;
 }
 .main-wrapper.home-twelve .clients-section-fourteen .section-header-fourteen .service-inner-fourteen {
-  justify-content: start;
+  justify-content: flex-start;
 }
 .main-wrapper.home-twelve .clients-section-fourteen .client-inner-main {
   flex-shrink: 0;
@@ -36049,7 +36049,7 @@ span.refund {
 .main-wrapper.home-twelve .clients-section-fourteen .feedback-card .feedback-card-body .feedback-inner-main .feedback-inner-img {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   margin: 0 0 50px 0;
   border: 2px solid #10B981;
   border-radius: 40px;
@@ -36412,7 +36412,7 @@ span.refund {
   z-index: -1;
 }
 .main-wrapper.home-twelve .why-us-content .section-title {
-  align-items: start;
+  align-items: flex-start;
 }
 .main-wrapper.home-twelve .why-us-content .section-title h2 {
   font-size: 60px;
@@ -38004,7 +38004,7 @@ span.refund {
 }
 .banner-section-fourteen .banner-content-fourteen .banner-btns-fourteen {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 30px;
 }
 @media (max-width: 991.98px) {
@@ -38608,8 +38608,8 @@ span.refund {
 }
 @media (max-width: 1199.98px) {
   .team-section-fourteen .articles-grid-fourteen .articles-info .articles-right .articles-content-fourteen .articles-list {
-    justify-content: start;
-    -webkit-justify-content: start;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
   }
 }
 @media (max-width: 991.98px) {
@@ -38978,7 +38978,7 @@ span.refund {
   padding: 30px;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   transition: 0.5s;
 }
 @media (max-width: 1399.98px) {
@@ -39139,7 +39139,7 @@ span.refund {
 }
 .clients-section-fourteen .feedback-card .feedback-card-body .feedback-inner-main .feedback-inner-img {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   margin: -85px 0 10px 0;
 }
@@ -40441,7 +40441,7 @@ span.refund {
 .about-us-section-fifteen .vertical-slider .aboutus-fifteen-main .aboutus-profile-left {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 16px;
 }
 .about-us-section-fifteen .vertical-slider .aboutus-fifteen-main .aboutus-profile-left .aboutus-image {
@@ -41017,7 +41017,7 @@ span.refund {
   font-weight: 500;
 }
 .treatment-section-sixteen .item.item-sixteen .doctor-profile-widget .doc-content .doc-pro-info {
-  align-items: start;
+  align-items: flex-start;
   padding-bottom: 10px;
 }
 .treatment-section-sixteen .item.item-sixteen .doctor-profile-widget .doc-content .doc-pro-info .doc-pro-name {
@@ -41567,7 +41567,7 @@ span.refund {
 .feedback-section-sixteen .feedback-schedule-all .feedback-fifteen-content .feedback-btns {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
 }
 @media (max-width: 991.98px) {
   .feedback-section-sixteen .feedback-schedule-all .feedback-fifteen-content .feedback-btns {
@@ -43279,8 +43279,8 @@ span.refund {
   font-family: "Inter", sans-serif;
 }
 .pharmacy-body .header .header-nav {
-  justify-content: start;
-  -webkit-justify-content: start;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
 }
 @media (max-width: 991.98px) {
   .pharmacy-body .header .header-nav {
@@ -43346,8 +43346,8 @@ span.refund {
 
 @media (max-width: 767.98px) {
   .top-header-right .nav {
-    justify-content: start;
-    -webkit-justify-content: start;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
     margin-left: -10px;
   }
 }
@@ -45635,12 +45635,12 @@ span.refund {
   padding: 0;
 }
 .footer.pharmacy-footer .mid-foot-two .social-icons {
-  justify-content: end;
+  justify-content: flex-end;
   margin-bottom: 10px;
 }
 @media (max-width: 767.98px) {
   .footer.pharmacy-footer .mid-foot-two .social-icons {
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 .footer.pharmacy-footer .mid-foot-two .social-icons li {
@@ -48685,7 +48685,7 @@ input:checked + .tog-slider:before {
 }
 @media (max-width: 767.98px) {
   .otp-box .forms-block {
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 .otp-box input {
@@ -51493,7 +51493,7 @@ ul li {
 @media (max-width: 575.98px) {
   .pricing-sec-twelve .section-head-twelve {
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 }
 .pricing-sec-twelve .nav-pills {
@@ -51815,7 +51815,7 @@ ul li {
 @media (max-width: 767.98px) {
   .footer-twelve .footer-top-sec .footer-top {
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 }
 @media (max-width: 767.98px) {
@@ -51826,7 +51826,7 @@ ul li {
 @media (max-width: 575.98px) {
   .footer-twelve .footer-top-sec .footer-top .footer-buy-btn {
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 }
 .footer-twelve .footer-top-sec .footer-top .footer-buy-btn h6 {
@@ -52687,7 +52687,7 @@ ul li {
 @media (max-width: 767.98px) {
   .service-sec-fourteen .service-types.service-type-right {
     flex-direction: row-reverse;
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 @media (max-width: 767.98px) {
@@ -53131,7 +53131,7 @@ ul li {
   .our-best-work-sec .best-work-video .treatment-video a {
     height: 45px;
     width: 45px;
-    ont-size: 15px;
+    font-size: 15px;
   }
 }
 .our-best-work-sec .best-work-video .treatment-video a .play-btn-video {
@@ -54887,7 +54887,7 @@ ul li {
 }
 .appointment-wrap.appointment-grid-wrap {
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   padding: 24px;
   width: 100%;
   margin-bottom: 24px;
@@ -55011,11 +55011,11 @@ ul li {
   margin-bottom: 10px;
 }
 .appointment-detail-card .appointment-action ul {
-  justify-content: end;
+  justify-content: flex-end;
 }
 @media (max-width: 575.98px) {
   .appointment-detail-card .appointment-action ul {
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 .appointment-detail-card .appointment-action .reject-popup {
@@ -55336,7 +55336,7 @@ ul li {
 .form-set-button {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .form-set-button .btn-light {
   background: #E6E8EE;
