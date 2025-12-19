@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PFE2025-front": {
+    "farhatn": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -23,7 +23,7 @@
               "moment",
               "sweetalert2"
             ],
-            "outputPath": "dist/pfe2025-front",
+            "outputPath": "dist/farhatn",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -104,10 +104,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "PFE2025-front:build:production"
+              "browserTarget": "farhatn:build:production"
             },
             "development": {
-              "browserTarget": "PFE2025-front:build:development"
+              "browserTarget": "farhatn:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -115,7 +115,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PFE2025-front:build"
+            "browserTarget": "farhatn:build"
           }
         },
         "test": {

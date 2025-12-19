@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/pfe2025-front'),
+      dir: require('path').join(__dirname, './coverage/farhatn'),
       subdir: '.',
       reporters: [
         { type: 'html' },
