@@ -9,7 +9,6 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { TokenInterceptor } from './services/token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from "ngx-progressbar/http";
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -56,7 +55,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule,
     NgProgressModule,
     FullCalendarModule,
     NgxLoadersCssModule,
