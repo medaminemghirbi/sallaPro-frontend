@@ -9,7 +9,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'PFE2025-front';
+  title = 'Farhatn';
   currentUser:any
   DefaultLanguage:any
   constructor(private translate: TranslateService,
@@ -17,24 +17,25 @@ export class AppComponent implements OnInit {
     private usersService: AdminService
   ) {}
   ngOnInit(): void {
-    this.currentUser = this.auth.getcurrentuser();
-    if(this.currentUser){
-      this.usersService.getDefaultLanguage(this.currentUser.id).subscribe({
-        next: (data) => {
-          this.DefaultLanguage = data; // Assign the language data
-          if (this.DefaultLanguage && this.DefaultLanguage.language) {
-            // Use the language for translation
-            this.translate.setDefaultLang(this.DefaultLanguage.language);
-            this.translate.use(this.DefaultLanguage.language);
-          }
-        },
-        error: (err) => {
-          console.error('Error fetching default language:', err);
-          this.translate.setDefaultLang('fr');
-          this.translate.use('fr');
-        },
-      });
-    }
+  //   this.currentUser = this.auth.getcurrentuser();
+  //   debugger
+  //   if(this.currentUser){
+  //     this.usersService.getDefaultLanguage(this.currentUser.id).subscribe({
+  //       next: (data) => {
+  //         this.DefaultLanguage = data; // Assign the language data
+  //         if (this.DefaultLanguage && this.DefaultLanguage.language) {
+  //           // Use the language for translation
+  //           this.translate.setDefaultLang(this.DefaultLanguage.language);
+  //           this.translate.use(this.DefaultLanguage.language);
+  //         }
+  //       },
+  //       error: (err) => {
+  //         console.error('Error fetching default language:', err);
+  //         this.translate.setDefaultLang('fr');
+  //         this.translate.use('fr');
+  //       },
+  //     });
+  //   }
 
   }
   

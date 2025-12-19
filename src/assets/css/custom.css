@@ -7390,14 +7390,14 @@ th.table-head-days {
   margin: 0;
 }
 .header .user-menu.nav li a {
-  color: #ffffff;
+  color: #000000;
   font-size: 14px;
   line-height: 58px;
   height: 60px;
   padding: 0 15px;
 }
 .header .user-menu.nav li a:hover, .header .user-menu.nav li a:focus {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0,208,241);
 }
 .header .user-menu.nav li a:hover i, .header .user-menu.nav li a:focus i {
   color: #ffffff;

@@ -27,16 +27,8 @@ export class AuthService {
     return this.http.delete(environment.urlBackend + 'logout/');
   }
 
-  // Get current logged-in user data based on user type (Admin, Doctor, Patient)
-  getcurrentuser(): any {
-    const userTypeKeys = ['admindata', 'doctordata', 'patientdata'];
-    for (const key of userTypeKeys) {
-      const userData = sessionStorage.getItem(key);
-      if (userData) {
-        return JSON.parse(userData);
-      }
-    }
-    return null;
+  getcurrentuser(): Observable<any> {
+    return this.http.get(`${environment.urlBackend}` + 'api/v1/current_user_info');
   }
 
   // Get user role from session storage (Admin, Doctor, Patient)
