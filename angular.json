@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "farhatn": {
+    "sallapro": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -23,7 +23,7 @@
               "moment",
               "sweetalert2"
             ],
-            "outputPath": "dist/farhatn",
+            "outputPath": "dist/sallapro",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -104,10 +104,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "farhatn:build:production"
+              "buildTarget": "sallapro:build:production"
             },
             "development": {
-              "buildTarget": "farhatn:build:development"
+              "buildTarget": "sallapro:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -115,7 +115,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "farhatn:build"
+            "buildTarget": "sallapro:build"
           }
         },
         "test": {
