@@ -13,20 +13,16 @@ export class HeaderSuperadminComponent implements OnInit {
   }
 
   toggleSidebar(): void {
-    const body = document.getElementsByTagName('body')[0];
-    if (body.classList.contains('mini-sidebar')) {
-      body.classList.remove('mini-sidebar');
-    } else {
-      body.classList.add('mini-sidebar');
+    const mainWrapper = document.querySelector('.main-wrapper');
+    if (mainWrapper) {
+      mainWrapper.classList.toggle('mini-sidebar');
     }
   }
 
   toggleMobileMenu(): void {
-    const body = document.getElementsByTagName('body')[0];
-    if (body.classList.contains('slide-nav')) {
-      body.classList.remove('slide-nav');
-    } else {
-      body.classList.add('slide-nav');
+    const mainWrapper = document.querySelector('.main-wrapper');
+    if (mainWrapper) {
+      mainWrapper.classList.toggle('slide-nav');
     }
   }
 

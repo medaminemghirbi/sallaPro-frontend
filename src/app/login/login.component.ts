@@ -103,6 +103,7 @@ export class LoginComponent implements OnInit {
 
     if (logged_in && userTypes[type]) {
       sessionStorage.setItem('access_token', token);
+      sessionStorage.setItem('user_type', type);
 
       this.toastr.success('Vous êtes maintenant connecté.');
       this.translate.use(user.language);
