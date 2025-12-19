@@ -62,10 +62,8 @@
               "src/assets/js/slick.js",
               "src/assets/js/aos.js",
               "src/assets/js/counter.js",
-              "src/assets/js/backToTop.js",
               "src/assets/admin/plugins/raphael/raphael.min.js",
               "src/assets/admin/plugins/morris/morris.min.js",
-              "src/assets/admin/js/chart.morris.js",
               "src/assets/admin/js/script.js"            
             ]
           },

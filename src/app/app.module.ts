@@ -22,7 +22,6 @@ import { NgxLoadersCssModule } from 'ngx-loaders-css';
 import { NgxEditorModule } from 'ngx-editor';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FilterByVerificationPipe } from './filter-by-verification.pipe';
-import { QRCodeModule } from 'angularx-qrcode';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
@@ -75,7 +74,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgProgressHttpModule,
     ReactiveFormsModule,
     FullCalendarModule,
-    QRCodeModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
