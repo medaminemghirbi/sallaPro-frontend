@@ -1,0 +1,244 @@
+<div class="main-wrapper">
+
+    <!-- Header -->
+    <app-header-superadmin></app-header-superadmin>
+    <ng-progress #progressBar></ng-progress>
+
+    <!-- Sidebar -->
+    <app-sidebar-superadmin></app-sidebar-superadmin>
+
+    <!-- Page Wrapper -->
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+
+            <!-- Page Header -->
+            <div class="page-header mb-4">
+                <div class="row align-items-center">
+
+                    <!-- Title -->
+                    <div class="col-md-3">
+                        <h3 class="page-title mb-0">
+                            Companies ({{ companies?.length }})
+                        </h3>
+                    </div>
+
+                    <!-- Search box -->
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm" />
+                    </div>
+
+                    <!-- Page size selector -->
+                    <div class="col-md-2">
+                        <select class="form-select" [(ngModel)]="pageSize" (ngModelChange)="p = 1">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+
+                    <!-- Add New button -->
+                    <div class="col-md-3 text-end">
+                        <button data-bs-toggle="modal" data-bs-target="#addcompany" class="btn btn-primary">
+                            <i class="fa fa-plus me-1"></i> Add New Company
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /Page Header -->
+
+            <!-- Table -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                <!-- Loading -->
+                                <div *ngIf="loading" class="text-center my-3">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+
+                                <!-- Table -->
+                                <table *ngIf="!loading && filteredCompanies.length > 0"
+                                    class="datatable table table-hover table-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Company Name</th>
+                                            <th>Company Type</th>
+                                            <th>Responsible Person</th>
+                                            <th>Billing Address</th>
+                                            <th>Created At</th>
+                                            <th>Description</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            *ngFor="let company of filteredCompanies | paginate: { itemsPerPage: pageSize, currentPage: p }">
+                                            <td>{{ company.name }}</td>
+                                            <td>{{ company.company_type?.name }}</td>
+                                            <td>{{ company.admin?.firstname }} {{ company.admin?.lastname }}</td>
+                                            <td>
+                                                {{ company.billing_address || company.admin?.email }}
+                                            </td>
+                                            <td>
+                                                {{ company.created_at | date:'dd MMMM yyyy' }}<br>
+                                                <small>at {{ company.created_at | date:'HH:mm' }}</small>
+                                            </td>
+                                            <td class="description-cell">{{ company.description || '-' }}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-info me-1" title="View Info">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                                <!-- Edit button -->
+                                                <button class="btn btn-sm btn-success me-1" title="Edit">
+                                                    <i class="fa fa-pencil-alt"></i>
+                                                </button>
+
+                                                <!-- Delete button -->
+                                                <button class="btn btn-sm btn-danger" title="Delete">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- No Data Found -->
+                                <div *ngIf="!loading && filteredCompanies.length === 0" class="text-center my-3">
+                                    <i class="fa fa-exclamation-circle me-2"></i>No data found.
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination Controls -->
+                    <div class="text-end mt-2">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="addcompany" tabindex="-1" aria-labelledby="companylabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="companylabel">Add New Company</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body p-5 bg-light">
+
+
+                <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+                    <div class="modal-body">
+                        <div class="row g-3">
+
+                            <!-- Admin Firstname -->
+                            <div class="col-md-6">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" formControlName="firstname">
+                                <div class="text-danger"
+                                    *ngIf="companyForm.get('firstname')?.touched && companyForm.get('firstname')?.invalid">
+                                    First name is required
+                                </div>
+                            </div>
+
+                            <!-- Admin Lastname -->
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" formControlName="lastname">
+                                <div class="text-danger"
+                                    *ngIf="companyForm.get('lastname')?.touched && companyForm.get('lastname')?.invalid">
+                                    Last name is required
+                                </div>
+                            </div>
+
+                            <!-- Admin Email -->
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" formControlName="email">
+                                <div class="text-danger"
+                                    *ngIf="companyForm.get('email')?.touched && companyForm.get('email')?.invalid">
+                                    Valid email is required
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="col-md-6">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" formControlName="password">
+                                <div class="text-danger"
+                                    *ngIf="companyForm.get('password')?.touched && companyForm.get('password')?.invalid">
+                                    Password must be at least 6 characters
+                                </div>
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="col-md-6">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" formControlName="password_confirmation">
+                                <div class="text-danger"
+                                    *ngIf="companyForm.get('password_confirmation')?.touched && companyForm.hasError('mismatch')">
+                                    Passwords do not match
+                                </div>
+                            </div>
+
+                            <!-- Company Name -->
+                            <div class="col-md-6">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" class="form-control" formControlName="company_name">
+                                <div class="text-danger"
+                                    *ngIf="companyForm.get('company_name')?.touched && companyForm.get('company_name')?.invalid">
+                                    Company name is required
+                                </div>
+                            </div>
+
+                            <!-- Company Type -->
+                            <div class="col-md-6">
+                                <label class="form-label">Company Type</label>
+                                <select class="form-control" formControlName="company_type_id">
+                                    <option value="">Select type</option>
+                                    <option *ngFor="let type of companyTypes" [value]="type.id">{{ type.name }}</option>
+                                </select>
+                                <div class="text-danger"
+                                    *ngIf="companyForm.get('company_type_id')?.touched && companyForm.get('company_type_id')?.invalid">
+                                    Company type is required
+                                </div>
+                            </div>
+
+                            <!-- Billing Address -->
+                            <div class="col-md-12">
+                                <label class="form-label">Billing Address</label>
+                                <input type="text" class="form-control" formControlName="billing_address">
+                            </div>
+
+                            <!-- Description -->
+                            <div class="col-md-12">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" formControlName="description" rows="3"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" [disabled]="companyForm.invalid || isLoading">
+                            {{ isLoading ? 'Saving...' : 'Save Company & Admin' }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

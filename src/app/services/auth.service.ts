@@ -22,12 +22,11 @@ export class AuthService {
     return this.http.post(environment.urlBackend + 'api/sign_up', data);
   }
   logout() {
-    this.connecte = false;
     sessionStorage.clear();
-    return this.http.delete(environment.urlBackend + 'logout/');
+    return this.http.delete(environment.urlBackend + 'api/sign_out');
   }
 
-  getcurrentuser(): Observable<any> {
+  getcurrentuser(): any {
     return this.http.get(`${environment.urlBackend}` + 'api/v1/current_user_info');
   }
 

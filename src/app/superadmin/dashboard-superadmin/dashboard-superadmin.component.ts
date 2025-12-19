@@ -19,11 +19,11 @@ export class DashboardSuperadminComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.getcurrentuser().subscribe({
-      next: (response) => {
+      next: (response:any) => {
         this.currentUser = response.user; // depends on your API shape
         
       },
-      error: (err) => {
+      error: (err:any) => {
         console.error('Error fetching current user', err);
       },
     });

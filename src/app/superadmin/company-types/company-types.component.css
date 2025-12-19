@@ -1,0 +1,7 @@
+.description-cell {
+  max-width: 300px; /* or whatever width you want */
+  white-space: normal; /* allow text to wrap */
+  word-wrap: break-word; /* break long words */
+  overflow: hidden; /* hide overflow if needed */
+  text-overflow: ellipsis; /* optional: show "..." for long text */
+}
