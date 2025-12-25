@@ -10,8 +10,8 @@
       <!-- PAGE HEADER -->
       <div class="page-header mb-4 d-flex justify-content-between align-items-center">
         <div>
-          <h3 class="page-title mb-1">Company Details</h3>
-          <small class="text-muted">Detailed information about the company</small>
+          <h3 class="page-title mb-1">{{ 'COMPANY.DETAILS.TITLE' | translate }}</h3>
+          <small class="text-muted">{{ 'COMPANY.DETAILS.SUBTITLE' | translate }}</small>
         </div>
 
         <!-- ACTIONS -->
@@ -20,16 +20,17 @@
             [disabled]="loading || saving || (editMode && companyForm.invalid)"
             (click)="editMode ? onSave() : enableEdit()">
             <i class="fa" [ngClass]="editMode ? 'fa-save me-1' : 'fa-pencil-alt me-1'"></i>
-            {{ editMode ? (saving ? 'Saving...' : 'Save') : 'Edit' }}
+            {{ editMode ? (saving ? ('COMPANY.DETAILS.SAVING' | translate) : ('COMPANY.DETAILS.SAVE' | translate)) :
+            ('COMPANY.DETAILS.EDIT' | translate) }}
           </button>
 
           <button *ngIf="editMode" class="btn btn-sm btn-outline-secondary me-2" type="button" [disabled]="saving"
             (click)="cancelEdit()">
-            Cancel
+            {{ 'COMPANY.DETAILS.CANCEL' | translate }}
           </button>
 
           <button class="btn btn-sm btn-danger" type="button">
-            <i class="fa fa-archive me-1"></i> Archive
+            <i class="fa fa-archive me-1"></i> {{ 'COMPANY.DETAILS.ARCHIVE' | translate }}
           </button>
         </div>
       </div>
@@ -59,27 +60,24 @@
                 </div>
               </ng-template>
 
-
               <!-- Company info -->
               <div>
                 <h4 class="mb-1">{{ companyForm.get('name')?.value }}</h4>
-
                 <span class="badge" [ngClass]="companyForm.get('active')?.value ? 'bg-success' : 'bg-secondary'">
-                  {{ companyForm.get('active')?.value ? 'Active' : 'Inactive' }}
+                  {{ companyForm.get('active')?.value ? ('COMPANY.DETAILS.STATUS_ACTIVE' | translate) :
+                  ('COMPANY.DETAILS.STATUS_INACTIVE' | translate) }}
                 </span>
               </div>
             </div>
 
-
             <!-- Right side -->
             <div class="text-end text-muted">
-              <small>Created</small><br>
+              <small>{{ 'COMPANY.DETAILS.CREATED' | translate }}</small><br>
               {{ company.created_at | date:'dd MMM yyyy, HH:mm' }}
             </div>
 
           </div>
         </div>
-
 
         <!-- DETAILS -->
         <div class="row">
@@ -89,39 +87,38 @@
             <div class="card mb-4">
               <div class="card-header">
                 <h5 class="card-title mb-0">
-                  <i class="fa fa-building me-2"></i>Company Information
+                  <i class="fa fa-building me-2"></i>{{ 'COMPANY.DETAILS.COMPANY_INFORMATION' | translate }}
                 </h5>
               </div>
 
               <div class="card-body">
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label class="form-label">Company Name</label>
+                    <label class="form-label">{{ 'COMPANY.DETAILS.COMPANY_NAME' | translate }}</label>
                     <input class="form-control" formControlName="name" [readonly]="!editMode">
                   </div>
 
-
                   <div class="col-md-6">
-                    <label class="form-label">Status</label>
+                    <label class="form-label">{{ 'COMPANY.DETAILS.STATUS' | translate }}</label>
                     <div class="form-check form-switch mt-2">
                       <input class="form-check-input" [checked]="subscriptionActive" type="checkbox" disabled>
                       <label class="form-check-label">
-                        {{ subscriptionActive ? 'Active' : 'Inactive' }}
+                        {{ subscriptionActive ? ('COMPANY.DETAILS.STATUS_ACTIVE' | translate) :
+                        ('COMPANY.DETAILS.STATUS_INACTIVE' | translate) }}
                       </label>
-
                     </div>
                   </div>
 
                   <div class="col-md-12">
-                    <label class="form-label">Billing Address Mail</label>
+                    <label class="form-label">{{ 'COMPANY.DETAILS.BILLING_ADDRESS_MAIL' | translate }}</label>
                     <input class="form-control" formControlName="billing_address" [readonly]="!editMode">
                   </div>
                   <div class="col-md-12">
-                    <label class="form-label">Phone Number</label>
+                    <label class="form-label">{{ 'COMPANY.DETAILS.PHONE_NUMBER' | translate }}</label>
                     <input class="form-control" formControlName="phone_number" [readonly]="!editMode">
                   </div>
                   <div class="col-md-12">
-                    <label class="form-label">Description</label>
+                    <label class="form-label">{{ 'COMPANY.DETAILS.DESCRIPTION' | translate }}</label>
                     <textarea rows="3" class="form-control" formControlName="description"
                       [readonly]="!editMode"></textarea>
                   </div>
@@ -135,49 +132,50 @@
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="card-title mb-0">
-                  <i class="fa fa-user-shield me-2 text-primary"></i>
-                  Admin Information
+                  <i class="fa fa-user-shield me-2 text-primary"></i>{{ 'COMPANY.DETAILS.ADMIN_INFORMATION' | translate
+                  }}
                 </h5>
-
 
                 <button *ngIf="editMode" class="btn btn-outline-danger btn-sm d-flex align-items-center gap-1"
                   (click)="cancelSubscription()">
                   <i class="fa fa-ban"></i>
-                  Cancel subscription
+                  {{ 'COMPANY.DETAILS.CANCEL_SUBSCRIPTION' | translate }}
                 </button>
               </div>
 
-
               <div class="card-body">
                 <p>
-                  <strong>Full Name:</strong><br>
+                  <strong>{{ 'COMPANY.DETAILS.FULL_NAME' | translate }}:</strong><br>
                   {{ company.admin?.firstname }} {{ company.admin?.lastname }}
                 </p>
 
                 <p>
-                  <strong>Email:</strong><br>
+                  <strong>{{ 'COMPANY.DETAILS.EMAIL' | translate }}:</strong><br>
                   {{ company.admin?.email }}
                 </p>
 
                 <p>
-                  <strong>Phone Number:</strong><br>
+                  <strong>{{ 'COMPANY.DETAILS.PHONE_NUMBER' | translate }}:</strong><br>
                   {{ company.admin?.phone_number }}
                 </p>
 
                 <p>
-                  <strong>Admin Created At:</strong><br>
+                  <strong>{{ 'COMPANY.DETAILS.ADMIN_CREATED_AT' | translate }}:</strong><br>
                   {{ company.admin?.created_at | date:'dd MMM yyyy' }}
                 </p>
-                <p>
-                  <strong>Admin Subscription</strong><br>
+
+                <!-- <p>
+                  <strong>{{ 'COMPANY.DETAILS.ADMIN_SUBSCRIPTION' | translate }}</strong><br>
                   {{ company.admin?.subscription | date:'dd MMM yyyy' }}
                 </p>
+
                 <div *ngIf="showTrialBar" class="trial-bar">
                   <div class="trial-text">
                     <span class="emoji">🚀</span>
                     <div>
-                      <strong>Trial Mode</strong>
-                      <small>plan {{company?.subscription_plan}} mode ends on</small>
+                      <strong>{{ 'COMPANY.DETAILS.TRIAL_MODE' | translate }}</strong>
+                      <small>{{ 'COMPANY.DETAILS.PLAN' | translate }} {{company?.subscription_plan}} {{
+                        'COMPANY.DETAILS.MODE_ENDS_ON' | translate }}</small>
                     </div>
                   </div>
 
@@ -191,10 +189,9 @@
                   <span class="close-trial" (click)="closeTrialBar()">✖</span>
                 </div>
 
-                <!-- Progress Bar -->
                 <div *ngIf="showTrialBar" class="trial-progress">
                   <div class="trial-progress-fill" [style.width.%]="progress"></div>
-                </div>
+                </div> -->
 
               </div>
             </div>

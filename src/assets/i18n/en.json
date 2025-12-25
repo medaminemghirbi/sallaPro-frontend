@@ -1,0 +1,80 @@
+{
+  "LOGO": "Logo",
+  "FLAG": "Arabic",
+  "USER_NAME": "Ryan Taylor",
+  "USER_ROLE": "SuperAdmin",
+  "MENU": {
+    "COMPANIES": "Companies",
+    "CATEGORIES": "Categories",
+    "SEARCH_PLACEHOLDER": "Search...",
+    "ADD_NEW_COMPANY": "Add New Company"
+  },
+  "COMPANY": {
+    "COMPANY_NAME": "Company Name",
+    "RESPONSIBLE_PERSON": "Responsible Person",
+    "BILLING_ADDRESS": "Billing Address",
+    "CREATED_AT": "Created At",
+    "DESCRIPTION": "Description",
+    "ACTIONS": "Actions",
+    "VIEW_INFO": "View Info",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "NO_DATA": "No data found",
+    "DETAILS": {
+      "TITLE": "Company Details",
+      "SUBTITLE": "Detailed information about the company",
+      "COMPANY_NAME": "Company Name",
+      "STATUS": "Status",
+      "STATUS_ACTIVE": "Active",
+      "STATUS_INACTIVE": "Inactive",
+
+      "CREATED": "Created",
+      "COMPANY_INFORMATION": "Company Information",
+      "BILLING_ADDRESS_MAIL": "Billing Address / Mail",
+      "PHONE_NUMBER": "Phone Number",
+      "DESCRIPTION": "Description",
+      "ADMIN_INFORMATION": "Admin Information",
+      "FULL_NAME": "Full Name",
+      "EMAIL": "Email",
+      "ADMIN_CREATED_AT": "Admin Created At",
+      "ADMIN_SUBSCRIPTION": "Admin Subscription",
+      "TRIAL_MODE": "Trial Mode",
+      "PLAN": "Plan",
+      "MODE_ENDS_ON": "mode ends on",
+      "EDIT": "Edit",
+      "SAVE": "Save",
+      "SAVING": "Saving...",
+      "CANCEL": "Cancel",
+      "ARCHIVE": "Archive",
+      "CANCEL_SUBSCRIPTION": "Cancel Subscription"
+
+    }
+  },
+  "CATEGORIES": {
+    "CATEGORIES": "Categories",
+    "CATEGORIES_COUNT": "Categories ({{count}})",
+    "RESOURCE_TYPE": "Resource Type",
+    "NAME": "Name",
+    "KEY": "Key",
+    "CREATED_AT": "Created At",
+    "SEARCH_PLACEHOLDER": "Search...",
+    "ADD_NEW_CATEGORY": "Add New Category",
+    "TABLE": {
+      "RESOURCE_TYPE": "Resource Type",
+      "NAME": "Name",
+      "KEY": "Key",
+      "CREATED_AT": "Created At",
+      "DESCRIPTION": "Description"
+    }
+  },
+  "LOADING": "Loading...",
+  "AT": "at",
+  "SIDEBAR": {
+    "MENU_TITLE": "SuperAdmin Menu",
+    "COMPANIES": "Companies",
+    "CATEGORIES": "Categories"
+  },
+  "MESSAGES": {
+    "LANGUAGE_UPDATED": "Language updated!"
+  }
+}

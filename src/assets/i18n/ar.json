@@ -1,0 +1,78 @@
+{
+  "LOGO": "الشعار",
+  "FLAG": "العربية",
+  "USER_NAME": "ريان تايلور",
+  "USER_ROLE": "المشرف العام",
+  "MENU": {
+    "COMPANIES": "الشركات",
+    "CATEGORIES": "الفئات",
+    "SEARCH_PLACEHOLDER": "بحث...",
+    "ADD_NEW_COMPANY": "إضافة شركة جديدة"
+  },
+  "COMPANY": {
+    "COMPANY_NAME": "اسم الشركة",
+    "RESPONSIBLE_PERSON": "الشخص المسؤول",
+    "BILLING_ADDRESS": "عنوان الفاتورة",
+    "CREATED_AT": "تاريخ الإنشاء",
+    "DESCRIPTION": "الوصف",
+    "ACTIONS": "الإجراءات",
+    "VIEW_INFO": "عرض المعلومات",
+    "EDIT": "تعديل",
+    "DELETE": "حذف",
+    "NO_DATA": "لا توجد بيانات",
+    "DETAILS": {
+      "TITLE": "تفاصيل الشركة",
+      "SUBTITLE": "معلومات مفصلة عن الشركة",
+      "COMPANY_NAME": "اسم الشركة",
+      "STATUS": "الحالة",
+      "STATUS_ACTIVE": "نشط",
+      "STATUS_INACTIVE": "غير نشط",
+      "CREATED": "تاريخ الإنشاء",
+      "COMPANY_INFORMATION": "معلومات الشركة",
+      "BILLING_ADDRESS_MAIL": "عنوان الفواتير / البريد الإلكتروني",
+      "PHONE_NUMBER": "رقم الهاتف",
+      "DESCRIPTION": "الوصف",
+      "ADMIN_INFORMATION": "معلومات المشرف",
+      "FULL_NAME": "الاسم الكامل",
+      "EMAIL": "البريد الإلكتروني",
+      "ADMIN_CREATED_AT": "تاريخ إنشاء المشرف",
+      "ADMIN_SUBSCRIPTION": "اشتراك المشرف",
+      "TRIAL_MODE": "وضع التجربة",
+      "PLAN": "الخطة",
+      "MODE_ENDS_ON": "ينتهي الوضع في",
+      "EDIT": "تعديل الشركة",
+      "SAVE": "حفظ",
+      "SAVING": "جاري الحفظ...",
+      "CANCEL": "إلغاء",
+      "ARCHIVE": "الأرشيف",
+      "CANCEL_SUBSCRIPTION": "إلغاء الاشتراك"
+    }
+  },
+  "CATEGORIES": {
+    "CATEGORIES": "الفئات",
+    "CATEGORIES_COUNT": "الفئات ({{count}})",
+    "RESOURCE_TYPE": "نوع المورد",
+    "NAME": "الاسم",
+    "KEY": "المفتاح",
+    "CREATED_AT": "تاريخ الإنشاء",
+    "SEARCH_PLACEHOLDER": "بحث...",
+    "ADD_NEW_CATEGORY": "إضافة فئة جديدة",
+    "TABLE": {
+      "RESOURCE_TYPE": "نوع المورد",
+      "NAME": "الاسم",
+      "KEY": "المفتاح",
+      "CREATED_AT": "تاريخ الإنشاء",
+      "DESCRIPTION": "الوصف"
+    }
+  },
+  "LOADING": "جار التحميل...",
+  "AT": "في",
+  "SIDEBAR": {
+    "MENU_TITLE": "قائمة المشرف العام",
+    "COMPANIES": "الشركات",
+    "CATEGORIES": "الفئات"
+  },
+  "MESSAGES": {
+    "LANGUAGE_UPDATED": "تم تحديث اللغة!"
+  }
+}

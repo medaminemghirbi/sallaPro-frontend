@@ -3,14 +3,19 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="menu-title">
-                    <span>SuperAdmin Menu</span>
+                    <span>{{ 'SIDEBAR.MENU_TITLE' | translate }}</span>
                 </li>
                 <li class="active" routerLinkActive="active">
-                    <a routerLink="/superadmin/companies"><i class="fe fe-user-plus"></i> <span>Companies</span></a>
+                    <a routerLink="/superadmin/companies"><i class="fe fe-user-plus"></i>
+                        <span>{{ 'SIDEBAR.COMPANIES' | translate }}</span>
+                    </a>
                 </li>
                 <li class="active" routerLinkActive="active">
-                    <a routerLink="/superadmin/categories"><i class="fe fe-building"></i> <span>Categories</span></a>
+                    <a routerLink="/superadmin/categories"><i class="fe fe-building"></i>
+                        <span>{{ 'SIDEBAR.CATEGORIES' | translate }}</span>
+                    </a>
                 </li>
+
             </ul>
         </div>
     </div>

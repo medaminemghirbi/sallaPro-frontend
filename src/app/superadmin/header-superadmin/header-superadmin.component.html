@@ -1,4 +1,5 @@
 <div class="header">
+    <!-- Language Selector -->
 
     <!-- Logo -->
     <div class="header-left">
@@ -24,6 +25,17 @@
     <!-- Header Right Menu -->
     <ul class="nav user-menu">
 
+        <li class="nav-item dropdown">
+            <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                <img [src]="selectedLanguage.flag" alt="Flag" width="20" class="me-1">
+                {{ selectedLanguage.label }}
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" *ngFor="let lang of languages" (click)="changeLanguage(lang)">
+                    <img [src]="lang.flag" alt="Flag" width="20" class="me-1"> {{ lang.label }}
+                </a>
+            </div>
+        </li>
 
         <!-- User Menu -->
         <li class="nav-item dropdown has-arrow">
@@ -33,7 +45,7 @@
             </a>
             <div class="dropdown-menu">
                 <div class="user-header">
-                    <div class="avatar avatar-sm"> 
+                    <div class="avatar avatar-sm">
                         <img [src]="currentUser?.user_image_url" alt="User Image" class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">

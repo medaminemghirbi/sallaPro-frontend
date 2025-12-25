@@ -1,0 +1,25 @@
+/* RTL (Right-to-Left) support for Arabic */
+.sidebar-rtl {
+  right: 0;
+  left: auto;
+  direction: rtl;
+}
+
+.sidebar-rtl .sidebar-menu ul li a {
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 15px;
+}
+
+.sidebar-rtl .sidebar-menu ul li a i {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+.sidebar-rtl .sidebar-menu ul li span {
+  text-align: right;
+}
+
+.sidebar-rtl .sidebar-inner {
+  direction: rtl;
+}

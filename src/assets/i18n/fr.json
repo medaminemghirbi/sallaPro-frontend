@@ -1,0 +1,80 @@
+{
+  "LOGO": "Logo",
+  "FLAG": "Arabe",
+  "USER_NAME": "Ryan Taylor",
+  "USER_ROLE": "SuperAdmin",
+  "MENU": {
+    "COMPANIES": "Entreprises",
+    "CATEGORIES": "Catégories",
+    "SEARCH_PLACEHOLDER": "Recherche...",
+    "ADD_NEW_COMPANY": "Ajouter une entreprise"
+  },
+  "COMPANY": {
+    "COMPANY_NAME": "Nom de l'entreprise",
+    "RESPONSIBLE_PERSON": "Personne responsable",
+    "BILLING_ADDRESS": "Adresse de facturation",
+    "CREATED_AT": "Créé le",
+    "DESCRIPTION": "Description",
+    "ACTIONS": "Actions",
+    "VIEW_INFO": "Voir info",
+    "EDIT": "Modifier",
+    "DELETE": "Supprimer",
+    "NO_DATA": "Aucune donnée trouvée",
+    "DETAILS": {
+      "TITLE": "Détails de l'entreprise",
+      "SUBTITLE": "Informations détaillées sur l'entreprise",
+      "COMPANY_NAME": "Nom de l'entreprise",
+      "STATUS": "Statut",
+      "STATUS_ACTIVE": "Actif",
+      "STATUS_INACTIVE": "Inactif",
+
+      "CREATED": "Créé le",
+      "COMPANY_INFORMATION": "Informations sur l'entreprise",
+      "BILLING_ADDRESS_MAIL": "Adresse / Email de facturation",
+      "PHONE_NUMBER": "Numéro de téléphone",
+      "DESCRIPTION": "Description",
+      "ADMIN_INFORMATION": "Informations sur l'administrateur",
+      "FULL_NAME": "Nom complet",
+      "EMAIL": "Email",
+      "ADMIN_CREATED_AT": "Administrateur créé le",
+      "ADMIN_SUBSCRIPTION": "Abonnement administrateur",
+      "TRIAL_MODE": "Mode d'essai",
+      "PLAN": "Plan",
+      "MODE_ENDS_ON": "le mode se termine le",
+      "EDIT": "Modifier",
+      "SAVE": "Enregistrer",
+      "SAVING": "Enregistrement...",
+      "CANCEL": "Annuler",
+      "ARCHIVE": "Archiver",
+      "CANCEL_SUBSCRIPTION": "Annuler l'abonnement"
+
+    }
+  },
+  "CATEGORIES": {
+    "CATEGORIES": "Catégories",
+    "CATEGORIES_COUNT": "Catégories ({{count}})",
+    "RESOURCE_TYPE": "Type de ressource",
+    "NAME": "Nom",
+    "KEY": "Clé",
+    "CREATED_AT": "Créé le",
+    "SEARCH_PLACEHOLDER": "Recherche...",
+    "ADD_NEW_CATEGORY": "Ajouter une nouvelle catégorie",
+    "TABLE": {
+      "RESOURCE_TYPE": "Type de ressource",
+      "NAME": "Nom",
+      "KEY": "Clé",
+      "CREATED_AT": "Créé le",
+      "DESCRIPTION": "Description"
+    }
+  },
+  "LOADING": "Chargement...",
+  "AT": "à",
+  "SIDEBAR": {
+    "MENU_TITLE": "Menu SuperAdmin",
+    "COMPANIES": "Entreprises",
+    "CATEGORIES": "Catégories"
+  },
+  "MESSAGES": {
+    "LANGUAGE_UPDATED": "Langue mise à jour !"
+  }
+}

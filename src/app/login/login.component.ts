@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(6)])  // Password field with required and min length validation
   });
 
-  constructor(private Auth: AuthService, private route: Router, private actrou: ActivatedRoute, private toastr: ToastrService, private translate: TranslateService) {
+  constructor(private Auth: AuthService, private route: Router, private actrou: ActivatedRoute, private toastr: ToastrService, private translate: TranslateService, private languageService: LanguageService) {
     this.currentUser = this.Auth.getcurrentuser();
     this.role = this.Auth.getRole();
 
@@ -106,7 +107,10 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('user_type', type);
 
       this.toastr.success('Vous êtes maintenant connecté.');
-      this.translate.use(user.language);
+      // Use language service to set and persist language
+      if (user.language) {
+        this.languageService.setLanguage(user.language);
+      }
       this.route.navigate([userTypes[type]]);
 
     } else {
