@@ -1,0 +1,210 @@
+<div class="main-wrapper">
+
+  <app-header-superadmin></app-header-superadmin>
+  <ng-progress #progressBar></ng-progress>
+  <app-sidebar-superadmin></app-sidebar-superadmin>
+
+  <div class="page-wrapper">
+    <div class="content container-fluid">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header mb-4 d-flex justify-content-between align-items-center">
+        <div>
+          <h3 class="page-title mb-1">Company Details</h3>
+          <small class="text-muted">Detailed information about the company</small>
+        </div>
+
+        <!-- ACTIONS -->
+        <div>
+          <button class="btn btn-sm btn-primary me-2" type="button"
+            [disabled]="loading || saving || (editMode && companyForm.invalid)"
+            (click)="editMode ? onSave() : enableEdit()">
+            <i class="fa" [ngClass]="editMode ? 'fa-save me-1' : 'fa-pencil-alt me-1'"></i>
+            {{ editMode ? (saving ? 'Saving...' : 'Save') : 'Edit' }}
+          </button>
+
+          <button *ngIf="editMode" class="btn btn-sm btn-outline-secondary me-2" type="button" [disabled]="saving"
+            (click)="cancelEdit()">
+            Cancel
+          </button>
+
+          <button class="btn btn-sm btn-danger" type="button">
+            <i class="fa fa-archive me-1"></i> Archive
+          </button>
+        </div>
+      </div>
+
+      <!-- LOADING -->
+      <div *ngIf="loading" class="text-center my-5">
+        <div class="spinner-border text-primary"></div>
+      </div>
+
+      <!-- CONTENT -->
+      <form *ngIf="!loading && company && companyForm" [formGroup]="companyForm" novalidate>
+
+        <!-- COMPANY HEADER CARD -->
+        <div class="card mb-4">
+          <div class="card-body d-flex justify-content-between align-items-center">
+
+            <div class="d-flex align-items-center">
+
+              <!-- Company Logo -->
+              <img *ngIf="company?.company_image_url; else defaultLogo" [src]="company.company_image_url"
+                alt="Company logo" class="company-logo me-3" />
+
+              <!-- Default logo fallback -->
+              <ng-template #defaultLogo>
+                <div class="company-logo placeholder me-3">
+                  <i class="fe fe-image"></i>
+                </div>
+              </ng-template>
+
+
+              <!-- Company info -->
+              <div>
+                <h4 class="mb-1">{{ companyForm.get('name')?.value }}</h4>
+
+                <span class="badge" [ngClass]="companyForm.get('active')?.value ? 'bg-success' : 'bg-secondary'">
+                  {{ companyForm.get('active')?.value ? 'Active' : 'Inactive' }}
+                </span>
+              </div>
+            </div>
+
+
+            <!-- Right side -->
+            <div class="text-end text-muted">
+              <small>Created</small><br>
+              {{ company.created_at | date:'dd MMM yyyy, HH:mm' }}
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- DETAILS -->
+        <div class="row">
+
+          <!-- COMPANY INFO -->
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5 class="card-title mb-0">
+                  <i class="fa fa-building me-2"></i>Company Information
+                </h5>
+              </div>
+
+              <div class="card-body">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Company Name</label>
+                    <input class="form-control" formControlName="name" [readonly]="!editMode">
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <label class="form-label">Status</label>
+                    <div class="form-check form-switch mt-2">
+                      <input class="form-check-input" [checked]="subscriptionActive" type="checkbox" disabled>
+                      <label class="form-check-label">
+                        {{ subscriptionActive ? 'Active' : 'Inactive' }}
+                      </label>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label class="form-label">Billing Address Mail</label>
+                    <input class="form-control" formControlName="billing_address" [readonly]="!editMode">
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label">Phone Number</label>
+                    <input class="form-control" formControlName="phone_number" [readonly]="!editMode">
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label">Description</label>
+                    <textarea rows="3" class="form-control" formControlName="description"
+                      [readonly]="!editMode"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADMIN INFO -->
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">
+                  <i class="fa fa-user-shield me-2 text-primary"></i>
+                  Admin Information
+                </h5>
+
+
+                <button *ngIf="editMode" class="btn btn-outline-danger btn-sm d-flex align-items-center gap-1"
+                  (click)="cancelSubscription()">
+                  <i class="fa fa-ban"></i>
+                  Cancel subscription
+                </button>
+              </div>
+
+
+              <div class="card-body">
+                <p>
+                  <strong>Full Name:</strong><br>
+                  {{ company.admin?.firstname }} {{ company.admin?.lastname }}
+                </p>
+
+                <p>
+                  <strong>Email:</strong><br>
+                  {{ company.admin?.email }}
+                </p>
+
+                <p>
+                  <strong>Phone Number:</strong><br>
+                  {{ company.admin?.phone_number }}
+                </p>
+
+                <p>
+                  <strong>Admin Created At:</strong><br>
+                  {{ company.admin?.created_at | date:'dd MMM yyyy' }}
+                </p>
+                <p>
+                  <strong>Admin Subscription</strong><br>
+                  {{ company.admin?.subscription | date:'dd MMM yyyy' }}
+                </p>
+                <div *ngIf="showTrialBar" class="trial-bar">
+                  <div class="trial-text">
+                    <span class="emoji">🚀</span>
+                    <div>
+                      <strong>Trial Mode</strong>
+                      <small>plan {{company?.subscription_plan}} mode ends on</small>
+                    </div>
+                  </div>
+
+                  <div class="trial-countdown">
+                    <span>{{ daysLeft }}d</span> :
+                    <span>{{ hoursLeft }}h</span> :
+                    <span>{{ minutesLeft }}m</span> :
+                    <span>{{ secondsLeft }}s</span>
+                  </div>
+
+                  <span class="close-trial" (click)="closeTrialBar()">✖</span>
+                </div>
+
+                <!-- Progress Bar -->
+                <div *ngIf="showTrialBar" class="trial-progress">
+                  <div class="trial-progress-fill" [style.width.%]="progress"></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

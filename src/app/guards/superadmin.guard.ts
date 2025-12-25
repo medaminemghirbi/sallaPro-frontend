@@ -14,7 +14,8 @@ export class SuperadminGuard  {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const user = this.auth.getcurrentuser();
-
+    
+    console.log('SuperadminGuard: Checking access for user:', user);
     // Check if the user is logged in and has 'Admin' role
     if (user && this.auth.getRole() == 'Superadmin') {
       return true;

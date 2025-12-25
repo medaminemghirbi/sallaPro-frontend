@@ -9,7 +9,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'sallapro';
+  title = 'reservily';
   currentUser:any
   DefaultLanguage:any
   constructor(private translate: TranslateService,

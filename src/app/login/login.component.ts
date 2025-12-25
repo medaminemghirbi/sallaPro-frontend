@@ -96,7 +96,7 @@ export class LoginComponent implements OnInit {
     const { logged_in, type, user, token, qr_url } = response;
     const userTypes: { [key: string]: string } = {
       'Admin': 'admin/dashboard',
-      'Superadmin': 'superadmin/dashboard',
+      'Superadmin': 'superadmin/companies',
       'Employee': 'employee/dashboard',
       'Client':'client/dashboard'
     };

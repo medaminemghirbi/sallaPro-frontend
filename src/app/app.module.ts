@@ -4,13 +4,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndexComponent } from './index/index.component';
-import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgProgressModule } from 'ngx-progressbar';
-import { NgProgressHttpModule } from "ngx-progressbar/http";
+import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ToastrModule } from 'ngx-toastr';
 import { FirstKeyValuePipe } from './first-key-value.pipe';
@@ -26,56 +30,71 @@ import { LoginComponent } from './login/login.component';
 import { DashboardSuperadminComponent } from './superadmin/dashboard-superadmin/dashboard-superadmin.component';
 import { HeaderSuperadminComponent } from './superadmin/header-superadmin/header-superadmin.component';
 import { SidebarSuperadminComponent } from './superadmin/sidebar-superadmin/sidebar-superadmin.component';
+import { CategoriesComponent } from './superadmin/categories/categories.component';
+import { CompaniesComponent } from './superadmin/companies/index/companies.component';
+import { AddCompanieComponent } from './superadmin/companies/add-companie/add-companie.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { CompanieDetailsComponent } from './superadmin/companies/companie-details/companie-details.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-@NgModule({ declarations: [
-        AppComponent,
-        IndexComponent,
-        FirstKeyValuePipe,
-        FilterByStatusPipe,
-        FilterByVerificationPipe,
-        SafeUrlPipe,
-        AdminComponent,
-        LoginComponent,
-        DashboardSuperadminComponent,
-        HeaderSuperadminComponent,
-        SidebarSuperadminComponent
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        FormsModule,
-        NgxPaginationModule,
-        NgProgressModule,
-        FullCalendarModule,
-        NgxLoadersCssModule,
-        NgxEditorModule,
-        NgProgressModule.withConfig({
-            color: "#003d99"
-        }),
-        ToastrModule.forRoot({
-            timeOut: 1500,
-            positionClass: 'toast-top-right',
-            preventDuplicates: true,
-            closeButton: true,
-        }),
-        NgProgressHttpModule,
-        ReactiveFormsModule,
-        FullCalendarModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        })], providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: TokenInterceptor,
-            multi: true
-        },
-        provideHttpClient(withInterceptorsFromDi())
-    ] })
-export class AppModule { }
+@NgModule({
+  declarations: [
+    AppComponent,
+    FirstKeyValuePipe,
+    FilterByStatusPipe,
+    FilterByVerificationPipe,
+    SafeUrlPipe,
+    AdminComponent,
+    LoginComponent,
+    DashboardSuperadminComponent,
+    HeaderSuperadminComponent,
+    SidebarSuperadminComponent,
+    CategoriesComponent,
+    CompaniesComponent,
+    AddCompanieComponent,
+    CompanieDetailsComponent
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    NgxPaginationModule,
+    NgProgressModule,
+    FullCalendarModule,
+    NgxLoadersCssModule,
+    NgxEditorModule,
+    NgProgressModule.withConfig({
+      color: '#0dd9f9',
+    }),
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      closeButton: true,
+    }),
+    NgProgressHttpModule,
+    ReactiveFormsModule,
+    FullCalendarModule,
+    NgSelectModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
+})
+export class AppModule {}

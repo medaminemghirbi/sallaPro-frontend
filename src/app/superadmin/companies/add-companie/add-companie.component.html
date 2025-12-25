@@ -1,0 +1,90 @@
+<div class="main-wrapper">
+
+    <app-header-superadmin></app-header-superadmin>
+    <ng-progress #progressBar></ng-progress>
+    <app-sidebar-superadmin></app-sidebar-superadmin>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+
+            <div class="page-header mb-4">
+                <h3 class="page-title">Add New Company</h3>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+
+                    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+
+                        <!-- ================= COMPANY INFO ================= -->
+                        <h5 class="mb-3 border-bottom pb-2">Company Information</h5>
+
+                        <div class="row g-3 mb-4">
+
+                            <div class="col-md-12">
+                                <label class="form-label">Company Name</label>
+                                <input class="form-control" formControlName="company_name">
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <label class="form-label">Billing Address</label>
+                                <input class="form-control" formControlName="billing_address">
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="form-label">Description</label>
+                                <textarea rows="3" class="form-control" formControlName="description"></textarea>
+                            </div>
+
+                        </div>
+
+                        <!-- ================= ADMIN INFO ================= -->
+                        <h5 class="mb-3 border-bottom pb-2">Admin Information</h5>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label">First Name</label>
+                                <input class="form-control" formControlName="firstname">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name</label>
+                                <input class="form-control" formControlName="lastname">
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" formControlName="email">
+                            </div>
+
+                            <!-- PASSWORDS SAME LINE -->
+                            <div class="col-md-6">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" formControlName="password">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" formControlName="password_confirmation">
+                            </div>
+
+                        </div>
+
+                        <!-- SUBMIT -->
+                        <div class="text-end mt-4">
+                            <button class="btn btn-primary" [disabled]="companyForm.invalid || isLoading">
+                                {{ isLoading ? 'Saving...' : 'Save Company' }}
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
