@@ -12,11 +12,16 @@ export class SuperadminService {
 
   constructor(private http: HttpClient, public router: Router) {}
 
-  company_types() {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/company_types/');
+  categories() {
+    return this.http.get(`${environment.urlBackend}` + 'api/v1/categories/');
   }
   companies() {
     return this.http.get(`${environment.urlBackend}` + 'api/v1/companies/');
+  }
+  companieDetails(id: any) {
+    return this.http.get(
+      `${environment.urlBackend}` + `api/v1/companies/${id}/`
+    );
   }
   createCompanyWithAdmin(data: any) {
     return this.http.post(
@@ -24,4 +29,12 @@ export class SuperadminService {
       data
     );
   }
+
+  updateCompany(id: any, data: any) {
+    return this.http.put(
+      `${environment.urlBackend}` + `api/v1/companies/${id}/`,
+      data
+    );
+  }
+  
 }

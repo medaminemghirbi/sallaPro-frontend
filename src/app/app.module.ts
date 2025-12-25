@@ -5,10 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
-    HTTP_INTERCEPTORS,
-    HttpClient,
-    provideHttpClient,
-    withInterceptorsFromDi,
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
 } from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,8 +30,11 @@ import { LoginComponent } from './login/login.component';
 import { DashboardSuperadminComponent } from './superadmin/dashboard-superadmin/dashboard-superadmin.component';
 import { HeaderSuperadminComponent } from './superadmin/header-superadmin/header-superadmin.component';
 import { SidebarSuperadminComponent } from './superadmin/sidebar-superadmin/sidebar-superadmin.component';
-import { CompanyTypesComponent } from './superadmin/company-types/company-types.component';
-import { CompaniesComponent } from './superadmin/companies/companies.component';
+import { CategoriesComponent } from './superadmin/categories/categories.component';
+import { CompaniesComponent } from './superadmin/companies/index/companies.component';
+import { AddCompanieComponent } from './superadmin/companies/add-companie/add-companie.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { CompanieDetailsComponent } from './superadmin/companies/companie-details/companie-details.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,8 +51,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     DashboardSuperadminComponent,
     HeaderSuperadminComponent,
     SidebarSuperadminComponent,
-    CompanyTypesComponent,
-    CompaniesComponent
+    CategoriesComponent,
+    CompaniesComponent,
+    AddCompanieComponent,
+    CompanieDetailsComponent
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -74,6 +79,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgProgressHttpModule,
     ReactiveFormsModule,
     FullCalendarModule,
+    NgSelectModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

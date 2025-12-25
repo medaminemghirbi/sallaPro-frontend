@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sallapro": {
+    "reservily": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -23,7 +23,7 @@
               "moment",
               "sweetalert2"
             ],
-            "outputPath": "dist/sallapro",
+            "outputPath": "dist/reservily",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -34,6 +34,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/bootstrap.min.css",
               "src/assets/plugins/fontawesome/css/fontawesome.min.css",
@@ -104,10 +105,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "sallapro:build:production"
+              "buildTarget": "reservily:build:production"
             },
             "development": {
-              "buildTarget": "sallapro:build:development"
+              "buildTarget": "reservily:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -115,7 +116,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "sallapro:build"
+            "buildTarget": "reservily:build"
           }
         },
         "test": {
