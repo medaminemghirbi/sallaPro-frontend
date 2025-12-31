@@ -1,0 +1,55 @@
+<div class="main-wrapper">
+
+  <!-- Header -->
+  <app-header-admin></app-header-admin>
+  <!-- /Header -->
+
+  <!-- Sidebar -->
+  <app-sidebar-admin></app-sidebar-admin>
+  <!-- /Sidebar -->
+
+  <div class="page-wrapper">
+
+    <div class="content container-fluid">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="row">
+          <div class="col-sm-12">
+            <h3 class="page-title">Welcome Mr(s). {{currentUser?.firstname + " " + currentUser?.lastname}}!</h3>
+
+          </div>
+        </div>
+      </div>
+      <!-- /Page Header -->
+
+      <section class="section categorie-section">
+        <div class="container">
+
+          <div class="categorie-info">
+            <div class="row">
+              <div *ngFor="let cat of categories" class="col-xl-2 col-lg-3 col-md-4 d-flex">
+                <div class="categorie-grid flex-fill">
+                  <div class="categorie-img">
+                    <a [href]="cat.link">
+                      <img [src]="cat.img" [alt]="cat.name">
+                    </a>
+                  </div>
+                  <div class="categorie-content">
+                    <h5>
+                      <a [href]="cat.link">{{ cat.name }}</a>
+                    </h5>
+                    <p>{{ cat.products }} Products</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+  </div>
+
+</div>

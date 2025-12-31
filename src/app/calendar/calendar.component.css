@@ -1,0 +1,53 @@
+.fc {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Header */
+.fc-toolbar {
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.fc-button {
+  background-color: white;
+  color: #007bff;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.fc-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Event blocks */
+.custom-event {
+  border-radius: 10px !important;
+  font-size: 0.85rem;
+  padding: 4px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* Grey out off-shift hours */
+.fc-timegrid-slot:not(.fc-business-hour) {
+  background-color: #f0f0f0;
+  pointer-events: none;
+}
+
+/* Highlight today */
+.fc-day-today {
+  background-color: #e6f0ff !important;
+}
+
+/* Time labels */
+.fc-timegrid-slot-label {
+  font-weight: 500;
+  color: #495057;
+}

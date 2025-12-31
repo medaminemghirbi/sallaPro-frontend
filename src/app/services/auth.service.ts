@@ -29,7 +29,9 @@ export class AuthService {
   getcurrentuser(): any {
     return this.http.get(`${environment.urlBackend}` + 'api/v1/current_user_info');
   }
-
+  getcurrentcompany(): any {
+    return this.http.get(`${environment.urlBackend}` + 'api/v1/current_company_info');
+  }
   // Get user role from session storage (Admin, Doctor, Patient)
   getRole(): string | null {
     return sessionStorage.getItem('user_type');

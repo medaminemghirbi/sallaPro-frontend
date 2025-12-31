@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,6 @@ import { NgxLoadersCssModule } from 'ngx-loaders-css';
 import { NgxEditorModule } from 'ngx-editor';
 import { FilterByVerificationPipe } from './filter-by-verification.pipe';
 import { SafeUrlPipe } from './safe-url.pipe';
-import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardSuperadminComponent } from './superadmin/dashboard-superadmin/dashboard-superadmin.component';
 import { HeaderSuperadminComponent } from './superadmin/header-superadmin/header-superadmin.component';
@@ -35,6 +35,12 @@ import { CompaniesComponent } from './superadmin/companies/index/companies.compo
 import { AddCompanieComponent } from './superadmin/companies/add-companie/add-companie.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CompanieDetailsComponent } from './superadmin/companies/companie-details/companie-details.component';
+import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { AdminComponent } from './admin/dashboard-admin/admin.component';
+import { SidebarAdminComponent } from './admin/sidebar-admin/sidebar-admin.component';
+import { IndexComponent } from './admin/client/index/index.component';
+import { AddClientComponent } from './admin/client/add-client/add-client.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -50,21 +56,26 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     DashboardSuperadminComponent,
     HeaderSuperadminComponent,
+    HeaderAdminComponent,
     SidebarSuperadminComponent,
     CategoriesComponent,
     CompaniesComponent,
     AddCompanieComponent,
-    CompanieDetailsComponent
+    CompanieDetailsComponent,
+    CalendarComponent,
+    SidebarAdminComponent,
+    IndexComponent,
+    AddClientComponent
   ],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
     NgProgressModule,
-    FullCalendarModule,
     NgxLoadersCssModule,
     NgxEditorModule,
     NgProgressModule.withConfig({
@@ -84,9 +95,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     {

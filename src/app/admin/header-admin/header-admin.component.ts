@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { LanguageService } from 'src/app/services/language.service';
+import { SidebarService } from 'src/app/services/sidebar.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-header-superadmin',
-  templateUrl: './header-superadmin.component.html',
-  styleUrls: ['./header-superadmin.component.css'],
+  selector: 'app-header-admin',
+  templateUrl: './header-admin.component.html',
+  styleUrl: './header-admin.component.css'
 })
-export class HeaderSuperadminComponent implements OnInit {
+export class HeaderAdminComponent {
   currentUser: any;
   languages = [
     { code: 'fr', label: 'Français', flag: 'assets/img/flags/fr.png' },
@@ -23,7 +24,8 @@ export class HeaderSuperadminComponent implements OnInit {
     private auth: AuthService,
     private router: Router,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private sidebarService: SidebarService
   ) {}
 
   ngOnInit(): void {
@@ -59,10 +61,7 @@ export class HeaderSuperadminComponent implements OnInit {
   }
 
   toggleSidebar(): void {
-    const mainWrapper = document.querySelector('.main-wrapper');
-    if (mainWrapper) {
-      mainWrapper.classList.toggle('mini-sidebar');
-    }
+    this.sidebarService.toggleSidebar();
   }
 
   toggleMobileMenu(): void {

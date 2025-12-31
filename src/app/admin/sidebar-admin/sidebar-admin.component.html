@@ -1,0 +1,60 @@
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title">
+                    <span>{{ 'SIDEBAR.MENU_ADMIN' | translate }} {{ currentCompany?.name }}</span>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/admin/calendar">
+                        <i class="feather-calendar"></i>
+                        <span>{{ 'SIDEBAR.PLANNING' | translate }}</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/admin/vehicles">
+                        <i class="feather-list"></i>
+                        <span>{{ 'SIDEBAR.RESERVATIONS' | translate }}</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/admin/contracts">
+                        <i class="feather-file-text"></i>
+                        <span>{{ 'SIDEBAR.CONTRACTS' | translate }}</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/admin/vehicles">
+                        <i class="feather-truck"></i>
+                        <span>{{ 'SIDEBAR.VEHICLES' | translate }}</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/admin/employees">
+                        <i class="feather-users"></i>
+                        <span>{{ 'SIDEBAR.EMPLOYEES' | translate }}</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/admin/clients">
+                        <i class="feather-user"></i>
+                        <span>{{ 'SIDEBAR.CLIENTS' | translate }}</span>
+                    </a>
+                </li>
+
+                <li routerLinkActive="active">
+                    <a routerLink="/admin/inventory">
+                        <i class="feather-box"></i>
+                        <span>{{ 'SIDEBAR.INVENTORY' | translate }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

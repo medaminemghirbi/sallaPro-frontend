@@ -15,36 +15,39 @@
             <div class="page-header mb-4">
                 <div class="row align-items-center">
 
-                    <!-- Title -->
-                    <div class="col-md-3">
+                    <!-- Title + Search -->
+                    <div class="col-md-8 d-flex align-items-center gap-3">
+
                         <h3 class="page-title mb-0">
-                            Companies ({{ companies?.length }})
+                            {{ 'MENU.COMPANIES' | translate }} ({{ companies?.length }})
                         </h3>
+
+                        <input type="text" class="form-control w-50"
+                            placeholder="{{ 'MENU.SEARCH_PLACEHOLDER' | translate }}" [(ngModel)]="searchTerm"  />
                     </div>
 
-                    <!-- Search box -->
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm" />
-                    </div>
 
-                    <!-- Page size selector -->
-                    <div class="col-md-2">
-                        <select class="form-select" [(ngModel)]="pageSize" (ngModelChange)="p = 1">
+                    <!-- Actions (Add + Page size) -->
+                    <div class="col-md-4 d-flex justify-content-end align-items-center gap-2">
+
+                        <!-- Add New -->
+                        <button routerLink="/superadmin/companies/add-new-company" class="btn btn-primary">
+                            <i class="fa fa-plus me-1"></i>
+                            {{ 'MENU.ADD_NEW_COMPANY' | translate }}
+                        </button>
+
+                        <!-- Page size selector -->
+                        <select class="form-select w-auto" [(ngModel)]="pageSize" (ngModelChange)="p = 1">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="20">20</option>
                         </select>
-                    </div>
 
-                    <!-- Add New button -->
-                    <div class="col-md-3 text-end">
-                        <button routerLink="/superadmin/companies/add-new-company" class="btn btn-primary">
-                            <i class="fa fa-plus me-1"></i> Add New Company
-                        </button>
                     </div>
 
                 </div>
             </div>
+
             <!-- /Page Header -->
 
             <!-- Table -->
@@ -57,7 +60,7 @@
                                 <!-- Loading -->
                                 <div *ngIf="loading" class="text-center my-3">
                                     <div class="spinner-border text-primary" role="status">
-                                        <span class="visually-hidden">Loading...</span>
+                                        <span class="visually-hidden">{{ 'LOADING' | translate }}</span>
                                     </div>
                                 </div>
 
@@ -66,12 +69,14 @@
                                     class="datatable table table-hover table-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Company Name</th>
-                                            <th>Responsible Person</th>
-                                            <th>Billing Address</th>
-                                            <th>Created At</th>
-                                            <th>Description</th>
-                                            <th>Actions</th>
+                                            <th>{{ 'COMPANY.COMPANY_NAME' | translate }}</th>
+                                            <th>{{ 'COMPANY.RESPONSIBLE_PERSON' | translate }}</th>
+                                            <th>{{ 'COMPANY.BILLING_ADDRESS' | translate }}</th>
+                                            <th>{{ 'COMPANY.CREATED_AT' | translate }}</th>
+                                            <th>{{ 'COMPANY.DESCRIPTION' | translate }}</th>
+                                            <th>{{ 'COMPANY.CONFIRM_EMAIL' | translate }}</th>
+
+                                            <th>{{ 'COMPANY.ACTIONS' | translate }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -79,40 +84,54 @@
                                             *ngFor="let company of filteredCompanies | paginate: { itemsPerPage: pageSize, currentPage: p }">
                                             <td>{{ company.name }}</td>
                                             <td>{{ company.admin?.firstname }} {{ company.admin?.lastname }}</td>
-                                            <td>
-                                                {{ company.billing_address || company.admin?.email }}
-                                            </td>
+                                            <td>{{ company.billing_address || company.admin?.email }}</td>
                                             <td>
                                                 {{ company.created_at | date:'dd MMMM yyyy' }}<br>
-                                                <small>at {{ company.created_at | date:'HH:mm' }}</small>
+                                                <small>{{ 'AT' | translate }} {{ company.created_at | date:'HH:mm'
+                                                    }}</small>
                                             </td>
                                             <td class="description-cell">{{ company.description || '-' }}</td>
                                             <td>
+                                                <span *ngIf="company.admin.confirmed_at" class="text-success"
+                                                    data-bs-toggle="tooltip" title="Verified">
+                                                    <i class="fa fa-check fs-5"></i>
+                                                </span>
+                                                <span *ngIf="!company.admin.confirmed_at" class="text-danger"
+                                                    data-bs-toggle="tooltip" title="Not Verified">
+                                                    <i class="fa fa-times fs-5"></i>
+                                                </span>
+                                            </td>
+                                            <td>
                                                 <button class="btn btn-sm btn-info me-1"
                                                     [routerLink]="['/superadmin/companies', company.id, 'company-details']"
-                                                    title="View Info">
+                                                    title="{{ 'COMPANY.VIEW_INFO' | translate }}">
                                                     <i class="fa fa-eye"></i>
                                                 </button>
-                                                <!-- Edit button -->
-                                                <button class="btn btn-sm btn-success me-1" title="Edit"
+                                                <button class="btn btn-sm btn-success me-1"
+                                                    title="{{ 'COMPANY.EDIT' | translate }}"
                                                     (click)="goToCompanyDetails(company.id)">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </button>
-
-
-                                                <!-- Delete button -->
-                                                <button class="btn btn-sm btn-danger" title="Delete">
+                                                <button class="btn btn-sm btn-danger"
+                                                    title="{{ 'COMPANY.DELETE' | translate }}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                            </td>
+                                                <button *ngIf="!company?.admin?.confirmed_at"
+                                                    class="btn btn-sm btn-warning" [disabled]="sendingEmail"
+                                                    title="{{ 'ADMIN.RESEND_CONFIRMATION' | translate }}"
+                                                    (click)="resendConfirmationEmail(company.admin.id)">
+                                                    <i class="fa"
+                                                        [ngClass]="sendingEmail ? 'fa-spinner fa-spin' : 'fa-envelope'"></i>
+                                                </button>
 
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
 
                                 <!-- No Data Found -->
                                 <div *ngIf="!loading && filteredCompanies.length === 0" class="text-center my-3">
-                                    <i class="fa fa-exclamation-circle me-2"></i>No data found.
+                                    <i class="fa fa-exclamation-circle me-2"></i>{{ 'COMPANY.NO_DATA' | translate }}
                                 </div>
 
                             </div>

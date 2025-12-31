@@ -1,0 +1,165 @@
+{
+  "LOGO": "Logo",
+  "FLAG": "Arabic",
+  "USER_NAME": "Ryan Taylor",
+  "USER_ROLE": "SuperAdmin",
+  "MENU": {
+    "COMPANIES": "Companies",
+    "CATEGORIES": "Categories",
+    "SEARCH_PLACEHOLDER": "Search...",
+    "ADD_NEW_COMPANY": "Add New Company"
+  },
+  "ADD_COMPANY": {
+    "ADD_NEW_COMPANY": "Add New Company",
+    "COMPANY_INFO": "Company Information",
+    "ADMIN_INFO": "Admin Information",
+    "COMPANY_NAME": "Company Name",
+    "BILLING_ADDRESS": "Billing Address",
+    "DESCRIPTION": "Description",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "SAVE_COMPANY": "Save Company",
+    "SAVING": "Saving..."
+  },
+  "COMPANY": {
+    "COMPANY_NAME": "Company Name",
+    "RESPONSIBLE_PERSON": "Responsible Person",
+    "BILLING_ADDRESS": "Billing Address",
+    "CREATED_AT": "Created At",
+    "DESCRIPTION": "Description",
+    "ACTIONS": "Actions",
+    "VIEW_INFO": "View Info",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "NO_DATA": "No data found",
+    "CONFIRM_EMAIL": "Email Confirmed",
+    "ADMIN": {
+      "RESEND_CONFIRMATION": "Resend confirmation email",
+      "CONFIRMATION_SENT": "Confirmation email sent successfully",
+      "CONFIRMATION_FAILED": "Failed to send confirmation email"
+    },
+
+    "DETAILS": {
+      "TITLE": "Company Details",
+      "SUBTITLE": "Detailed information about the company",
+      "COMPANY_NAME": "Company Name",
+      "STATUS": "Status",
+      "STATUS_ACTIVE": "Active",
+      "STATUS_INACTIVE": "Inactive",
+
+      "CREATED": "Created",
+      "COMPANY_INFORMATION": "Company Information",
+      "BILLING_ADDRESS_MAIL": "Billing Address / Mail",
+      "PHONE_NUMBER": "Phone Number",
+      "DESCRIPTION": "Description",
+      "ADMIN_INFORMATION": "Default Admin Information",
+      "FULL_NAME": "Full Name",
+      "EMAIL": "Email",
+      "ADMIN_CREATED_AT": "Admin Created At",
+      "TRIAL_MODE": "Trial Mode",
+      "PLAN": "Plan",
+      "MODE_ENDS_ON": "mode ends on",
+      "EDIT": "Edit",
+      "SAVE": "Save",
+      "SAVING": "Saving...",
+      "CANCEL": "Cancel",
+      "ARCHIVE": "Archive"
+    }
+  },
+  "CATEGORIES": {
+    "CATEGORIES": "Categories",
+    "CATEGORIES_COUNT": "Categories ({{count}})",
+    "RESOURCE_TYPE": "Resource Type",
+    "NAME": "Name",
+    "KEY": "Key",
+    "CREATED_AT": "Created At",
+    "SEARCH_PLACEHOLDER": "Search...",
+    "ADD_NEW_CATEGORY": "Add New Category",
+    "TABLE": {
+      "RESOURCE_TYPE": "Resource Type",
+      "NAME": "Name",
+      "KEY": "Key",
+      "CREATED_AT": "Created At",
+      "DESCRIPTION": "Description"
+    },
+    "FILTER": {
+      "ALL": "All"
+    }
+  },
+  "LOADING": "Loading...",
+  "AT": "at",
+  "SIDEBAR": {
+    "MENU_TITLE": "SuperAdmin Menu",
+    "MENU_ADMIN": "Menu Admin",
+    "COMPANIES": "Companies",
+    "CATEGORIES": "Categories",
+    "PLANNING": "Planning",
+    "INVENTORY": "Stock",
+    "VEHICLES": "Vehicles",
+    "RESERVATIONS": "Reservations",
+    "CLIENTS": "Clients",
+    "EMPLOYEES": "Employees",
+    "CONTRACTS": "Contracts"
+  },
+  "MESSAGES": {
+    "LANGUAGE_UPDATED": "Language updated!"
+  },
+  "ERROR": {
+    "TITLE": "Server Error"
+  },
+  "SUCCESS": {
+    "TITLE": "Success"
+  },
+  "CALENDAR": {
+    "SELECT_MONTH": "Select Month",
+    "SELECT_YEAR": "Select Year",
+    "MONTHS": {
+      "JANUARY": "January",
+      "FEBRUARY": "February",
+      "MARCH": "March",
+      "APRIL": "April",
+      "MAY": "May",
+      "JUNE": "June",
+      "JULY": "July",
+      "AUGUST": "August",
+      "SEPTEMBER": "September",
+      "OCTOBER": "October",
+      "NOVEMBER": "November",
+      "DECEMBER": "December"
+    }
+  },
+  "CLIENTS": {
+    "CLIENTS": "Clients",
+    "CLIENTS_COUNT": "Clients ({{count}})",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "CREATED_AT": "Created At",
+    "SEARCH_PLACEHOLDER": "Search...",
+    "ADD_NEW_CLIENT": "Add New Client",
+    "NO_DATA": "No data found",
+    "CLIENT_INFO": "Client Information",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "PHONE_NUMBER": "Phone Number",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "SAVE_CLIENT": "Save Client",
+    "SAVING": "Saving...",
+    "SECURITY": "Security",
+    "BIRTHDAY": "Birthday",
+    "ADDRESS": "Address",
+
+    "TABLE": {
+      "ID": "Key",
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "PHONE": "Phone",
+      "CREATED_AT": "Created At",
+      "ACTIONS": "Actions"
+    }
+  }
+}

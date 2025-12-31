@@ -20,13 +20,14 @@
           <!-- Title -->
           <div class="col-md-3">
             <h3 class="page-title mb-0">
-              Categories ({{ filteredCategories?.length }})
+              {{ 'CATEGORIES.CATEGORIES_COUNT' | translate:{count: categories?.length} }}
             </h3>
           </div>
 
           <!-- Search box -->
           <div class="col-md-4">
-            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm" />
+            <input type="text" class="form-control" placeholder="{{ 'CATEGORIES.SEARCH_PLACEHOLDER' | translate }}"
+              [(ngModel)]="searchTerm"  (ngModelChange)="applyFilters()" />
           </div>
 
           <!-- Page size selector -->
@@ -40,16 +41,34 @@
 
           <!-- Add New button -->
           <div class="col-md-3 text-end">
-            <button 
-            (click)="openAddModal()"
-            class="btn btn-primary">
-              <i class="fa fa-plus me-1"></i> Add New Categorie
+            <button (click)="openAddModal()" class="btn btn-primary">
+              <i class="fa fa-plus me-1"></i> {{ 'CATEGORIES.ADD_NEW_CATEGORY' | translate }}
             </button>
           </div>
 
         </div>
       </div>
       <!-- /Page Header -->
+      <!-- Resource Type Filters -->
+      <div class="mb-3  text-end">
+        <div class="btn-group flex-wrap" role="group">
+
+          <!-- All -->
+          <button class="btn btn-sm "
+            [ngClass]="selectedResourceTypeFilter === null ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="filterByResourceType(null)">
+            {{ 'CATEGORIES.FILTER.ALL' | translate }}
+          </button>
+
+          <!-- Dynamic resource types -->
+          <button *ngFor="let type of resourceTypeFilters" class="btn btn-sm"
+            [ngClass]="selectedResourceTypeFilter === type ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="filterByResourceType(type)">
+            {{ type }}
+          </button>
+
+        </div>
+      </div>
 
       <!-- Table -->
       <div class="row">
@@ -70,11 +89,11 @@
                   class="datatable table table-hover table-center mb-0">
                   <thead>
                     <tr>
-                      <th>Resource Type</th>
-                      <th>Name</th>
-                      <th>Key</th>
-                      <th>Created At</th>
-                      <th>Description</th>
+                      <th>{{ 'CATEGORIES.TABLE.RESOURCE_TYPE' | translate }}</th>
+                      <th>{{ 'CATEGORIES.TABLE.NAME' | translate }}</th>
+                      <th>{{ 'CATEGORIES.TABLE.KEY' | translate }}</th>
+                      <th>{{ 'CATEGORIES.TABLE.CREATED_AT' | translate }}</th>
+                      <th>{{ 'CATEGORIES.TABLE.DESCRIPTION' | translate }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -123,7 +142,8 @@
 </div>
 
 <!-- Add/Edit Category Modal -->
-<div class="modal fade" tabindex="-1" [ngClass]="{'show d-block': showModal}" [style.display]="showModal ? 'block' : 'none'">
+<div class="modal fade" tabindex="-1" [ngClass]="{'show d-block': showModal}"
+  [style.display]="showModal ? 'block' : 'none'">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -135,14 +155,8 @@
           <!-- Resource Type -->
           <div class="mb-3">
             <label for="resourceType" class="form-label">Resource Type</label>
-            <ng-select 
-              [items]="resourceTypes"
-              bindLabel="name"
-              [(ngModel)]="selectedResourceType"
-              name="resourceType"
-              [searchable]="true"
-              placeholder="Select or add new"
-              [addTag]="true">
+            <ng-select [items]="resourceTypes" bindLabel="name" [(ngModel)]="selectedResourceType" name="resourceType"
+              [searchable]="true" placeholder="Select or add new" [addTag]="true">
             </ng-select>
           </div>
 
