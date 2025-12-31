@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardSuperadminComponent } from './superadmin/dashboard-superadmin/dashboard-superadmin.component';
 import { SuperadminGuard } from './guards/superadmin.guard';
@@ -8,12 +7,19 @@ import { CompaniesComponent } from './superadmin/companies/index/companies.compo
 import { AddCompanieComponent } from './superadmin/companies/add-companie/add-companie.component';
 import { CompanieDetailsComponent } from './superadmin/companies/companie-details/companie-details.component';
 import { CategoriesComponent } from './superadmin/categories/categories.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { AdminComponent } from './admin/dashboard-admin/admin.component';
+import { AdminGuard } from './guards/admin.guard';
+import { IndexComponent } from './admin/client/index/index.component';
+import { AddClientComponent } from './admin/client/add-client/add-client.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {path:'login',component:LoginComponent},
-  {path: 'admin',component:AdminComponent},
-
+  {path: 'admin/dashboard',component:AdminComponent},
+  {path:'admin/calendar',component:CalendarComponent, canActivate:[AdminGuard]},
+  {path:'admin/clients', component: IndexComponent, canActivate:[AdminGuard]},
+  {path:'admin/clients/add-client', component: AddClientComponent, canActivate:[AdminGuard]},
   ///***Superadmin */
   { path: 'superadmin/dashboard', canActivate: [SuperadminGuard], component: DashboardSuperadminComponent },
   {path: 'superadmin/companies',component:CompaniesComponent, canActivate: [SuperadminGuard]},

@@ -1,0 +1,49 @@
+<!-- Header -->
+<app-header-admin></app-header-admin>
+<!-- /Header -->
+
+<!-- Sidebar -->
+<app-sidebar-admin></app-sidebar-admin>
+<!-- /Sidebar -->
+
+<div class="page-wrapper">
+
+    <div class="content container-fluid">
+
+      <ng-progress #progressBar></ng-progress>
+
+      <!-- Month and Year Selector -->
+      <div class="row mb-3" style="margin-bottom: 20px;">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="monthSelect" class="form-label">{{ 'CALENDAR.SELECT_MONTH' | translate }}</label>
+            <select id="monthSelect" class="form-control" [(ngModel)]="selectedMonth" (change)="onMonthChange($event)">
+              <option *ngFor="let month of months; let i = index" [value]="i">
+                {{ month }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="yearSelect" class="form-label">{{ 'CALENDAR.SELECT_YEAR' | translate }}</label>
+            <select id="yearSelect" class="form-control" [(ngModel)]="selectedYear" (change)="onYearChange($event)">
+              <option *ngFor="let year of availableYears" [value]="year">
+                {{ year }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- /Month and Year Selector -->
+
+      <full-calendar #calendar *ngIf="calendarVisible" [options]="calendarOptions">
+
+        <ng-template #eventContent let-arg>
+          <b>{{ arg.timeText }}</b>
+          <i>{{ arg.event.title }}</i>
+        </ng-template>
+      </full-calendar>
+
+    </div>
+  </div>

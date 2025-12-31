@@ -1,0 +1,131 @@
+<div class="main-wrapper">
+
+    <!-- Header -->
+    <app-header-admin></app-header-admin>
+    <ng-progress #progressBar></ng-progress>
+
+    <!-- Sidebar -->
+    <app-sidebar-admin></app-sidebar-admin>
+
+    <!-- Page Wrapper -->
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+
+            <!-- Page Header -->
+            <div class="page-header mb-4">
+                <div class="row align-items-center">
+
+                    <!-- Title -->
+                    <div class="col-md-3">
+                        <h3 class="page-title mb-0">
+                            {{ 'CLIENTS.CLIENTS_COUNT' | translate:{count: clients?.length} }}
+                        </h3>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="col-md-4">
+                        <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="searchTerm"
+                            (ngModelChange)="applyFilters()"
+                            placeholder="{{ 'CLIENTS.SEARCH_PLACEHOLDER' | translate }}"
+                        />
+                    </div>
+
+                    <!-- Page Size -->
+                    <div class="col-md-2">
+                        <select class="form-select" [(ngModel)]="pageSize" (ngModelChange)="p = 1">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+
+                    <!-- Add Client -->
+                    <div class="col-md-3 text-end">
+                        <button class="btn btn-primary"   routerLink="/admin/clients/add-client">
+                            <i class="fe fe-plus me-1"></i>
+                            {{ 'CLIENTS.ADD_NEW_CLIENT' | translate }}
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /Page Header -->
+
+            <!-- Table -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                <!-- Loading -->
+                                <div *ngIf="loading" class="text-center my-3">
+                                    <div class="spinner-border text-primary"></div>
+                                </div>
+
+                                <!-- Clients Table -->
+                                <table
+                                    *ngIf="!loading && filteredClients.length > 0"
+                                    class="table table-hover table-center mb-0">
+
+                                    <thead>
+                                        <tr>
+                                            <th>{{ 'CLIENTS.TABLE.ID' | translate }}</th>
+                                            <th>{{ 'CLIENTS.TABLE.NAME' | translate }}</th>
+                                            <th>{{ 'CLIENTS.TABLE.EMAIL' | translate }}</th>
+                                            <th>{{ 'CLIENTS.TABLE.PHONE' | translate }}</th>
+                                            <th>{{ 'CLIENTS.TABLE.CREATED_AT' | translate }}</th>
+                                            <th>{{ 'CLIENTS.TABLE.ACTIONS' | translate }}</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr
+                                            *ngFor="let client of filteredClients | paginate: { itemsPerPage: pageSize, currentPage: p }">
+                                            <td>{{ client.unique_code }}</td>
+
+                                            <td>{{ client.full_name }}</td>
+                                            <td>{{ client.email }}</td>
+                                            <td>{{ client.phone_number }}</td>
+                                            <td>
+                                                {{ client.created_at | date:'dd MMM yyyy' }}
+                                                <br />
+                                                <small>{{ client.created_at | date:'HH:mm' }}</small>
+                                            </td>
+
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary me-1">
+                                                    <i class="fe fe-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="fe fe-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- No Data -->
+                                <div *ngIf="!loading && filteredClients.length === 0" class="text-center my-3">
+                                    <i class="fe fe-alert-circle me-1"></i>
+                                    {{ 'CLIENTS.NO_DATA' | translate }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="text-end mt-2">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

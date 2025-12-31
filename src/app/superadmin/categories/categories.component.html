@@ -27,7 +27,7 @@
           <!-- Search box -->
           <div class="col-md-4">
             <input type="text" class="form-control" placeholder="{{ 'CATEGORIES.SEARCH_PLACEHOLDER' | translate }}"
-              [(ngModel)]="searchTerm" />
+              [(ngModel)]="searchTerm"  (ngModelChange)="applyFilters()" />
           </div>
 
           <!-- Page size selector -->
@@ -49,6 +49,26 @@
         </div>
       </div>
       <!-- /Page Header -->
+      <!-- Resource Type Filters -->
+      <div class="mb-3  text-end">
+        <div class="btn-group flex-wrap" role="group">
+
+          <!-- All -->
+          <button class="btn btn-sm "
+            [ngClass]="selectedResourceTypeFilter === null ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="filterByResourceType(null)">
+            {{ 'CATEGORIES.FILTER.ALL' | translate }}
+          </button>
+
+          <!-- Dynamic resource types -->
+          <button *ngFor="let type of resourceTypeFilters" class="btn btn-sm"
+            [ngClass]="selectedResourceTypeFilter === type ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="filterByResourceType(type)">
+            {{ type }}
+          </button>
+
+        </div>
+      </div>
 
       <!-- Table -->
       <div class="row">

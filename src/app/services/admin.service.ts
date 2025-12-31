@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,173 +13,18 @@ export class AdminService {
   
   constructor(private http: HttpClient, public router: Router) {}
 
-  /////////////////////// Dcotors  */////////////////
-
-  statistique() : Observable<any> {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/statistique/');
+  /////////////////////// Clients  */////////////////
+  clients(){
+    return this.http.get<any>(environment.urlBackend + 'api/v1/clients');
   }
-
-
-  statistiqueTop5() : Observable<any> {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/top_consultation_gouvernement/');
-  }
-
-  statistiquebyGender() : Observable<any> {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/gender_stats/');
-  }
-  statistiquebyPlatforme() : Observable<any> {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/plateform_stats/');
-  }
-  
-  getDoctors() {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/doctors/');
-  }
-  getDoctorsIndex() {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/index_home/');
-  }
-  last_run() {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/last_run/');
-  }
-
-  reloadData() {
-    return this.http.get<any>(
-      `${environment.urlBackend}` + 'api/v1/reload_data/'
-    );
-  }
-  getDoctor(id: any) {
-    return this.http.get(environment.urlBackend + 'api/v1/doctors/' + id);
-  }
-  ArchiveDoctor(id: any) {
-    return this.http.delete(environment.urlBackend + 'api/v1/doctors/' + id);
-  }
-  activateCompte(id: any) {
-    return this.http.post<any>(
-      `${environment.urlBackend}api/v1/doctors/${id}/activate_compte`,
-      {}
-    );
-  }
-
-  getConsultation(code: any) {
-    return this.http.get(environment.urlBackend + 'api/v1/find_consultation_by_code/' + code );
-  }
-
-  /////////////////////// Patients  */////////////////
-  getPatients() {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/patients/');
-  }
-  ArchivePatient(id: any) {
-    return this.http.delete(environment.urlBackend + 'api/v1/patients/' + id);
-  }
-
-  /////////////////////// Apointements  */////////////////
-  getAllLocations() {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/all_locations/');
-  }
-  getDoctorsByLocation(location: any) {
-    return this.http.get(
-      environment.urlBackend + 'api/v1/get_doctors_by_locations/' + location
-    );
-  }
-  getNearstDoctor(location: string, radius: number) {
-    return this.http.get(
-      environment.urlBackend + 'api/v1/nearest_doctors',
-      {
-        params: {
-          location: location,
-          radius: radius.toString()
-        }
-      }
-    );
-  }
-  
-  getDoctorDetails(doctor_id: string): Observable<any> {
-    return this.http.get<any>(
-      environment.urlBackend + 'api/v1/doctor_consultations/' + doctor_id
-    );
-  }
-  ArchiverAppointement(id: any) {
-    return this.http.delete(
-      environment.urlBackend + 'api/v1/consultations/' + id
-    );
-  }
-
-  /////////////////////// Blogs */////////////////////
-  getBlog(id: any) {
-    return this.http.get(environment.urlBackend + 'api/v1/blogs/' + id);
-  }
-  getAllBlogs() {
-    return this.http.get(environment.urlBackend + 'api/v1/blogs/');
-  }
-  
-  getVerfiedBlogs() {
-    return this.http.get(environment.urlBackend + 'api/v1/verified_blogs/');
-  }
-  getMyBlogs(id: any) {
-    return this.http.get(environment.urlBackend + 'api/v1/my_blogs/' + id);
-  }
-  getBlogMessages(id: any) {
-    return this.http.get(
-      environment.urlBackend + 'api/v1/get_message_by_blog/' + id
-    );
-  }
-  addVerification(id: any): Observable<any> {
-    const url = `${this.apiUrl}${id}`;
-    const body = { is_verified: true };
-    return this.http.patch(url, body);
-  }
-  addVerificationAll(): Observable<any> {
-    // PATCH with an empty object as the body
-    return this.http.patch(this.apiUrlall, {});
-  }
-
-  get_user_data(id: any) {
-    return this.http.get(environment.urlBackend + 'api/v1/users/' + id);
-  }
-
-  ArchiverMessage(id: any) {
-    return this.http.delete(environment.urlBackend + 'api/v1/messages/' + id);
-  }
-  downloadImage(messageId: number, imageId: number): Observable<Blob> {
-    const url = `${environment.urlBackend}api/v1/messages/${messageId}/images/${imageId}`;
-    return this.http.get(url, { responseType: 'blob' });
-  }
-
-  ///////******MALADIES */*////////////////////
-  getAllIAdiseas() {
-    return this.http.get(environment.urlBackend + 'api/v1/maladies/');
-  }
-  updateDiseas(data:any){
-    return this.http.patch(`${environment.urlBackend}api/v1/maladies/${data.id}`, data);
-  }
-
-  updateDocument(data:any){
-    return this.http.patch(`${environment.urlBackend}api/v1/documents/${data.id}`, data);
-  }
-  getMyReuqests(id: any) {
-    return this.http.get(environment.urlBackend + 'api/v1/patient_appointments/' + id);
-  }
-
-
-  sendMessage(message: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl, { message });
-  }
-
-  Generate_payment_link(formData: any): Observable<any> {
-    return this.http.post(environment.urlBackend + 'api/v1/payments/generate', formData);
-  }
-  getDefaultLanguage(id: any) {
+    getDefaultLanguage(id: any) {
     return this.http.get(environment.urlBackend + 'api/v1/get_defaut_language/' + id);
   }
 
-
-
-  getNotifications(id:any): Observable<any[]> {
-    return this.http.get<any[]>(environment.urlBackend + 'api/v1/notifications/' + id);
+    createClient(data: any) {
+    return this.http.post(
+      `${environment.urlBackend}` + 'api/v1/clients/',
+      data
+    );
   }
-  updatePrediction(data:any){
-    return this.http.patch(`${environment.urlBackend}predictions/${data.id}`, data);
-  }
-  // markAsRead(notificationId: number): Observable<any> {
-  //   return this.http.patch(`${this.apiUrl}/${notificationId}/mark_as_read`, {});
-  // }
 }

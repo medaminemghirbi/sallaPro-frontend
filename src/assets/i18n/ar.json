@@ -9,6 +9,22 @@
     "SEARCH_PLACEHOLDER": "بحث...",
     "ADD_NEW_COMPANY": "إضافة شركة جديدة"
   },
+  "ADD_COMPANY": {
+    "ADD_NEW_COMPANY": "إضافة شركة جديدة",
+    "COMPANY_INFO": "معلومات الشركة",
+    "ADMIN_INFO": "معلومات المسؤول",
+    "COMPANY_NAME": "اسم الشركة",
+    "BILLING_ADDRESS": "عنوان الفوترة",
+    "DESCRIPTION": "الوصف",
+    "FIRST_NAME": "الاسم الأول",
+    "LAST_NAME": "الاسم الأخير",
+    "EMAIL": "البريد الإلكتروني",
+    "PASSWORD": "كلمة المرور",
+    "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
+    "SAVE_COMPANY": "حفظ الشركة",
+    "SAVING": "جارٍ الحفظ..."
+  },
+
   "COMPANY": {
     "COMPANY_NAME": "اسم الشركة",
     "RESPONSIBLE_PERSON": "الشخص المسؤول",
@@ -20,6 +36,13 @@
     "EDIT": "تعديل",
     "DELETE": "حذف",
     "NO_DATA": "لا توجد بيانات",
+    "CONFIRM_EMAIL": "تأكيد البريد الإلكتروني",
+    "ADMIN": {
+      "RESEND_CONFIRMATION": "إعادة إرسال بريد التأكيد",
+      "CONFIRMATION_SENT": "تم إرسال بريد التأكيد بنجاح",
+      "CONFIRMATION_FAILED": "فشل في إرسال بريد التأكيد"
+    },
+
     "DETAILS": {
       "TITLE": "تفاصيل الشركة",
       "SUBTITLE": "معلومات مفصلة عن الشركة",
@@ -32,11 +55,10 @@
       "BILLING_ADDRESS_MAIL": "عنوان الفواتير / البريد الإلكتروني",
       "PHONE_NUMBER": "رقم الهاتف",
       "DESCRIPTION": "الوصف",
-      "ADMIN_INFORMATION": "معلومات المشرف",
+      "ADMIN_INFORMATION": "معلومات المشرف الرئيسي",
       "FULL_NAME": "الاسم الكامل",
       "EMAIL": "البريد الإلكتروني",
       "ADMIN_CREATED_AT": "تاريخ إنشاء المشرف",
-      "ADMIN_SUBSCRIPTION": "اشتراك المشرف",
       "TRIAL_MODE": "وضع التجربة",
       "PLAN": "الخطة",
       "MODE_ENDS_ON": "ينتهي الوضع في",
@@ -44,8 +66,7 @@
       "SAVE": "حفظ",
       "SAVING": "جاري الحفظ...",
       "CANCEL": "إلغاء",
-      "ARCHIVE": "الأرشيف",
-      "CANCEL_SUBSCRIPTION": "إلغاء الاشتراك"
+      "ARCHIVE": "الأرشيف"
     }
   },
   "CATEGORIES": {
@@ -63,16 +84,79 @@
       "KEY": "المفتاح",
       "CREATED_AT": "تاريخ الإنشاء",
       "DESCRIPTION": "الوصف"
+    },
+    "FILTER": {
+      "ALL": "الكل"
     }
   },
   "LOADING": "جار التحميل...",
   "AT": "في",
   "SIDEBAR": {
     "MENU_TITLE": "قائمة المشرف العام",
+    "MENU_ADMIN": "قائمة المشرف العام",
     "COMPANIES": "الشركات",
-    "CATEGORIES": "الفئات"
+    "CATEGORIES": "الفئات",
+    "PLANNING": "الجدولة",
+    "CLIENTS": "العملاء",
+    "EMPLOYEES": "الموظفين",
+    "INVENTORY": "المخزون",
+    "VEHICLES": "المركبات",
+    "RESERVATIONS": "الحجوزات",
+    "CONTRACTS": "العقود"
   },
   "MESSAGES": {
     "LANGUAGE_UPDATED": "تم تحديث اللغة!"
+  },
+  "ERROR": {
+    "TITLE": "خطأ في الخادم"
+  },
+  "SUCCESS": {
+    "TITLE": "نجاح"
+  },
+  "CALENDAR": {
+    "SELECT_MONTH": "اختر الشهر",
+    "SELECT_YEAR": "اختر السنة",
+    "MONTHS": {
+      "JANUARY": "يناير",
+      "FEBRUARY": "فبراير",
+      "MARCH": "مارس",
+      "APRIL": "أبريل",
+      "MAY": "مايو",
+      "JUNE": "يونيو",
+      "JULY": "يوليو",
+      "AUGUST": "أغسطس",
+      "SEPTEMBER": "سبتمبر",
+      "OCTOBER": "أكتوبر",
+      "NOVEMBER": "نوفمبر",
+      "DECEMBER": "ديسمبر"
+    }
+  },
+  "CLIENTS": {
+    "CLIENTS": "العملاء",
+    "CLIENTS_COUNT": "العملاء ({{count}})",
+    "SEARCH_PLACEHOLDER": "بحث...",
+    "ADD_NEW_CLIENT": "إضافة عميل جديد",
+    "CLIENT_INFO": "معلومات العميل",
+    "FIRST_NAME": "الاسم الأول",
+    "LAST_NAME": "الاسم الأخير",
+    "EMAIL": "البريد الإلكتروني",
+    "PHONE_NUMBER": "رقم الهاتف",
+    "PASSWORD": "كلمة المرور",
+    "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
+    "SAVE_CLIENT": "حفظ العميل",
+    "SAVING": "جارٍ الحفظ...",
+    "SECURITY": "الأمان",
+    "BIRTHDAY": "تاريخ الميلاد",
+    "ADDRESS": "العنوان",
+
+    "TABLE": {
+      "ID": "المعرف",
+      "NAME": "الاسم الكامل",
+      "EMAIL": "البريد الإلكتروني",
+      "PHONE": "رقم الهاتف",
+      "CREATED_AT": "تاريخ الإنشاء",
+      "ACTIONS": "الإجراءات"
+    },
+    "NO_DATA": "لا توجد بيانات"
   }
 }

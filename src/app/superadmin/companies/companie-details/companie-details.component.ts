@@ -59,6 +59,7 @@ export class CompanieDetailsComponent implements OnInit, OnDestroy {
       phone_number: [''],
       billing_address: [''],
       description: [''],
+      active: [''],
     });
     this.companyForm.disable();
   }
@@ -69,15 +70,6 @@ export class CompanieDetailsComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.company = res;
         this.patchFormFromCompany();
-
-        // ✅ subscription is an OBJECT, not an array
-        if (this.company?.subscription) {
-          this.endDate = new Date(this.company.subscription.end_date);
-
-          this.updateCountdown();
-          this.timer = setInterval(() => this.updateCountdown(), 1000);
-        }
-
         this.loading = false;
       },
       error: (err) => {
@@ -88,7 +80,7 @@ export class CompanieDetailsComponent implements OnInit, OnDestroy {
   }
 
   get subscriptionActive(): boolean {
-    return !!this.company?.subscription_status;
+    return !!this.company?.active;
   }
   patchFormFromCompany() {
     if (!this.company || !this.companyForm) return;
@@ -97,6 +89,7 @@ export class CompanieDetailsComponent implements OnInit, OnDestroy {
       phone_number: this.company.phone_number,
       billing_address: this.company.billing_address,
       company_image_url: this.company.company_image_url,
+      active: this.company.active,
       description: this.company.description,
     });
   }
@@ -120,6 +113,7 @@ export class CompanieDetailsComponent implements OnInit, OnDestroy {
       name: this.companyForm.value.name,
       phone_number: this.companyForm.value.phone_number,
       billing_address: this.companyForm.value.billing_address,
+      active: this.companyForm.value.active,
       description: this.companyForm.value.description,
     };
     this.superadminService.updateCompany(this.companyId, payload).subscribe({
@@ -167,46 +161,5 @@ export class CompanieDetailsComponent implements OnInit, OnDestroy {
 
   closeTrialBar() {
     this.showTrialBar = false;
-  }
-
-  cancelSubscription() {
-    // this.superadminService.cancelSubscription(this.company.subscription.id)
-    //   .subscribe(() => {
-    //     this.company.subscription.active = false;
-    //     this.company.subscription.status = 'cancelled';
-    //   });
-    console.log('Cancel subscription clicked');
-  }
-
-  get subscriptionPlan(): string | null {
-    return this.company?.subscription?.plan ?? null;
-  }
-
-  get showSubscriptionBar(): boolean {
-    return (
-      this.subscriptionPlan === 'trial' || this.subscriptionPlan === 'monthly'
-    );
-  }
-
-  get subscriptionBarClass(): string {
-    switch (this.subscriptionPlan) {
-      case 'trial':
-        return 'trial-bar-warning'; // jaune
-      case 'monthly':
-        return 'trial-bar-success'; // vert
-      default:
-        return '';
-    }
-  }
-
-  get subscriptionLabel(): string {
-    switch (this.subscriptionPlan) {
-      case 'trial':
-        return 'Trial Mode';
-      case 'monthly':
-        return 'Monthly Plan';
-      default:
-        return '';
-    }
   }
 }

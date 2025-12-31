@@ -1,0 +1,58 @@
+/* dashboard.component.css */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 32px;
+}
+
+.module-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-height: 80px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.module-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.module-left {
+  display: flex;
+  align-items: center;
+}
+
+.module-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.module-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.module-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.module-arrow {
+  font-size: 1rem;
+  color: #999;
+  transition: transform 0.2s;
+}
+
+.module-card:hover .module-arrow {
+  transform: translateX(4px);
+  color: #007bff;
+}

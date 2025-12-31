@@ -101,7 +101,7 @@
                   <div class="col-md-6">
                     <label class="form-label">{{ 'COMPANY.DETAILS.STATUS' | translate }}</label>
                     <div class="form-check form-switch mt-2">
-                      <input class="form-check-input" [checked]="subscriptionActive" type="checkbox" disabled>
+                      <input class="form-check-input" [checked]="subscriptionActive" type="checkbox" [readonly]="!editMode" formControlName="active">
                       <label class="form-check-label">
                         {{ subscriptionActive ? ('COMPANY.DETAILS.STATUS_ACTIVE' | translate) :
                         ('COMPANY.DETAILS.STATUS_INACTIVE' | translate) }}
@@ -136,11 +136,6 @@
                   }}
                 </h5>
 
-                <button *ngIf="editMode" class="btn btn-outline-danger btn-sm d-flex align-items-center gap-1"
-                  (click)="cancelSubscription()">
-                  <i class="fa fa-ban"></i>
-                  {{ 'COMPANY.DETAILS.CANCEL_SUBSCRIPTION' | translate }}
-                </button>
               </div>
 
               <div class="card-body">

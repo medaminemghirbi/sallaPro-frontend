@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { SuperadminService } from 'src/app/services/superadmin.service';
+import { Component } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css'],
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styleUrl: './index.component.css'
 })
-export class CategoriesComponent implements OnInit {
-  categories: any
-  filteredCategories: any[] = [];
+export class IndexComponent {
+  clients: any
+  filteredClients: any[] = [];
 
   searchTerm = '';
   pageSize = 10;
@@ -44,23 +44,23 @@ export class CategoriesComponent implements OnInit {
     Equipment: 'fa-cogs',
   };
 
-  constructor(private superadminservice: SuperadminService) {}
+  constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.loadclients();
   }
 
-  async loadCategories() {
+  async loadclients() {
     this.loading = true;
     try {
-      this.categories = await firstValueFrom(
-        this.superadminservice.categories()
+      this.clients = await firstValueFrom(
+        this.adminService.clients()
       );
 
       this.buildResourceTypeFilters();
       this.applyFilters();
     } catch (err) {
-      console.error('Failed to load categories', err);
+      console.error('Failed to load clients', err);
     } finally {
       this.loading = false;
     }
@@ -68,7 +68,7 @@ export class CategoriesComponent implements OnInit {
 
   buildResourceTypeFilters() {
     this.resourceTypeFilters = [
-      ...new Set(this.categories.map((c: any) => c.resource_type))
+      ...new Set(this.clients.map((c: any) => c.resource_type))
     ] as string[];
   }
 
@@ -78,17 +78,16 @@ export class CategoriesComponent implements OnInit {
   }
 
   applyFilters() {
-    this.filteredCategories = this.categories.filter((category: any) => {
+    this.filteredClients = this.clients.filter((client: any) => {
       const matchesSearch =
         !this.searchTerm ||
-        category.name?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        category.key?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        category.description?.toLowerCase().includes(this.searchTerm.toLowerCase());
+        client.name?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        client.key?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        client.description?.toLowerCase().includes(this.searchTerm.toLowerCase());
 
       const matchesType =
         !this.selectedResourceTypeFilter ||
-        category.resource_type === this.selectedResourceTypeFilter;
-
+        client.resource_type === this.selectedResourceTypeFilter;
       return matchesSearch && matchesType;
     });
 
@@ -119,7 +118,7 @@ export class CategoriesComponent implements OnInit {
       this.newCategory.resource_type = this.selectedResourceType?.name;
     }
 
-    this.categories.unshift({
+    this.clients.unshift({
       ...this.newCategory,
       created_at: new Date(),
     });

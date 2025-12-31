@@ -36,5 +36,19 @@ export class SuperadminService {
       data
     );
   }
+
+  resendConfirmationEmail(adminId: any) {
+    return this.http.post(
+      `${environment.urlBackend}` +
+        `api/v1/users/${adminId}/resend_confirmation/`,
+      {}
+    );
+  }
+
+    getCalendar(startYear: number) {
+    return this.http.get<any[]>(
+      `${environment.urlBackend}api/v1/calendars?start_year=${startYear}`
+    );
+  }
   
 }
