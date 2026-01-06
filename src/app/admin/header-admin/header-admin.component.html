@@ -12,15 +12,64 @@
     </div>
     <!-- /Logo -->
 
-    <a href="javascript:void(0);" id="toggle_btn" (click)="toggleSidebar()">
-        <i class="fe fe-text-align-left"></i>
-    </a>
+    <ul class="nav primary-nav">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" routerLink="/admin/calendar">
+                <i class="feather-calendar me-1"></i>
+                <span>{{ 'SIDEBAR.PLANNING' | translate }}</span>
+            </a>
+        </li>
 
-    <!-- Mobile Menu Toggle -->
-    <a href="javascript:void(0);" class="mobile_btn" id="mobile_btn" (click)="toggleMobileMenu()">
-        <i class="fa fa-bars"></i>
-    </a>
-    <!-- /Mobile Menu Toggle -->
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/admin/contracts">
+                <i class="feather-file-text me-1"></i>
+                <span>{{ 'SIDEBAR.CONTRACTS' | translate }}</span>
+            </a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/admin/devis">
+                <i class="feather-edit-3 me-1"></i>
+                <span>{{ 'SIDEBAR.DEVIS' | translate }}</span>
+            </a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/admin/inventory">
+                <i class="feather-box me-1"></i>
+                <span>{{ 'SIDEBAR.INVENTORY' | translate }}</span>
+            </a>
+        </li>
+
+
+
+        <li class="nav-item dropdown" routerLinkActive="active" #repertoires="routerLinkActive">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                [class.active]="repertoires.isActive">
+                <i class="feather-folder me-1"></i>
+                <span>{{ 'SIDEBAR.REPERTOIRES' | translate }}</span>
+                <i class="feather-chevron-down ms-1"></i>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" routerLink="/admin/clients" routerLinkActive="active">{{ 'SIDEBAR.CLIENTS' |
+                    translate }}</a>
+                <a class="dropdown-item" routerLink="/admin/company-library" routerLinkActive="active">{{
+                    'SIDEBAR.COMPANY_LIBRARY' | translate }}</a>
+                <a class="dropdown-item" routerLink="/admin/employees" routerLinkActive="active">{{ 'SIDEBAR.EMPLOYEES'
+                    | translate }}</a>
+                <a class="dropdown-item" routerLink="/admin/maintenance" routerLinkActive="active">{{
+                    'SIDEBAR.MAINTENANCE' | translate }}</a>
+                <a class="dropdown-item" routerLink="/admin/materials" routerLinkActive="active">{{ 'SIDEBAR.MATERIALS'
+                    | translate }}</a>
+                <a class="dropdown-item" routerLink="/admin/suppliers" routerLinkActive="active">{{ 'SIDEBAR.SUPPLIERS'
+                    | translate }}</a>
+                <a class="dropdown-item" routerLink="/admin/team" routerLinkActive="active">{{ 'SIDEBAR.TEAM' |
+                    translate }}</a>
+                <a class="dropdown-item" routerLink="/admin/vehicles" routerLinkActive="active">{{ 'SIDEBAR.VEHICLES' |
+                    translate }}</a>
+            </div>
+        </li>
+    </ul>
 
     <!-- Header Right Menu -->
     <ul class="nav user-menu">
@@ -28,18 +77,6 @@
             <a class="nav-link" title="Toggle Dark Mode" (click)="toggleDarkMode()">
                 <i class="fa" [class.fa-moon]="!darkMode" [class.fa-sun]="darkMode"></i>
             </a>
-        </li>
-        <!-- Language Selector -->
-        <li class="nav-item dropdown">
-            <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                <img [src]="selectedLanguage.flag" alt="Flag" width="20" class="me-1">
-                {{ selectedLanguage.label }}
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" *ngFor="let lang of languages" (click)="changeLanguage(lang)">
-                    <img [src]="lang.flag" alt="Flag" width="20" class="me-1"> {{ lang.label }}
-                </a>
-            </div>
         </li>
 
         <!-- User Menu -->
@@ -58,14 +95,14 @@
                         <p class="text-muted mb-0">{{currentUser?.type}}</p>
                     </div>
                 </div>
+                <a class="dropdown-item" routerLink="/admin/settings">
+                    <i class="feather-settings me-1"></i>
+                    <span>{{ 'SIDEBAR.SETTINGS' | translate }}</span>
+                </a>
                 <a class="dropdown-item" (click)="logout()">
                     <i class="fa fa-sign-out-alt me-2"></i> {{ 'LOGOUT' | translate }}
                 </a>
             </div>
         </li>
-        <!-- /User Menu -->
-
     </ul>
-    <!-- /Header Right Menu -->
-
 </div>

@@ -27,10 +27,15 @@ export class AuthService {
   }
 
   getcurrentuser(): any {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/current_user_info');
+    return this.http.get(
+      `${environment.urlBackend}` + 'api/v1/current_user_info'
+    );
   }
+
   getcurrentcompany(): any {
-    return this.http.get(`${environment.urlBackend}` + 'api/v1/current_company_info');
+    return this.http.get(
+      `${environment.urlBackend}` + 'api/v1/current_company_info'
+    );
   }
   // Get user role from session storage (Admin, Doctor, Patient)
   getRole(): string | null {
@@ -48,7 +53,10 @@ export class AuthService {
   // Helper function to set login data in session storage after successful login
   setLoginData(userData: any, userType: string, token: string): void {
     // Set user data based on type (admin, doctor, patient)
-    sessionStorage.setItem(`${userType.toLowerCase()}data`, JSON.stringify(userData));
+    sessionStorage.setItem(
+      `${userType.toLowerCase()}data`,
+      JSON.stringify(userData)
+    );
     sessionStorage.setItem('user_type', userType);
     sessionStorage.setItem('access_token', token);
     this.logged_in = true;
@@ -59,50 +67,91 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!sessionStorage.getItem('access_token');
   }
-  updatepassword(id:string, password: string, newPassword: string, confirmPassword: string): Observable<any>{
-    const body = { password, newPassword, confirmPassword};
-    return this.http.patch(environment.urlBackend+'api/v1/updatepassword/' + id , body )
+  updatepassword(
+    id: string,
+    password: string,
+    newPassword: string,
+    confirmPassword: string
+  ): Observable<any> {
+    const body = { password, newPassword, confirmPassword };
+    return this.http.patch(
+      environment.urlBackend + 'api/v1/updatepassword/' + id,
+      body
+    );
   }
   updateEmailNotificationPreference(userId: string, isEmailable: boolean) {
-    return this.http.put(environment.urlBackend+`api/v1/users/${userId}/email_notifications`, { is_emailable: isEmailable });
+    return this.http.put(
+      environment.urlBackend + `api/v1/users/${userId}/email_notifications`,
+      { is_emailable: isEmailable }
+    );
   }
   updateSystemNotificationPreference(userId: string, isNotifiable: boolean) {
-      return this.http.put(environment.urlBackend+`api/v1/users/${userId}/system_notifications`, { is_notifiable: isNotifiable });
+    return this.http.put(
+      environment.urlBackend + `api/v1/users/${userId}/system_notifications`,
+      { is_notifiable: isNotifiable }
+    );
   }
   updateworkinginsatudray(userId: string, working_saturday: boolean) {
-    return this.http.put(environment.urlBackend+`api/v1/users/${userId}/working_saturday`, { working_saturday: working_saturday });
+    return this.http.put(
+      environment.urlBackend + `api/v1/users/${userId}/working_saturday`,
+      { working_saturday: working_saturday }
+    );
   }
   updatetoggleSmsNotifications(userId: string, is_smsable: boolean) {
-    return this.http.put(environment.urlBackend+`api/v1/users/${userId}/sms_notifications`, { is_smsable: is_smsable });
+    return this.http.put(
+      environment.urlBackend + `api/v1/users/${userId}/sms_notifications`,
+      { is_smsable: is_smsable }
+    );
   }
   updateWorkingOnLine(userId: string, working_on_line: boolean) {
-    return this.http.put(environment.urlBackend+`api/v1/users/${userId}/working_online`, { working_on_line: working_on_line });
+    return this.http.put(
+      environment.urlBackend + `api/v1/users/${userId}/working_online`,
+      { working_on_line: working_on_line }
+    );
   }
 
-  updateUserWalletAndAmount(userId: number, data: {  amount: string }) {
-    return this.http.put(environment.urlBackend+`/api/v1/users/${userId}/update_wallet_amount`, data);
-}
+  updateUserWalletAndAmount(userId: number, data: { amount: string }) {
+    return this.http.put(
+      environment.urlBackend + `/api/v1/users/${userId}/update_wallet_amount`,
+      data
+    );
+  }
 
-paywithkonnect(data:any){
-  let headers = new HttpHeaders({'x-api-key':'672de5dabe3490452069964a:Ne4ehQWwQbDgDOqBpFxzyKj8VEjkbeN'});
-  let options = { headers: headers };
-  return this.http.post<any>("https://api.preprod.konnect.network/api/v2/payments/init-payment",data,options)
-
-}
+  paywithkonnect(data: any) {
+    let headers = new HttpHeaders({
+      'x-api-key': '672de5dabe3490452069964a:Ne4ehQWwQbDgDOqBpFxzyKj8VEjkbeN',
+    });
+    let options = { headers: headers };
+    return this.http.post<any>(
+      'https://api.preprod.konnect.network/api/v2/payments/init-payment',
+      data,
+      options
+    );
+  }
   ChangeDefaultLanguage(id: string, newdata: FormData) {
-    return this.http.put(`${environment.urlBackend}api/v1/users/${id}/changeLanguage`, newdata);
+    return this.http.put(
+      `${environment.urlBackend}api/v1/users/${id}/changeLanguage`,
+      newdata
+    );
   }
 
+  updateUserPhoneNumber(userId: number, data: { phone_number: string }) {
+    return this.http.put(
+      environment.urlBackend + `/api/v1/users/${userId}/update_phone_number`,
+      data
+    );
+  }
 
-updateUserPhoneNumber(userId: number, data: {  phone_number: string }) {
-  return this.http.put(environment.urlBackend+`/api/v1/users/${userId}/update_phone_number`, data);
-}
-
-sendresetlink (email:any)  {
-  return this.http.post(environment.urlBackend+'api/v1/password_resets/',email) ;
-}
-resetpassword(token:string,email:any){
-  return this.http.put(environment.urlBackend+'api/v1/password_resets/'+token,email);
-}
-
+  sendresetlink(email: any) {
+    return this.http.post(
+      environment.urlBackend + 'api/v1/password_resets/',
+      email
+    );
+  }
+  resetpassword(token: string, email: any) {
+    return this.http.put(
+      environment.urlBackend + 'api/v1/password_resets/' + token,
+      email
+    );
+  }
 }

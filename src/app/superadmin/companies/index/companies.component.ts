@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class CompaniesComponent implements OnInit {
   companies: any;
   searchTerm: string = '';
-  pageSize: number = 10;
+  pageSize: number = 9;
   p: number = 1;
   loading: boolean = false;
   isLoading = false;

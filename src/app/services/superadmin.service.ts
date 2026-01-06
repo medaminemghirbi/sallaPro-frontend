@@ -15,6 +15,8 @@ export class SuperadminService {
   categories() {
     return this.http.get(`${environment.urlBackend}` + 'api/v1/categories/');
   }
+  
+
   companies() {
     return this.http.get(`${environment.urlBackend}` + 'api/v1/companies/');
   }

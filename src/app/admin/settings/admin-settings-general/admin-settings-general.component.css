@@ -1,0 +1,25 @@
+.logo-preview-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+.logo-preview {
+  max-width: 200px;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.logo-placeholder {
+  text-align: center;
+  padding: 20px;
+}
+
+.dark-mode .logo-preview-container {
+  background-color: #1a202b;
+  border-color: #2c3440;
+}

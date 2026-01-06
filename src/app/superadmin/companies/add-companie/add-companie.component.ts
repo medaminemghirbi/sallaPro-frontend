@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SuperadminService } from 'src/app/services/superadmin.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-add-companie',
@@ -11,8 +12,13 @@ import { SuperadminService } from 'src/app/services/superadmin.service';
 })
 export class AddCompanieComponent implements OnInit {
   companyForm!: FormGroup;
-  companyTypes: any;
+  companyTypes: any[] = [];
+  filteredCompanyTypes: any[] = [];
   isLoading = false;
+  loading = false;
+  searchTerm = '';
+  selectedCompanyType: any = null;
+  showCompanyTypeDropdown = false;
 
   constructor(
     private fb: FormBuilder,
@@ -22,6 +28,7 @@ export class AddCompanieComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadCompanyTypes();
     this.companyForm = this.fb.group(
       {
         firstname: ['', Validators.required],
@@ -32,10 +39,49 @@ export class AddCompanieComponent implements OnInit {
         company_name: ['', Validators.required],
         billing_address: [''],
         description: [''],
+        categorie_id: [''],
       },
       { validators: this.passwordMatchValidator }
     );
+  }
 
+  async loadCompanyTypes() {
+    this.loading = true;
+    try {
+      this.companyTypes = (await firstValueFrom(
+        this.superadminService.categories()
+      )) as any[];
+      this.filteredCompanyTypes = this.companyTypes;
+    } catch (err) {
+      console.error('Failed to load company types', err);
+      this.toastr.error('Failed to load company types');
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  filterCompanyTypes() {
+    if (!this.searchTerm) {
+      this.filteredCompanyTypes = this.companyTypes;
+    } else {
+      this.filteredCompanyTypes = this.companyTypes.filter((type: any) =>
+        type.name?.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
+
+  selectCompanyType(type: any) {
+    this.selectedCompanyType = type;
+    this.companyForm.get('company_type_id')?.setValue(type.id);
+    this.showCompanyTypeDropdown = false;
+    this.searchTerm = '';
+  }
+
+  clearCompanyType() {
+    this.selectedCompanyType = null;
+    this.companyForm.get('company_type_id')?.setValue('');
+    this.searchTerm = '';
+    this.filteredCompanyTypes = this.companyTypes;
   }
 
   passwordMatchValidator(form: FormGroup) {
@@ -44,8 +90,6 @@ export class AddCompanieComponent implements OnInit {
       ? null
       : { mismatch: true };
   }
-
-
 
   onSubmit() {
     if (this.companyForm.invalid) return;

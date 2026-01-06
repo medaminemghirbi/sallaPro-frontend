@@ -6,10 +6,10 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
-  HTTP_INTERCEPTORS,
-  HttpClient,
-  provideHttpClient,
-  withInterceptorsFromDi,
+    HTTP_INTERCEPTORS,
+    HttpClient,
+    provideHttpClient,
+    withInterceptorsFromDi,
 } from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,6 +43,10 @@ import { IndexComponent } from './admin/client/index/index.component';
 import { AddClientComponent } from './admin/client/add-client/add-client.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapPickerComponent } from './admin/client/map-picker/map-picker.component';
+import { AdminSettingsComponent } from './admin/settings/admin-settings.component';
+import { AdminSettingsSiteParamsComponent } from './admin/settings/admin-settings-site-params/admin-settings-site-params.component';
+import { AdminSettingsImportExportComponent } from './admin/settings/admin-settings-import-export/admin-settings-import-export.component';
+import { AdminSettingsGeneralComponent } from './admin/settings/admin-settings-general/admin-settings-general.component';
 import { EncodeUrlPipe } from './encode-url.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -70,7 +74,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     SidebarAdminComponent,
     IndexComponent,
     AddClientComponent,
-    MapPickerComponent
+    MapPickerComponent,
+    AdminSettingsComponent,
+    AdminSettingsSiteParamsComponent,
+    AdminSettingsGeneralComponent,
+    AdminSettingsImportExportComponent
   ],
   bootstrap: [AppComponent],
   imports: [

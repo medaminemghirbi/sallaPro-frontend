@@ -15,7 +15,7 @@ export class IndexComponent {
   editMode = false;
 
   searchTerm = '';
-  pageSize = 10;
+  pageSize = 9;
   p = 1;
   loading = false;
 
@@ -198,8 +198,8 @@ export class IndexComponent {
   toggleSelectAll(event: any) {
     const checked = event?.target?.checked;
     // select/unselect only current page visible items
-    const start = (this.p - 1) * (this.pageSize || 10);
-    const end = start + (this.pageSize || 10);
+    const start = (this.p - 1) * (this.pageSize || 9);
+    const end = start + (this.pageSize || 9);
     const visible = (this.filteredClients || []).slice(start, end);
     visible.forEach((c: any) => {
       const id = this.getClientId(c);
@@ -212,8 +212,8 @@ export class IndexComponent {
   areAllVisibleSelected() {
     if (!this.filteredClients || this.filteredClients.length === 0)
       return false;
-    const start = (this.p - 1) * (this.pageSize || 10);
-    const end = start + (this.pageSize || 10);
+    const start = (this.p - 1) * (this.pageSize || 9);
+    const end = start + (this.pageSize || 9);
     const visible = (this.filteredClients || []).slice(start, end);
     return (
       visible.length > 0 &&
