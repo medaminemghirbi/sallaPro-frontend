@@ -1,11 +1,8 @@
-<div class="main-wrapper">
+<div class="main-wrapper no-sidebar">
 
     <!-- Header -->
     <app-header-admin></app-header-admin>
     <ng-progress #progressBar></ng-progress>
-
-    <!-- Sidebar -->
-    <app-sidebar-admin></app-sidebar-admin>
 
     <!-- Page Wrapper -->
     <div class="page-wrapper">
@@ -40,9 +37,8 @@
                     <div class="col-lg-2 col-md-3">
                         <select class="form-select" [(ngModel)]="pageSize" (ngModelChange)="p = 1">
                             <option value="5">5 {{ 'CLIENTS.PER_PAGE' | translate }}</option>
-                            <option value="10">10 {{ 'CLIENTS.PER_PAGE' | translate }}</option>
+                            <option value="9">9 {{ 'CLIENTS.PER_PAGE' | translate }}</option>
                             <option value="20">20 {{ 'CLIENTS.PER_PAGE' | translate }}</option>
-
                         </select>
                     </div>
 

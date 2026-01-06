@@ -1,0 +1,63 @@
+<div class="main-wrapper no-sidebar">
+    <app-header-admin></app-header-admin>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+
+            <div class="settings-shell">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title mb-0">{{ 'SETTINGS.TITLE' | translate }}</h5>
+                        </div>
+
+                        <!-- Tabs Navigation -->
+                        <ul class="nav nav-tabs mb-4" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" href="#general" data-bs-toggle="tab" role="tab">
+                                    <i class="fa fa-building me-2"></i>{{ 'SETTINGS.TAB_GENERAL' | translate }}
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="#site-params" data-bs-toggle="tab" role="tab">
+                                    <i class="fa fa-cog me-2"></i>{{ 'SETTINGS.TAB_SITE_PARAMS' | translate }}
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="#import-export" data-bs-toggle="tab" role="tab">
+                                    <i class="fa fa-exchange me-2"></i>{{ 'SETTINGS.TAB_IMPORT_EXPORT' | translate }}
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+                            <!-- General Tab -->
+                            <div class="tab-pane fade show active" id="general" role="tabpanel">
+                                <app-admin-settings-general [currentCompany]="currentCompany"
+                                    (companyInfoUpdated)="updateCompanyInfo($event)">
+                                </app-admin-settings-general>
+                            </div>
+
+                            <!-- Site Parameters Tab -->
+                            <div class="tab-pane fade" id="site-params" role="tabpanel">
+                                <app-admin-settings-site-params [languages]="languages"
+                                    [selectedLanguage]="selectedLanguage" [preferences]="preferences"
+                                    [timezones]="timezones" [selectedTimezone]="selectedTimezone"
+                                    (languageChanged)="changeLanguage($event)"
+                                    (timezoneChanged)="changeTimezone($event)" (darkModeToggled)="toggleDarkMode()"
+                                    (notificationToggled)="toggleNotification($event)">
+                                </app-admin-settings-site-params>
+                            </div>
+
+                            <!-- Import/Export Tab -->
+                            <div class="tab-pane fade" id="import-export" role="tabpanel">
+                                <app-admin-settings-import-export></app-admin-settings-import-export>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

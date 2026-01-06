@@ -1,0 +1,64 @@
+<div class="settings-grid">
+    <!-- Company Name -->
+    <div class="settings-section">
+        <div class="mb-3">
+            <label class="form-label">{{ 'SETTINGS.COMPANY_NAME' | translate }}</label>
+            <input type="text" class="form-control" [(ngModel)]="companyForm.companyName"
+                placeholder="{{ 'SETTINGS.COMPANY_NAME_PLACEHOLDER' | translate }}" />
+        </div>
+    </div>
+
+    <!-- Billing Address -->
+    <div class="settings-section">
+        <div class="mb-3">
+            <label class="form-label">{{ 'SETTINGS.BILLING_ADDRESS' | translate }}</label>
+            <textarea class="form-control" [(ngModel)]="companyForm.billingAddress"
+                placeholder="{{ 'SETTINGS.BILLING_ADDRESS_PLACEHOLDER' | translate }}" rows="3"></textarea>
+        </div>
+    </div>
+
+    <!-- Address -->
+    <div class="settings-section">
+        <div class="mb-3">
+            <label class="form-label">{{ 'SETTINGS.ADDRESS' | translate }}</label>
+            <textarea class="form-control" [(ngModel)]="companyForm.address"
+                placeholder="{{ 'SETTINGS.ADDRESS_PLACEHOLDER' | translate }}" rows="3"></textarea>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="settings-section">
+        <div class="mb-3">
+            <label class="form-label">{{ 'SETTINGS.CATEGORIES' | translate }}</label>
+            <input type="text" class="form-control" [(ngModel)]="companyForm.categories"
+                placeholder="{{ companyForm.categories ? '' : ('SETTINGS.CATEGORIES_NOT_SPECIFIED' | translate) }}"
+                disabled readonly
+                style="cursor: not-allowed; user-select: none; background-color: #e9ecef; opacity: 0.7; color: #495057;" />
+        </div>
+    </div>
+
+    <!-- Logo -->
+    <div class="settings-section">
+        <div class="mb-3">
+            <label class="form-label">{{ 'SETTINGS.LOGO' | translate }}</label>
+            <div class="logo-preview-container mb-3">
+                <img *ngIf="logoPreview" [src]="logoPreview" alt="Logo Preview" class="logo-preview" />
+                <div *ngIf="!logoPreview" class="logo-placeholder">
+                    <i class="fa fa-image fa-3x text-muted"></i>
+                    <p class="text-muted mt-2">{{ 'SETTINGS.NO_LOGO' | translate }}</p>
+                </div>
+            </div>
+            <input type="file" class="form-control" accept="image/*" (change)="onLogoSelected($event)" />
+            <button *ngIf="logoPreview" type="button" class="btn btn-sm btn-danger mt-2" (click)="removeLogo()">
+                <i class="fa fa-trash me-1"></i>{{ 'SETTINGS.REMOVE_LOGO' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="settings-section">
+        <button type="button" class="btn btn-primary w-100" (click)="saveCompanyInfo()">
+            <i class="fa fa-save me-1"></i>{{ 'SETTINGS.SAVE' | translate }}
+        </button>
+    </div>
+</div>

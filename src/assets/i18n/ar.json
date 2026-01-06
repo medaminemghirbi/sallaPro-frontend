@@ -14,6 +14,8 @@
     "COMPANY_INFO": "معلومات الشركة",
     "ADMIN_INFO": "معلومات المسؤول",
     "COMPANY_NAME": "اسم الشركة",
+    "COMPANY_TYPE": "نوع الشركة",
+    "SELECT_COMPANY_TYPE": "البحث واختيار نوع الشركة...",
     "BILLING_ADDRESS": "عنوان الفوترة",
     "DESCRIPTION": "الوصف",
     "FIRST_NAME": "الاسم الأول",
@@ -22,7 +24,9 @@
     "PASSWORD": "كلمة المرور",
     "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
     "SAVE_COMPANY": "حفظ الشركة",
-    "SAVING": "جارٍ الحفظ..."
+    "SAVING": "جارٍ الحفظ...",
+    "NO_RESULTS": "لم يتم العثور على نتائج",
+    "SELECTED": "محدد"
   },
 
   "COMPANY": {
@@ -94,6 +98,7 @@
   "SIDEBAR": {
     "MENU_TITLE": "قائمة المشرف العام",
     "MENU_ADMIN": "قائمة المشرف العام",
+    "REPERTOIRES": "الدلائل",
     "COMPANIES": "الشركات",
     "CATEGORIES": "الفئات",
     "PLANNING": "الجدولة",
@@ -102,7 +107,55 @@
     "INVENTORY": "المخزون",
     "VEHICLES": "المركبات",
     "RESERVATIONS": "الحجوزات",
-    "CONTRACTS": "العقود"
+    "DEVIS": "عروض الأسعار",
+    "CONTRACTS": "العقود",
+    "SETTINGS": "الإعدادات",
+    "SUPPLIERS": "الموردون",
+    "COMPANY_LIBRARY": "مكتبة الشركة",
+    "MATERIALS": "المعدات",
+    "MAINTENANCE": "المتابعة والصيانة",
+    "TEAM": "الفريق"
+  },
+  "HEADER": {
+    "SETTINGS": "الإعدادات",
+    "LANGUAGE": "اللغة",
+    "TIMEZONE": "المنطقة الزمنية",
+    "SETTINGS_PAGE": "الإعدادات",
+    "SELECT_TIMEZONE": "اختر توقيت GMT"
+  },
+  "SETTINGS": {
+    "TITLE": "الإعدادات",
+    "SUBTITLE": "إدارة اللغة والمنطقة الزمنية المفضلة لديك.",
+    "BACK": "العودة إلى لوحة التحكم",
+    "LANGUAGE_HINT": "اختر لغة الواجهة المفضلة.",
+    "TIMEZONE_HINT": "اختر توقيت GMT للعرض والمواعيد.",
+    "APPEARANCE": "المظهر",
+    "APPEARANCE_HINT": "تفعيل السمة الداكنة وتفضيلات العرض.",
+    "DARK_MODE": "تفعيل الوضع الداكن",
+    "NOTIFICATIONS": "الإشعارات",
+    "NOTIFICATIONS_HINT": "اختر كيفية تلقي تنبيهات التطبيق.",
+    "NOTIF_EMAIL": "إشعارات البريد الإلكتروني",
+    "NOTIF_SMS": "إشعارات الرسائل القصيرة",
+    "SECTION_LOCALIZATION": "اللغة والتوقيت",
+    "SECTION_DISPLAY": "العرض",
+    "SECTION_COMMUNICATION": "التواصل",
+    "SAVED": "تم الحفظ",
+    "TAB_GENERAL": "عام",
+    "TAB_SITE_PARAMS": "معاملات الموقع",
+    "TAB_IMPORT_EXPORT": "استيراد/تصدير",
+    "IMPORT_EXPORT_HINT": "قريباً. استيراد وتصدير بيانات هنا.",
+    "COMPANY_NAME": "اسم الشركة",
+    "COMPANY_NAME_PLACEHOLDER": "أدخل اسم الشركة",
+    "BILLING_ADDRESS": "عنوان الفواتير",
+    "BILLING_ADDRESS_PLACEHOLDER": "أدخل عنوان الفواتير",
+    "ADDRESS": "العنوان",
+    "ADDRESS_PLACEHOLDER": "أدخل عنوان الشركة",
+    "LOGO": "شعار الشركة",
+    "NO_LOGO": "لم يتم تحديد شعار",
+    "REMOVE_LOGO": "حذف الشعار",
+    "CATEGORIES": "الفئات",
+    "CATEGORIES_NOT_SPECIFIED": "غير محدد",
+    "SAVE": "حفظ التغييرات"
   },
   "MESSAGES": {
     "LANGUAGE_UPDATED": "تم تحديث اللغة!"

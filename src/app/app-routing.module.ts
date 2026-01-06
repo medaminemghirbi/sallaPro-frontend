@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/dashboard-admin/admin.component';
 import { AdminGuard } from './guards/admin.guard';
 import { IndexComponent } from './admin/client/index/index.component';
 import { AddClientComponent } from './admin/client/add-client/add-client.component';
+import { AdminSettingsComponent } from './admin/settings/admin-settings.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'admin/calendar',component:CalendarComponent, canActivate:[AdminGuard]},
   {path:'admin/clients', component: IndexComponent, canActivate:[AdminGuard]},
   {path:'admin/clients/add-client', component: AddClientComponent, canActivate:[AdminGuard]},
+  {path:'admin/settings', component: AdminSettingsComponent, canActivate:[AdminGuard]},
   ///***Superadmin */
   { path: 'superadmin/dashboard', canActivate: [SuperadminGuard], component: DashboardSuperadminComponent },
   {path: 'superadmin/companies',component:CompaniesComponent, canActivate: [SuperadminGuard]},

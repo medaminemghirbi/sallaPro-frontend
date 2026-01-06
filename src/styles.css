@@ -196,6 +196,13 @@ body.dark-mode .btn-outline-primary:hover {
   color: #000;
 }
 
+/* Layout variant without sidebar */
+.no-sidebar .page-wrapper {
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 body.dark-mode .btn-outline-info {
   color: #17a2b8;
   border-color: #17a2b8;

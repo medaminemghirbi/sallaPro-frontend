@@ -29,13 +29,54 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <label class="form-label">{{ 'ADD_COMPANY.BILLING_ADDRESS' | translate }}</label>
+                                        <label class="form-label">{{ 'ADD_COMPANY.COMPANY_TYPE' | translate }}</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control"
+                                                placeholder="{{ 'ADD_COMPANY.SELECT_COMPANY_TYPE' | translate }}"
+                                                [(ngModel)]="searchTerm" (ngModelChange)="filterCompanyTypes()"
+                                                (focus)="showCompanyTypeDropdown = true"
+                                                [ngModelOptions]="{standalone: true}">
+                                            <button *ngIf="selectedCompanyType" type="button"
+                                                class="btn btn-sm btn-link position-absolute end-0 top-50 translate-middle-y"
+                                                (click)="clearCompanyType()" style="text-decoration: none;">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+
+                                            <!-- Dropdown -->
+                                            <div *ngIf="showCompanyTypeDropdown" class="dropdown-menu w-100 show"
+                                                style="position: absolute; top: 100%; left: 0; z-index: 1000;">
+                                                <div *ngIf="filteredCompanyTypes.length > 0; else noResults"
+                                                    class="list-group list-group-flush">
+                                                    <button *ngFor="let type of filteredCompanyTypes" type="button"
+                                                        class="list-group-item list-group-item-action"
+                                                        (click)="selectCompanyType(type)"
+                                                        [ngClass]="{'active': selectedCompanyType?.id === type.id}">
+                                                        {{ type.name }}
+                                                    </button>
+                                                </div>
+                                                <ng-template #noResults>
+                                                    <div class="list-group-item text-muted text-center py-3">
+                                                        {{ 'ADD_COMPANY.NO_RESULTS' | translate }}
+                                                    </div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                        <small *ngIf="selectedCompanyType" class="text-muted d-block mt-1">
+                                            <i class="fa fa-check text-success me-1"></i>{{ 'ADD_COMPANY.SELECTED' |
+                                            translate }}: {{ selectedCompanyType.name }}
+                                        </small>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label class="form-label">{{ 'ADD_COMPANY.BILLING_ADDRESS' | translate
+                                            }}</label>
                                         <input class="form-control" formControlName="billing_address">
                                     </div>
 
                                     <div class="col-md-12">
                                         <label class="form-label">{{ 'ADD_COMPANY.DESCRIPTION' | translate }}</label>
-                                        <textarea rows="3" class="form-control" formControlName="description"></textarea>
+                                        <textarea rows="3" class="form-control"
+                                            formControlName="description"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -66,8 +107,10 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="form-label">{{ 'ADD_COMPANY.CONFIRM_PASSWORD' | translate }}</label>
-                                        <input type="password" class="form-control" formControlName="password_confirmation">
+                                        <label class="form-label">{{ 'ADD_COMPANY.CONFIRM_PASSWORD' | translate
+                                            }}</label>
+                                        <input type="password" class="form-control"
+                                            formControlName="password_confirmation">
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +120,8 @@
                         <!-- SUBMIT -->
                         <div class="text-end mt-4">
                             <button class="btn btn-primary" [disabled]="companyForm.invalid || isLoading">
-                                {{ isLoading ? ('ADD_COMPANY.SAVING' | translate) : ('ADD_COMPANY.SAVE_COMPANY' | translate) }}
+                                {{ isLoading ? ('ADD_COMPANY.SAVING' | translate) : ('ADD_COMPANY.SAVE_COMPANY' |
+                                translate) }}
                             </button>
                         </div>
 

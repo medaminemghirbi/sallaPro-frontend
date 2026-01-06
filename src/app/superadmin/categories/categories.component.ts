@@ -12,7 +12,7 @@ export class CategoriesComponent implements OnInit {
   filteredCategories: any[] = [];
 
   searchTerm = '';
-  pageSize = 10;
+  pageSize = 9;
   p = 1;
   loading = false;
 

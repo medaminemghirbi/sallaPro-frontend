@@ -1,0 +1,64 @@
+<div class="settings-grid">
+  <!-- Language -->
+  <div class="settings-section">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h6 class="mb-0">{{ 'HEADER.LANGUAGE' | translate }}</h6>
+      <span class="text-muted small">{{ 'SETTINGS.LANGUAGE_HINT' | translate }}</span>
+    </div>
+    <div class="list-group">
+      <button *ngFor="let lang of languages" type="button"
+        class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+        [class.active]="lang.code === selectedLanguage.code" (click)="changeLanguage(lang)">
+        <img [src]="lang.flag" [alt]="lang.label" width="22" height="22" class="rounded-circle" />
+        <span class="fw-semibold">{{ lang.label }}</span>
+        <span class="ms-auto" *ngIf="lang.code === selectedLanguage.code">
+          <i class="feather-check"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Timezone -->
+  <div class="settings-section">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h6 class="mb-0">{{ 'HEADER.TIMEZONE' | translate }}</h6>
+      <span class="text-muted small">{{ 'SETTINGS.TIMEZONE_HINT' | translate }}</span>
+    </div>
+    <select class="form-select" [ngModel]="selectedTimezone" (ngModelChange)="changeTimezone($event)">
+      <option *ngFor="let tz of timezones" [ngValue]="tz.value">{{ tz.label }}</option>
+    </select>
+  </div>
+
+  <!-- Appearance -->
+  <div class="settings-section">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h6 class="mb-0">{{ 'SETTINGS.APPEARANCE' | translate }}</h6>
+      <span class="badge bg-light text-dark">{{ 'SETTINGS.SECTION_DISPLAY' | translate }}</span>
+    </div>
+    <p class="text-muted small">{{ 'SETTINGS.APPEARANCE_HINT' | translate }}</p>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="darkModeToggle"
+        [checked]="preferences.darkMode" (change)="toggleDarkMode()">
+      <label class="form-check-label" for="darkModeToggle">{{ 'SETTINGS.DARK_MODE' | translate }}</label>
+    </div>
+  </div>
+
+  <!-- Notifications -->
+  <div class="settings-section">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h6 class="mb-0">{{ 'SETTINGS.NOTIFICATIONS' | translate }}</h6>
+      <span class="badge bg-light text-dark">{{ 'SETTINGS.SECTION_COMMUNICATION' | translate }}</span>
+    </div>
+    <p class="text-muted small">{{ 'SETTINGS.NOTIFICATIONS_HINT' | translate }}</p>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" id="notifEmail"
+        [checked]="preferences.notificationsEmail" (change)="toggleNotification('notificationsEmail')">
+      <label class="form-check-label" for="notifEmail">{{ 'SETTINGS.NOTIF_EMAIL' | translate }}</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="notifSms"
+        [checked]="preferences.notificationsSms" (change)="toggleNotification('notificationsSms')">
+      <label class="form-check-label" for="notifSms">{{ 'SETTINGS.NOTIF_SMS' | translate }}</label>
+    </div>
+  </div>
+</div>
