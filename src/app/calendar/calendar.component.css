@@ -39,6 +39,14 @@
 .fc-timegrid-slot:not(.fc-business-hour) {
   background-color: #f0f0f0;
   pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Override for business hours to ensure they're all enabled */
+.fc-timegrid-slot.fc-business-hour {
+  background-color: white;
+  pointer-events: all;
+  opacity: 1;
 }
 
 /* Highlight today */
@@ -50,4 +58,98 @@
 .fc-timegrid-slot-label {
   font-weight: 500;
   color: #495057;
+  font-size: 14px;
+}
+
+/* Ensure all time slots have consistent height */
+.fc-timegrid-slot {
+  min-height: 50px;
+}
+
+.fc-timegrid-slot-lane {
+  min-height: 50px;
+}
+/* Context Menu Styles */
+.context-menu {
+  position: fixed;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.context-menu-items {
+  padding: 8px 0;
+}
+
+.context-menu-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s;
+}
+
+.context-menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+.context-menu-item.danger {
+  color: #dc3545;
+}
+
+.context-menu-item.danger:hover {
+  background-color: #fff5f5;
+}
+
+.context-menu-item i {
+  width: 20px;
+  text-align: center;
+}
+
+.context-menu-divider {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 8px 0;
+}
+
+.context-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background-color: transparent;
+}
+
+/* Dark mode context menu */
+body.dark-mode .context-menu {
+  background-color: #2a2a2a;
+  border-color: #444;
+}
+
+body.dark-mode .context-menu-item {
+  color: #ffffff;
+}
+
+body.dark-mode .context-menu-item:hover {
+  background-color: #333;
+}
+
+body.dark-mode .context-menu-item.danger {
+  color: #ff6b6b;
+}
+
+body.dark-mode .context-menu-item.danger:hover {
+  background-color: #3d1f1f;
+}
+
+body.dark-mode .context-menu-divider {
+  background-color: #444;
 }

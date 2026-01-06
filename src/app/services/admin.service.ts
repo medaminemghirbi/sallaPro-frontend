@@ -27,4 +27,52 @@ export class AdminService {
       data
     );
   }
+
+  /**
+   * Export clients to specified format
+   * @param format - Export format: 'csv', 'pdf', or 'json'
+   * @param clientIds - Optional array of client IDs to export (if empty, exports all)
+   * @param filters - Optional filters to apply (search, resourceType, etc.)
+   * @returns Observable with blob data or download URL
+   */
+  exportClients(format: 'csv' | 'pdf' | 'json' | 'world', clientIds?: any[], filters?: any) {
+    const payload = {
+      format,
+      clientIds: clientIds || [],
+      filters: filters || {}
+    };
+    
+    return this.http.post(
+      `${environment.urlBackend}api/v1/clients/export`,
+      payload,
+      { 
+        responseType: 'blob',
+        observe: 'response'
+      }
+    );
+  }
+
+  /**
+   * Update client information
+   * @param id - Client ID
+   * @param data - Updated client data (address, phone_number)
+   * @returns Observable
+   */
+  updateClient(id: any, data: any) {
+    return this.http.put(
+      `${environment.urlBackend}api/v1/clients/${id}`,
+      data
+    );
+  }
+
+  /**
+   * Delete a client by ID
+   * @param id - Client ID
+   * @returns Observable
+   */
+  deleteClient(id: any) {
+    return this.http.delete(
+      `${environment.urlBackend}api/v1/clients/${id}`
+    );
+  }
 }

@@ -45,5 +45,93 @@
         </ng-template>
       </full-calendar>
 
+      <!-- Context Menu -->
+      <div *ngIf="showContextMenu" 
+           class="context-menu"
+           [style.left.px]="contextMenuX" 
+           [style.top.px]="contextMenuY"
+           (click)="$event.stopPropagation()">
+        
+        <!-- Event Context Menu -->
+        <div *ngIf="contextMenuType === 'event'" class="context-menu-items">
+          <div class="context-menu-item" (click)="viewEventDetails()">
+            <i class="fa fa-eye me-2"></i>
+            {{ 'CALENDAR.VIEW_DETAILS' | translate }}
+          </div>
+          <div class="context-menu-item" (click)="editEvent()">
+            <i class="fa fa-edit me-2"></i>
+            {{ 'CALENDAR.EDIT' | translate }}
+          </div>
+          <div class="context-menu-divider"></div>
+          <div class="context-menu-item danger" (click)="deleteEvent()">
+            <i class="fa fa-trash me-2"></i>
+            {{ 'CALENDAR.DELETE' | translate }}
+          </div>
+        </div>
+
+        <!-- Slot Context Menu -->
+        <div *ngIf="contextMenuType === 'slot'" class="context-menu-items">
+          <div class="context-menu-item" (click)="addNewEvent()">
+            <i class="fa fa-plus me-2"></i>
+            {{ 'CALENDAR.ADD_EVENT' | translate }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlay to close context menu -->
+      <div *ngIf="showContextMenu" class="context-menu-overlay" (click)="closeContextMenu()"></div>
+
+      <!-- Event Creation Modal -->
+      <div class="modal fade" [class.show]="showEventModal" [style.display]="showEventModal ? 'block' : 'none'" 
+           tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">{{ 'CALENDAR.CREATE_EVENT' | translate }}</h5>
+              <button type="button" class="btn-close" (click)="closeEventModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label class="form-label">{{ 'CALENDAR.EVENT_TITLE' | translate }}</label>
+                  <input type="text" class="form-control" [(ngModel)]="eventForm.title" 
+                         name="title" placeholder="{{ 'CALENDAR.ENTER_TITLE' | translate }}" required>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">{{ 'CALENDAR.START_TIME' | translate }}</label>
+                    <input type="datetime-local" class="form-control" [(ngModel)]="eventForm.start" 
+                           name="start" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">{{ 'CALENDAR.END_TIME' | translate }}</label>
+                    <input type="datetime-local" class="form-control" [(ngModel)]="eventForm.end" 
+                           name="end" required>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">{{ 'CALENDAR.DESCRIPTION' | translate }}</label>
+                  <textarea class="form-control" rows="3" [(ngModel)]="eventForm.description" 
+                            name="description" placeholder="{{ 'CALENDAR.ENTER_DESCRIPTION' | translate }}"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeEventModal()">
+                {{ 'CALENDAR.CANCEL' | translate }}
+              </button>
+              <button type="button" class="btn btn-primary" (click)="saveEvent()">
+                {{ 'CALENDAR.SAVE_EVENT' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Backdrop -->
+      <div *ngIf="showEventModal" class="modal-backdrop fade show"></div>
+
     </div>
   </div>

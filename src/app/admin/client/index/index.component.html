@@ -13,44 +13,90 @@
 
             <!-- Page Header -->
             <div class="page-header mb-4">
-                <div class="row align-items-center">
-
-                    <!-- Title -->
-                    <div class="col-md-3">
+                <!-- Title Row -->
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-12">
                         <h3 class="page-title mb-0">
                             {{ 'CLIENTS.CLIENTS_COUNT' | translate:{count: clients?.length} }}
                         </h3>
                     </div>
+                </div>
 
+                <!-- Filters and Actions Row -->
+                <div class="row align-items-center g-3">
                     <!-- Search -->
-                    <div class="col-md-4">
-                        <input
-                            type="text"
-                            class="form-control"
-                            [(ngModel)]="searchTerm"
-                            (ngModelChange)="applyFilters()"
-                            placeholder="{{ 'CLIENTS.SEARCH_PLACEHOLDER' | translate }}"
-                        />
+                    <div class="col-lg-4 col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control" [(ngModel)]="searchTerm"
+                                (ngModelChange)="applyFilters()"
+                                placeholder="{{ 'CLIENTS.SEARCH_PLACEHOLDER' | translate }}" />
+                        </div>
                     </div>
 
                     <!-- Page Size -->
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-md-3">
                         <select class="form-select" [(ngModel)]="pageSize" (ngModelChange)="p = 1">
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="20">20</option>
+                            <option value="5">5 {{ 'CLIENTS.PER_PAGE' | translate }}</option>
+                            <option value="10">10 {{ 'CLIENTS.PER_PAGE' | translate }}</option>
+                            <option value="20">20 {{ 'CLIENTS.PER_PAGE' | translate }}</option>
+
                         </select>
                     </div>
 
-                    <!-- Add Client -->
-                    <div class="col-md-3 text-end">
-                        <button class="btn btn-primary"   routerLink="/admin/clients/add-client">
-                            <i class="fe fe-plus me-1"></i>
-                            {{ 'CLIENTS.ADD_NEW_CLIENT' | translate }}
-                        </button>
-                    </div>
+                    <!-- Action Buttons -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="d-flex align-items-center justify-content-lg-end justify-content-start gap-2">
+                            <!-- Normal Mode: Export Data and Add New Client Buttons -->
+                            <button *ngIf="!editMode" type="button" class="btn btn-outline-primary btn-sm"
+                                (click)="toggleEditMode()">
+                                <i class="fa fa-download me-1"></i>
+                                {{ 'CLIENTS.EXPORT_DATA' | translate }}
+                            </button>
+                            <button *ngIf="!editMode" class="btn btn-primary btn-sm"
+                                routerLink="/admin/clients/add-client">
+                                <i class="fa fa-plus me-1"></i>
+                                {{ 'CLIENTS.ADD_NEW_CLIENT' | translate }}
+                            </button>
 
+                            <!-- Export Mode: Format Buttons -->
+                            <div *ngIf="editMode" class="d-flex align-items-center gap-2">
+                                <span class="badge bg-info">
+                                    <i class="fa fa-check-square me-1"></i>
+                                    {{ selectedIds.size }} {{ 'CLIENTS.SELECTED' | translate }}
+                                </span>
+
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-success btn-sm"
+                                        [disabled]="selectedIds.size === 0" (click)="exportClients('csv', true)">
+                                        <i class="fa fa-file-csv me-1"></i>
+                                        CSV
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        [disabled]="selectedIds.size === 0" (click)="exportClients('pdf', true)">
+                                        <i class="fa fa-file-pdf me-1"></i>
+                                        PDF
+                                    </button>
+
+                                    <button type="button" class="btn btn-info btn-sm"
+                                        [disabled]="selectedIds.size === 0" (click)="exportClients('json', true)">
+                                        <i class="fa fa-globe me-1"></i>
+                                        JSON
+                                    </button>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-danger btn-sm" (click)="toggleEditMode()">
+                                    <i class="fa fa-times me-1"></i>
+                                    {{ 'CLIENTS.CANCEL' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
             <!-- /Page Header -->
 
@@ -67,42 +113,75 @@
                                 </div>
 
                                 <!-- Clients Table -->
-                                <table
-                                    *ngIf="!loading && filteredClients.length > 0"
+                                <table *ngIf="!loading && filteredClients.length > 0"
                                     class="table table-hover table-center mb-0">
 
                                     <thead>
                                         <tr>
+                                            <th>
+                                                <input *ngIf="editMode" type="checkbox"
+                                                    (change)="toggleSelectAll($event)"
+                                                    [checked]="areAllVisibleSelected()">
+                                            </th>
                                             <th>{{ 'CLIENTS.TABLE.ID' | translate }}</th>
                                             <th>{{ 'CLIENTS.TABLE.NAME' | translate }}</th>
                                             <th>{{ 'CLIENTS.TABLE.EMAIL' | translate }}</th>
                                             <th>{{ 'CLIENTS.TABLE.PHONE' | translate }}</th>
+                                            <th>{{ 'CLIENTS.TABLE.LOCATION' | translate }}</th>
                                             <th>{{ 'CLIENTS.TABLE.CREATED_AT' | translate }}</th>
-                                            <th>{{ 'CLIENTS.TABLE.ACTIONS' | translate }}</th>
+                                            <th *ngIf="!editMode">{{ 'CLIENTS.TABLE.ACTIONS' | translate }}</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr
-                                            *ngFor="let client of filteredClients | paginate: { itemsPerPage: pageSize, currentPage: p }">
+                                        <tr *ngFor="let client of filteredClients | paginate: { itemsPerPage: pageSize, currentPage: p }"
+                                            [class.table-active]="isSelected(client)">
+                                            <td>
+                                                <input *ngIf="editMode" type="checkbox" (change)="toggleSelect(client)"
+                                                    [checked]="isSelected(client)">
+                                            </td>
                                             <td>{{ client.unique_code }}</td>
 
                                             <td>{{ client.full_name }}</td>
                                             <td>{{ client.email }}</td>
                                             <td>{{ client.phone_number }}</td>
                                             <td>
+                                                <div *ngIf="client.address" class="location-cell">
+                                                    <small class="d-block mb-2">{{ client.address }}</small>
+                                                    <a *ngIf="client.latitude && client.longitude" 
+                                                        [href]="'https://www.google.com/maps?q=' + client.latitude + ',' + client.longitude"
+                                                        target="_blank" 
+                                                        class="btn btn-sm btn-outline-info">
+                                                        <i class="fa fa-map-marker me-1"></i>
+                                                        {{ 'CLIENTS.VIEW_MAP' | translate }}
+                                                    </a>
+                                                    <a *ngIf="!client.latitude || !client.longitude" 
+                                                        [href]="'https://www.google.com/maps/search/' + (client.address | encodeUrl)"
+                                                        target="_blank" 
+                                                        class="btn btn-sm btn-outline-info">
+                                                        <i class="fa fa-map-marker me-1"></i>
+                                                        {{ 'CLIENTS.VIEW_MAP' | translate }}
+                                                    </a>
+                                                </div>
+                                                <small *ngIf="!client.address" class="text-muted">{{ 'CLIENTS.NO_LOCATION' | translate }}</small>
+                                            </td>
+                                            <td>
                                                 {{ client.created_at | date:'dd MMM yyyy' }}
                                                 <br />
                                                 <small>{{ client.created_at | date:'HH:mm' }}</small>
                                             </td>
 
-                                            <td>
-                                                <button class="btn btn-sm btn-outline-primary me-1">
-                                                    <i class="fe fe-edit"></i>
-                                                </button>
-                                                <button class="btn btn-sm btn-outline-danger">
-                                                    <i class="fe fe-trash"></i>
-                                                </button>
+                                            <td *ngIf="!editMode">
+                                                <div *ngIf="!editMode">
+                                                    <button class="btn btn-sm btn-outline-primary me-1"
+                                                        (click)="openEditModal(client)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger"
+                                                        (click)="openDeleteModal(client)">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -129,3 +208,93 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Client Modal -->
+<div class="modal fade" [class.show]="showEditModal" [style.display]="showEditModal ? 'block' : 'none'" tabindex="-1"
+    role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ 'CLIENTS.EDIT_CLIENT' | translate }}</h5>
+                <button type="button" class="btn-close" (click)="closeEditModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">{{ 'CLIENTS.PHONE_NUMBER' | translate }}</label>
+                    <div class="input-group">
+                        <select class="form-select" [(ngModel)]="editForm.country_code" style="max-width: 120px;">
+                            <option *ngFor="let country of countryCodes" [value]="country.code">
+                                {{ country.flag }} {{ country.code }}
+                            </option>
+                        </select>
+                        <input type="text" class="form-control" [(ngModel)]="editForm.phone_number"
+                            placeholder="612345678" />
+                    </div>
+                    <small class="form-text text-muted">{{ 'CLIENTS.PHONE_HINT' | translate }}</small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ 'CLIENTS.ADDRESS' | translate }}</label>
+                    <textarea class="form-control" rows="3" [(ngModel)]="editForm.address"
+                        placeholder="{{ 'CLIENTS.ADDRESS' | translate }}"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeEditModal()">
+                    {{ 'CLIENTS.CANCEL' | translate }}
+                </button>
+                <button type="button" class="btn btn-primary" (click)="saveClient()" [disabled]="loading">
+                    <span *ngIf="!loading">{{ 'CLIENTS.SAVE_CLIENT' | translate }}</span>
+                    <span *ngIf="loading">
+                        <span class="spinner-border spinner-border-sm me-1"></span>
+                        {{ 'CLIENTS.SAVING' | translate }}
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade" [class.show]="showEditModal" *ngIf="showEditModal"></div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" [class.show]="showDeleteModal" [style.display]="showDeleteModal ? 'block' : 'none'"
+    tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">
+                    <i class="fa fa-exclamation-triangle me-2"></i>
+                    {{ 'CLIENTS.DELETE_CLIENT' | translate }}
+                </h5>
+                <button type="button" class="btn-close btn-close-white" (click)="closeDeleteModal()"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-3">{{ 'CLIENTS.DELETE_CONFIRMATION' | translate }}</p>
+                <div class="alert alert-warning" *ngIf="clientToDelete">
+                    <strong>{{ 'CLIENTS.TABLE.NAME' | translate }}:</strong> {{ clientToDelete.full_name }}<br>
+                    <strong>{{ 'CLIENTS.TABLE.EMAIL' | translate }}:</strong> {{ clientToDelete.email }}
+                </div>
+                <p class="text-danger mb-0">
+                    <i class="fa fa-warning me-1"></i>
+                    {{ 'CLIENTS.DELETE_WARNING' | translate }}
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeDeleteModal()">
+                    {{ 'CLIENTS.CANCEL' | translate }}
+                </button>
+                <button type="button" class="btn btn-danger" (click)="confirmDelete()" [disabled]="loading">
+                    <span *ngIf="!loading">
+                        <i class="fa fa-trash me-1"></i>
+                        {{ 'CLIENTS.DELETE' | translate }}
+                    </span>
+                    <span *ngIf="loading">
+                        <span class="spinner-border spinner-border-sm me-1"></span>
+                        {{ 'CLIENTS.DELETING' | translate }}
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade" [class.show]="showDeleteModal" *ngIf="showDeleteModal"></div>

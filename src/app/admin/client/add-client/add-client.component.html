@@ -49,11 +49,7 @@
                 <input type="date" class="form-control" formControlName="birthday">
               </div>
 
-              <!-- Address -->
-              <div class="mb-3">
-                <label class="form-label">{{ 'CLIENTS.ADDRESS' | translate }}</label>
-                <textarea rows="2" class="form-control" formControlName="address"></textarea>
-              </div>
+
 
             </div>
 
@@ -70,8 +66,55 @@
                 <label class="form-label">{{ 'CLIENTS.CONFIRM_PASSWORD' | translate }}</label>
                 <input type="password" class="form-control" formControlName="password_confirmation">
               </div>
-            </div>
 
+              <hr>
+              <h5 class="mb-3 border-bottom pb-2">{{ 'CLIENTS.LOCATION' | translate }}</h5>
+
+
+              <!-- Address Options -->
+              <div class="mb-3">
+                <label class="form-label">{{ 'CLIENTS.ADDRESS' | translate }}</label>
+
+                <div class="btn-group w-100 mb-3" role="group">
+                  <button type="button" class="btn" [class.btn-primary]="addressOption === 'manual'"
+                    [class.btn-outline-primary]="addressOption !== 'manual'" (click)="addressOption = 'manual'">
+                    <i class="feather icon-edit-3 me-2"></i>{{ 'CLIENTS.MANUAL_ADDRESS' | translate }}
+                  </button>
+                  <button type="button" class="btn" [class.btn-primary]="addressOption === 'map'"
+                    [class.btn-outline-primary]="addressOption !== 'map'" (click)="addressOption = 'map'">
+                    <i class="feather icon-map-pin me-2"></i>{{ 'CLIENTS.MAP_ADDRESS' | translate }}
+                  </button>
+                </div>
+
+                <!-- Manual input -->
+                <textarea *ngIf="addressOption === 'manual'" rows="3" class="form-control" formControlName="address"
+                  placeholder="{{ 'CLIENTS.ENTER_MANUAL_ADDRESS' | translate }}"></textarea>
+
+                <!-- Google Maps -->
+                <div *ngIf="addressOption === 'map'" class="map-wrapper">
+                  <div class="alert alert-info alert-sm mb-2">
+                    <i class="feather icon-info me-2"></i> {{ 'CLIENTS.MAP_ADDRESS_INSTRUCTION' | translate }}
+                  </div>
+                  <div class="map-container">
+                    <app-map-picker [selectionMode]="true"
+                      (locationSelected)="onLocationSelected($event)"></app-map-picker>
+                  </div>
+                  <input class="form-control mt-2" placeholder="{{ 'CLIENTS.SELECTED_ADDRESS' | translate }}"
+                    [value]="addressFromMap" readonly>
+                </div>
+              </div>
+
+              <!-- Country Field (Auto-filled from map) -->
+              <div class="mb-3" *ngIf="clientForm.get('country')?.value">
+                <label class="form-label">{{ 'CLIENTS.COUNTRY' | translate }}</label>
+                <input type="text" class="form-control" formControlName="country" readonly>
+              </div>
+
+              <!-- Hidden Latitude and Longitude Fields (sent to backend but not displayed) -->
+              <input type="hidden" formControlName="latitude">
+              <input type="hidden" formControlName="longitude">
+
+            </div>
           </div>
 
           <!-- Submit Button -->
