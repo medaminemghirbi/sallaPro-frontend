@@ -41,6 +41,9 @@ import { AdminComponent } from './admin/dashboard-admin/admin.component';
 import { SidebarAdminComponent } from './admin/sidebar-admin/sidebar-admin.component';
 import { IndexComponent } from './admin/client/index/index.component';
 import { AddClientComponent } from './admin/client/add-client/add-client.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapPickerComponent } from './admin/client/map-picker/map-picker.component';
+import { EncodeUrlPipe } from './encode-url.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterByStatusPipe,
     FilterByVerificationPipe,
     SafeUrlPipe,
+    EncodeUrlPipe,
     AdminComponent,
     LoginComponent,
     DashboardSuperadminComponent,
@@ -65,7 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CalendarComponent,
     SidebarAdminComponent,
     IndexComponent,
-    AddClientComponent
+    AddClientComponent,
+    MapPickerComponent
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -91,6 +96,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     FullCalendarModule,
     NgSelectModule,
+    GoogleMapsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

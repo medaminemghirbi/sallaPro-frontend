@@ -1,0 +1,15 @@
+.location-cell {
+  min-width: 200px;
+  word-wrap: break-word;
+}
+
+.location-cell small {
+  color: #666;
+  line-height: 1.4;
+}
+
+.btn-outline-info:hover {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: white;
+}

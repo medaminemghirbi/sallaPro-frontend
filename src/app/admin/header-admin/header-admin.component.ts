@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { SidebarService } from 'src/app/services/sidebar.service';
+import { DarkModeService } from 'src/app/services/dark-mode.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,6 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class HeaderAdminComponent {
   currentUser: any;
+  darkMode: boolean = false;
   languages = [
     { code: 'fr', label: 'Français', flag: 'assets/img/flags/fr.png' },
     { code: 'en', label: 'English', flag: 'assets/img/flags/us.png' },
@@ -25,10 +27,17 @@ export class HeaderAdminComponent {
     private router: Router,
     private translate: TranslateService,
     private languageService: LanguageService,
-    private sidebarService: SidebarService
+    private sidebarService: SidebarService,
+    private darkModeService: DarkModeService
   ) {}
 
   ngOnInit(): void {
+    // Load dark mode state
+    this.darkMode = this.darkModeService.isDarkMode();
+    this.darkModeService.darkMode$.subscribe(isDark => {
+      this.darkMode = isDark;
+    });
+
     this.auth.getcurrentuser().subscribe({
       next: (response: any) => {
         this.currentUser = response.user; // your API shape
@@ -99,5 +108,9 @@ export class HeaderAdminComponent {
         );
       }
     );
+  }
+
+  toggleDarkMode(): void {
+    this.darkModeService.toggleDarkMode();
   }
 }
